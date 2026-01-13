@@ -1,0 +1,366 @@
+.chart-container {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(99, 179, 237, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Launcher Fit Toggle in Chart Header */
+.launcher-fit-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.launcher-fit-toggle:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.launcher-fit-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-switch {
+  width: 36px;
+  height: 20px;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #64748b;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s ease;
+}
+
+.launcher-fit-toggle input:checked + .toggle-switch {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+
+.launcher-fit-toggle input:checked + .toggle-switch::after {
+  transform: translateX(16px);
+  background: white;
+}
+
+.toggle-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.launcher-fit-toggle input:checked ~ .toggle-text {
+  color: #10b981;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chart-region {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  color: #38bdf8;
+}
+
+.europe-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.europe-indicator-box {
+  width: 20px;
+  height: 12px;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(250, 204, 21, 0.3) 2px,
+    rgba(250, 204, 21, 0.3) 4px
+  );
+  border: 1px dashed #facc15;
+  border-radius: 2px;
+}
+
+.addressable-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.addressable-indicator-box {
+  width: 20px;
+  height: 12px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border: 2px solid #10b981;
+  border-radius: 2px;
+}
+
+/* Custom Tooltip */
+.custom-tooltip {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(99, 179, 237, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(99, 179, 237, 0.1);
+}
+
+.tooltip-year {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.tooltip-forecast {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 4px;
+  color: #a78bfa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tooltip-label {
+  flex: 1;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.tooltip-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.tooltip-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.tooltip-europe {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin-top: 8px;
+  background: rgba(250, 204, 21, 0.1);
+  border: 1px dashed rgba(250, 204, 21, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #facc15;
+}
+
+.tooltip-addressable {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin-top: 8px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #34d399;
+  font-weight: 500;
+}
+
+.tooltip-source {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
+}
+
+.source-icon {
+  font-size: 12px;
+}
+
+.source-text {
+  font-size: 10px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Custom Legend */
+.custom-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  cursor: pointer;
+  position: relative;
+}
+
+.legend-item:hover {
+  color: #f1f5f9;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-info {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.legend-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(99, 179, 237, 0.2);
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #94a3b8;
+  z-index: 100;
+  margin-bottom: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Milestone Legend */
+.milestone-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
+}
+
+.milestone-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.milestone-item.europe .milestone-dot {
+  background: #38bdf8;
+}
+
+.milestone-item.global .milestone-dot {
+  background: #8b5cf6;
+}
+
+.milestone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.milestone-year {
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.milestone-label {
+  color: #64748b;
+}
+
+/* Recharts overrides */
+.recharts-cartesian-grid-horizontal line {
+  stroke: rgba(99, 179, 237, 0.08);
+}
+
+.recharts-reference-line-line {
+  stroke-opacity: 0.4;
+}

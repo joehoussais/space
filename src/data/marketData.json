@@ -1,0 +1,873 @@
+{
+  "years": [
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026",
+    "2027",
+    "2028",
+    "2029",
+    "2030",
+    "2031",
+    "2032",
+    "2033",
+    "2034",
+    "2035"
+  ],
+  "metrics": [
+    "Launch services revenue (USD, $B)",
+    "Orbital launches (count)"
+  ],
+  "useCases": [
+    "Total market",
+    "LEO constellations (comms + EO/IoT)",
+    "Government civil (science + institutional)",
+    "Defense / national security",
+    "GEO comsat (single large satellites)",
+    "Human spaceflight + station cargo/logistics",
+    "Lunar / cislunar / exploration logistics",
+    "Other (tech demos, rideshare misc)"
+  ],
+  "regions": [
+    "Global",
+    "Europe"
+  ],
+  "launcherClasses": {
+    "15t-reusable": {
+      "name": "15t Reusable First-Stage",
+      "description": "Large reusable launcher optimized for LEO, 15t payload class with first-stage recovery",
+      "payloadRangeLEO": [5000, 15000],
+      "reusable": true,
+      "addressability": {
+        "Total market": {
+          "percentage": 75,
+          "rationale": "Weighted average across segments; excludes small-sat dedicated and some specialized missions"
+        },
+        "LEO constellations (comms + EO/IoT)": {
+          "percentage": 90,
+          "rationale": "Ideal fit: high-cadence bulk deployment, 1-5t per batch, LEO-optimized. Reusability economics maximize value. Only misses dedicated small-sat launches."
+        },
+        "Government civil (science + institutional)": {
+          "percentage": 60,
+          "rationale": "Good fit for medium science payloads (2-10t). Some missions too small (CubeSat deployers) or require specialized vehicles. Flagship missions may exceed capacity."
+        },
+        "Defense / national security": {
+          "percentage": 70,
+          "rationale": "Growing proliferated LEO constellations (SDA) are ideal. Some NRO/classified payloads require dedicated/specialized launchers. Heavy GEO reconnaissance may need larger vehicle."
+        },
+        "GEO comsat (single large satellites)": {
+          "percentage": 40,
+          "rationale": "Can serve market in expendable mode but less competitive vs heavy-lift. Modern GEO sats 4-7t fit capacity but economics favor dedicated GTO launchers."
+        },
+        "Human spaceflight + station cargo/logistics": {
+          "percentage": 80,
+          "rationale": "Excellent fit for crew/cargo to LEO stations. High-value, medium-cadence missions benefit from reusability. Some specialized crew vehicles may have dedicated launchers."
+        },
+        "Lunar / cislunar / exploration logistics": {
+          "percentage": 50,
+          "rationale": "Good for cislunar cargo in expendable mode or with refueling. Deep space missions often need heavier lift or specialized trajectories. Growing segment as Artemis scales."
+        },
+        "Other (tech demos, rideshare misc)": {
+          "percentage": 30,
+          "rationale": "Much of this segment is small-launcher territory (dedicated rideshare, university CubeSats). Only larger tech demos and institutional misc fit the 15t class."
+        }
+      }
+    }
+  },
+  "data": [
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Total market",
+      "region": "Global",
+      "sourceNotes": "Sources: Fortune Business Insights ($4.28B 2023), Allied Market Research ($12.7B 2023), Grand View Research ($14.94B 2023), Space Foundation ($570B total space economy 2023 of which ~2.5% launch services). NOTE: Wide variance across reports due to different definitions (pure launch vs pre/post-launch services). Using broader definition for consistency. Forecast uses avg 12-14% CAGR from multiple sources. Values nominal USD.",
+      "values": {
+        "2020": 9.5,
+        "2021": 10.8,
+        "2022": 12.5,
+        "2023": 13.5,
+        "2024": 15.5,
+        "2025": 17.5,
+        "2026": 19.8,
+        "2027": 22.5,
+        "2028": 25.5,
+        "2029": 28.9,
+        "2030": 32.7,
+        "2031": 37.0,
+        "2032": 41.9,
+        "2033": 47.4,
+        "2034": 53.6,
+        "2035": 60.6
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Total market",
+      "region": "Europe",
+      "sourceNotes": "Sources: Grand View Research Europe market ($3.16B 2023), Market Data Forecast (Europe CAGR 12.18%), Fortune BI Europe report (CAGR 11.7%). Europe ~21% of global market. Historical data interpolated from regional share analysis.",
+      "values": {
+        "2020": 2.0,
+        "2021": 2.3,
+        "2022": 2.6,
+        "2023": 2.8,
+        "2024": 3.3,
+        "2025": 3.8,
+        "2026": 4.2,
+        "2027": 4.8,
+        "2028": 5.5,
+        "2029": 6.2,
+        "2030": 7.0,
+        "2031": 8.0,
+        "2032": 9.1,
+        "2033": 10.4,
+        "2034": 11.8,
+        "2035": 13.4
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "LEO constellations (comms + EO/IoT)",
+      "region": "Global",
+      "sourceNotes": "Sources: LEO satellite market ($5.34B 2023 per Market Research Future), LEO constellation market ($12.6B 2024 per Business Research Insights). LEO payloads ~35-38% of launch services per Future Market Insights. Starlink dominant driver. Forecast assumes continued constellation buildout through 2030s.",
+      "values": {
+        "2020": 3.5,
+        "2021": 4.2,
+        "2022": 5.2,
+        "2023": 5.7,
+        "2024": 6.8,
+        "2025": 7.8,
+        "2026": 9.0,
+        "2027": 10.4,
+        "2028": 12.0,
+        "2029": 13.8,
+        "2030": 15.9,
+        "2031": 18.0,
+        "2032": 20.5,
+        "2033": 23.3,
+        "2034": 26.5,
+        "2035": 30.0
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "LEO constellations (comms + EO/IoT)",
+      "region": "Europe",
+      "sourceNotes": "Sources: Eutelsat-OneWeb merger, EU IRIS\u00b2 constellation (~\u20ac10.6B total program). European LEO activity ~15% of global due to reliance on non-EU providers. Interpolated from regional market share.",
+      "values": {
+        "2020": 0.5,
+        "2021": 0.6,
+        "2022": 0.75,
+        "2023": 0.85,
+        "2024": 1.0,
+        "2025": 1.2,
+        "2026": 1.4,
+        "2027": 1.6,
+        "2028": 1.9,
+        "2029": 2.2,
+        "2030": 2.5,
+        "2031": 2.9,
+        "2032": 3.3,
+        "2033": 3.8,
+        "2034": 4.3,
+        "2035": 4.9
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Government civil (science + institutional)",
+      "region": "Global",
+      "sourceNotes": "Sources: NASA budget $25.2B (2024), ESA \u20ac18.5B (2023-25), total govt space spending $132B 2024 per Space Foundation. Civil/science launch ~8-10% of govt space budgets. Includes NASA science missions, ESA programs, JAXA, ISRO institutional.",
+      "values": {
+        "2020": 1.5,
+        "2021": 1.6,
+        "2022": 1.7,
+        "2023": 1.9,
+        "2024": 2.1,
+        "2025": 2.3,
+        "2026": 2.5,
+        "2027": 2.7,
+        "2028": 3.0,
+        "2029": 3.3,
+        "2030": 3.6,
+        "2031": 3.9,
+        "2032": 4.3,
+        "2033": 4.7,
+        "2034": 5.1,
+        "2035": 5.5
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Government civil (science + institutional)",
+      "region": "Europe",
+      "sourceNotes": "Sources: ESA budget allocations for science/exploration (~\u20ac2B annually), Copernicus program. European institutional ~15-18% of global gov civil. Ariane 6 and Vega C as primary vehicles.",
+      "values": {
+        "2020": 0.25,
+        "2021": 0.27,
+        "2022": 0.3,
+        "2023": 0.33,
+        "2024": 0.36,
+        "2025": 0.4,
+        "2026": 0.44,
+        "2027": 0.48,
+        "2028": 0.52,
+        "2029": 0.57,
+        "2030": 0.63,
+        "2031": 0.69,
+        "2032": 0.76,
+        "2033": 0.83,
+        "2034": 0.91,
+        "2035": 1.0
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Defense / national security",
+      "region": "Global",
+      "sourceNotes": "Sources: US national security space spending $49.58B 2024 (Breaking Defense), global military space $60.9B 2024. Defense launch services ~5-7% of total military space. SDA Tranche contracts ($3.5B for 72 satellites). DOD expects $18B on launch services over 5 years per GAO.",
+      "values": {
+        "2020": 2.2,
+        "2021": 2.4,
+        "2022": 2.7,
+        "2023": 3.0,
+        "2024": 3.4,
+        "2025": 3.8,
+        "2026": 4.3,
+        "2027": 4.8,
+        "2028": 5.4,
+        "2029": 6.0,
+        "2030": 6.7,
+        "2031": 7.4,
+        "2032": 8.2,
+        "2033": 9.1,
+        "2034": 10.1,
+        "2035": 11.2
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Defense / national security",
+      "region": "Europe",
+      "sourceNotes": "Sources: EU \u20ac9.09B for space defense (2023-2027), national programs (France SYRACUSE, UK Skynet). European defense ~8-10% of global due to US dominance. IRIS\u00b2 includes government/defense component.",
+      "values": {
+        "2020": 0.2,
+        "2021": 0.22,
+        "2022": 0.24,
+        "2023": 0.27,
+        "2024": 0.3,
+        "2025": 0.34,
+        "2026": 0.38,
+        "2027": 0.42,
+        "2028": 0.47,
+        "2029": 0.52,
+        "2030": 0.58,
+        "2031": 0.64,
+        "2032": 0.71,
+        "2033": 0.79,
+        "2034": 0.87,
+        "2035": 0.97
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "GEO comsat (single large satellites)",
+      "region": "Global",
+      "sourceNotes": "Sources: GEO satellite market $16.46B 2023 (Business Research Company), GEO communication 48% market share. Launch cost ~15-20% of satellite cost. GEO launches declining as LEO constellations grow. 8-12 GEO comsats launched annually.",
+      "values": {
+        "2020": 1.2,
+        "2021": 1.1,
+        "2022": 1.0,
+        "2023": 0.95,
+        "2024": 0.9,
+        "2025": 0.88,
+        "2026": 0.85,
+        "2027": 0.82,
+        "2028": 0.8,
+        "2029": 0.78,
+        "2030": 0.76,
+        "2031": 0.74,
+        "2032": 0.72,
+        "2033": 0.7,
+        "2034": 0.68,
+        "2035": 0.66
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "GEO comsat (single large satellites)",
+      "region": "Europe",
+      "sourceNotes": "Sources: Arianespace GEO market traditionally 40-50% share globally (pre-Ariane 5 gap). EUTELSAT, SES as major European GEO operators. Europe ~30% of global GEO market historically, declining.",
+      "values": {
+        "2020": 0.35,
+        "2021": 0.32,
+        "2022": 0.28,
+        "2023": 0.26,
+        "2024": 0.24,
+        "2025": 0.22,
+        "2026": 0.21,
+        "2027": 0.2,
+        "2028": 0.19,
+        "2029": 0.18,
+        "2030": 0.17,
+        "2031": 0.16,
+        "2032": 0.15,
+        "2033": 0.14,
+        "2034": 0.14,
+        "2035": 0.13
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Human spaceflight + station cargo/logistics",
+      "region": "Global",
+      "sourceNotes": "Sources: Human spaceflight segment 15.6% CAGR per Allied. ISS resupply ~$2B annually, Commercial Crew ~$500M per mission. Includes SpaceX Dragon, Northrop Cygnus, Boeing Starliner. Future commercial stations (Axiom, Orbital Reef) will expand market.",
+      "values": {
+        "2020": 0.6,
+        "2021": 0.7,
+        "2022": 0.8,
+        "2023": 0.9,
+        "2024": 1.0,
+        "2025": 1.1,
+        "2026": 1.3,
+        "2027": 1.5,
+        "2028": 1.7,
+        "2029": 2.0,
+        "2030": 2.3,
+        "2031": 2.7,
+        "2032": 3.1,
+        "2033": 3.6,
+        "2034": 4.2,
+        "2035": 4.8
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Human spaceflight + station cargo/logistics",
+      "region": "Europe",
+      "sourceNotes": "Sources: ESA astronaut program, European Service Module for Orion. Limited independent European crew capability. ATV retired 2015. Minimal direct European launch demand; mostly via ISS partnership.",
+      "values": {
+        "2020": 0.04,
+        "2021": 0.05,
+        "2022": 0.05,
+        "2023": 0.06,
+        "2024": 0.07,
+        "2025": 0.08,
+        "2026": 0.09,
+        "2027": 0.1,
+        "2028": 0.12,
+        "2029": 0.14,
+        "2030": 0.16,
+        "2031": 0.18,
+        "2032": 0.21,
+        "2033": 0.24,
+        "2034": 0.28,
+        "2035": 0.32
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Lunar / cislunar / exploration logistics",
+      "region": "Global",
+      "sourceNotes": "Sources: Cislunar infrastructure market $3.95B 2024 to $11.4B 2033 (Emergen Research). Artemis SLS ~$4B per launch. CLPS program $2.6B. China Chang'e program. Includes Gateway logistics, lunar landers, deep space missions.",
+      "values": {
+        "2020": 0.3,
+        "2021": 0.5,
+        "2022": 0.8,
+        "2023": 0.9,
+        "2024": 1.1,
+        "2025": 1.3,
+        "2026": 1.6,
+        "2027": 1.9,
+        "2028": 2.3,
+        "2029": 2.8,
+        "2030": 3.3,
+        "2031": 3.9,
+        "2032": 4.6,
+        "2033": 5.4,
+        "2034": 6.3,
+        "2035": 7.4
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Lunar / cislunar / exploration logistics",
+      "region": "Europe",
+      "sourceNotes": "Sources: ESA exploration budget ~\u20ac700M annually, European Service Module, Gateway contributions (I-Hab). Europe ~10% of global lunar/cislunar via Artemis partnership and national programs.",
+      "values": {
+        "2020": 0.03,
+        "2021": 0.05,
+        "2022": 0.08,
+        "2023": 0.09,
+        "2024": 0.11,
+        "2025": 0.13,
+        "2026": 0.16,
+        "2027": 0.19,
+        "2028": 0.23,
+        "2029": 0.28,
+        "2030": 0.33,
+        "2031": 0.39,
+        "2032": 0.46,
+        "2033": 0.54,
+        "2034": 0.63,
+        "2035": 0.74
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Other (tech demos, rideshare misc)",
+      "region": "Global",
+      "sourceNotes": "Sources: Small satellite launch market growing rapidly. Rideshare services (SpaceX Transporter, Rocket Lab). Tech demos, university payloads, emerging nations' first satellites. Residual category.",
+      "values": {
+        "2020": 0.2,
+        "2021": 0.3,
+        "2022": 0.4,
+        "2023": 0.5,
+        "2024": 0.5,
+        "2025": 0.6,
+        "2026": 0.6,
+        "2027": 0.7,
+        "2028": 0.7,
+        "2029": 0.8,
+        "2030": 0.8,
+        "2031": 0.9,
+        "2032": 0.9,
+        "2033": 1.0,
+        "2034": 1.0,
+        "2035": 1.1
+      }
+    },
+    {
+      "metric": "Launch services revenue (USD, $B)",
+      "useCase": "Other (tech demos, rideshare misc)",
+      "region": "Europe",
+      "sourceNotes": "Sources: European small launcher programs (Isar Aerospace, PLD Space, RFA). University CubeSats via Vega rideshare. Residual European demand.",
+      "values": {
+        "2020": 0.03,
+        "2021": 0.04,
+        "2022": 0.05,
+        "2023": 0.05,
+        "2024": 0.06,
+        "2025": 0.07,
+        "2026": 0.08,
+        "2027": 0.09,
+        "2028": 0.1,
+        "2029": 0.11,
+        "2030": 0.12,
+        "2031": 0.14,
+        "2032": 0.15,
+        "2033": 0.17,
+        "2034": 0.19,
+        "2035": 0.21
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Total market",
+      "region": "Global",
+      "sourceNotes": "Sources: Space Stats Online (definitive count). 2020: 114, 2021: 145, 2022: 186, 2023: 222, 2024: 259, 2025: 324 (actual). Forecast assumes ~15% annual growth moderating to ~10% by 2030.",
+      "values": {
+        "2020": 114.0,
+        "2021": 145.0,
+        "2022": 186.0,
+        "2023": 222.0,
+        "2024": 259.0,
+        "2025": 324.0,
+        "2026": 370.0,
+        "2027": 420.0,
+        "2028": 475.0,
+        "2029": 535.0,
+        "2030": 600.0,
+        "2031": 660.0,
+        "2032": 720.0,
+        "2033": 785.0,
+        "2034": 855.0,
+        "2035": 930.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Total market",
+      "region": "Europe",
+      "sourceNotes": "Sources: Arianespace/ESA launches historically 8-12 per year. 2020-2022 reduced due to Ariane 5 retirement/Ariane 6 delays. European launches ~3-5% of global. Includes Ariane, Vega, future small launchers.",
+      "values": {
+        "2020": 5.0,
+        "2021": 6.0,
+        "2022": 5.0,
+        "2023": 4.0,
+        "2024": 3.0,
+        "2025": 8.0,
+        "2026": 12.0,
+        "2027": 15.0,
+        "2028": 18.0,
+        "2029": 22.0,
+        "2030": 26.0,
+        "2031": 30.0,
+        "2032": 34.0,
+        "2033": 38.0,
+        "2034": 42.0,
+        "2035": 46.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "LEO constellations (comms + EO/IoT)",
+      "region": "Global",
+      "sourceNotes": "Sources: SpaceX Starlink dominant (~90+ launches 2023). OneWeb, Amazon Kuiper, China GuoWang. LEO constellation launches ~60-65% of total launches. Derived from payload analysis.",
+      "values": {
+        "2020": 65.0,
+        "2021": 88.0,
+        "2022": 120.0,
+        "2023": 145.0,
+        "2024": 170.0,
+        "2025": 210.0,
+        "2026": 240.0,
+        "2027": 275.0,
+        "2028": 310.0,
+        "2029": 350.0,
+        "2030": 390.0,
+        "2031": 430.0,
+        "2032": 465.0,
+        "2033": 505.0,
+        "2034": 545.0,
+        "2035": 590.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "LEO constellations (comms + EO/IoT)",
+      "region": "Europe",
+      "sourceNotes": "Sources: OneWeb launches via Arianespace/ISRO. Eutelsat-OneWeb constellation complete 2024. Limited European-demand LEO launches; most Starlink/Kuiper via SpaceX.",
+      "values": {
+        "2020": 2.0,
+        "2021": 3.0,
+        "2022": 2.0,
+        "2023": 2.0,
+        "2024": 1.0,
+        "2025": 4.0,
+        "2026": 6.0,
+        "2027": 8.0,
+        "2028": 10.0,
+        "2029": 12.0,
+        "2030": 14.0,
+        "2031": 16.0,
+        "2032": 18.0,
+        "2033": 20.0,
+        "2034": 22.0,
+        "2035": 24.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Government civil (science + institutional)",
+      "region": "Global",
+      "sourceNotes": "Sources: NASA, ESA, JAXA, ISRO, CNSA science missions. ~15-20 dedicated government science/civil launches annually. Relatively stable segment.",
+      "values": {
+        "2020": 18.0,
+        "2021": 20.0,
+        "2022": 22.0,
+        "2023": 25.0,
+        "2024": 28.0,
+        "2025": 32.0,
+        "2026": 35.0,
+        "2027": 38.0,
+        "2028": 42.0,
+        "2029": 46.0,
+        "2030": 50.0,
+        "2031": 54.0,
+        "2032": 58.0,
+        "2033": 62.0,
+        "2034": 66.0,
+        "2035": 70.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Government civil (science + institutional)",
+      "region": "Europe",
+      "sourceNotes": "Sources: ESA science missions (Copernicus, exploration). 2-4 dedicated European institutional launches annually.",
+      "values": {
+        "2020": 2.0,
+        "2021": 2.0,
+        "2022": 2.0,
+        "2023": 1.0,
+        "2024": 1.0,
+        "2025": 2.0,
+        "2026": 3.0,
+        "2027": 4.0,
+        "2028": 4.0,
+        "2029": 5.0,
+        "2030": 5.0,
+        "2031": 6.0,
+        "2032": 6.0,
+        "2033": 7.0,
+        "2034": 7.0,
+        "2035": 8.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Defense / national security",
+      "region": "Global",
+      "sourceNotes": "Sources: US Space Force, NRO, China military, other nations. ~20-30 dedicated defense launches annually. Growing with proliferated constellations.",
+      "values": {
+        "2020": 15.0,
+        "2021": 18.0,
+        "2022": 22.0,
+        "2023": 26.0,
+        "2024": 32.0,
+        "2025": 40.0,
+        "2026": 48.0,
+        "2027": 55.0,
+        "2028": 62.0,
+        "2029": 70.0,
+        "2030": 78.0,
+        "2031": 86.0,
+        "2032": 94.0,
+        "2033": 102.0,
+        "2034": 110.0,
+        "2035": 118.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Defense / national security",
+      "region": "Europe",
+      "sourceNotes": "Sources: French military (SYRACUSE, CSO), UK (Skynet), German SARah. 1-3 European defense launches annually.",
+      "values": {
+        "2020": 1.0,
+        "2021": 1.0,
+        "2022": 1.0,
+        "2023": 1.0,
+        "2024": 1.0,
+        "2025": 2.0,
+        "2026": 2.0,
+        "2027": 3.0,
+        "2028": 3.0,
+        "2029": 4.0,
+        "2030": 4.0,
+        "2031": 5.0,
+        "2032": 5.0,
+        "2033": 6.0,
+        "2034": 6.0,
+        "2035": 7.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "GEO comsat (single large satellites)",
+      "region": "Global",
+      "sourceNotes": "Sources: GEO comsat launches declining from ~15-20/year to <10. Shift to LEO/HTS reducing GEO demand.",
+      "values": {
+        "2020": 12.0,
+        "2021": 10.0,
+        "2022": 8.0,
+        "2023": 8.0,
+        "2024": 7.0,
+        "2025": 6.0,
+        "2026": 6.0,
+        "2027": 5.0,
+        "2028": 5.0,
+        "2029": 5.0,
+        "2030": 5.0,
+        "2031": 4.0,
+        "2032": 4.0,
+        "2033": 4.0,
+        "2034": 4.0,
+        "2035": 4.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "GEO comsat (single large satellites)",
+      "region": "Europe",
+      "sourceNotes": "Sources: Ariane 5/6 primary GEO launcher for Europe. 2-4 GEO missions historically. Gap period 2023-2024.",
+      "values": {
+        "2020": 2.0,
+        "2021": 2.0,
+        "2022": 1.0,
+        "2023": 0.0,
+        "2024": 0.0,
+        "2025": 1.0,
+        "2026": 2.0,
+        "2027": 2.0,
+        "2028": 2.0,
+        "2029": 2.0,
+        "2030": 2.0,
+        "2031": 2.0,
+        "2032": 2.0,
+        "2033": 2.0,
+        "2034": 2.0,
+        "2035": 2.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Human spaceflight + station cargo/logistics",
+      "region": "Global",
+      "sourceNotes": "Sources: ISS resupply (~8/year), crew rotation (~4/year), China space station. Growing with commercial stations.",
+      "values": {
+        "2020": 4.0,
+        "2021": 6.0,
+        "2022": 8.0,
+        "2023": 10.0,
+        "2024": 12.0,
+        "2025": 14.0,
+        "2026": 16.0,
+        "2027": 18.0,
+        "2028": 20.0,
+        "2029": 22.0,
+        "2030": 24.0,
+        "2031": 26.0,
+        "2032": 28.0,
+        "2033": 30.0,
+        "2034": 32.0,
+        "2035": 34.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Human spaceflight + station cargo/logistics",
+      "region": "Europe",
+      "sourceNotes": "Sources: No independent European crewed capability. ESM flights via Artemis/SLS. Minimal direct European launches.",
+      "values": {
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0,
+        "2024": 0.0,
+        "2025": 0.0,
+        "2026": 0.0,
+        "2027": 0.0,
+        "2028": 0.0,
+        "2029": 0.0,
+        "2030": 1.0,
+        "2031": 1.0,
+        "2032": 1.0,
+        "2033": 1.0,
+        "2034": 1.0,
+        "2035": 1.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Lunar / cislunar / exploration logistics",
+      "region": "Global",
+      "sourceNotes": "Sources: CLPS lunar landers, Artemis SLS, China Chang'e. 2-5 lunar/cislunar missions annually, growing to 8-12 by 2030.",
+      "values": {
+        "2020": 0.0,
+        "2021": 1.0,
+        "2022": 2.0,
+        "2023": 3.0,
+        "2024": 4.0,
+        "2025": 5.0,
+        "2026": 6.0,
+        "2027": 7.0,
+        "2028": 8.0,
+        "2029": 9.0,
+        "2030": 10.0,
+        "2031": 11.0,
+        "2032": 12.0,
+        "2033": 13.0,
+        "2034": 14.0,
+        "2035": 15.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Lunar / cislunar / exploration logistics",
+      "region": "Europe",
+      "sourceNotes": "Sources: European lunar missions via ESA partnership. HERA, contributions to Artemis. Very limited independent European lunar launches.",
+      "values": {
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0,
+        "2024": 0.0,
+        "2025": 0.0,
+        "2026": 0.0,
+        "2027": 1.0,
+        "2028": 1.0,
+        "2029": 1.0,
+        "2030": 1.0,
+        "2031": 1.0,
+        "2032": 1.0,
+        "2033": 2.0,
+        "2034": 2.0,
+        "2035": 2.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Other (tech demos, rideshare misc)",
+      "region": "Global",
+      "sourceNotes": "Sources: Rideshare, tech demos, small sat dedicated. Growing segment with small launcher proliferation.",
+      "values": {
+        "2020": 4.0,
+        "2021": 5.0,
+        "2022": 6.0,
+        "2023": 8.0,
+        "2024": 10.0,
+        "2025": 15.0,
+        "2026": 18.0,
+        "2027": 22.0,
+        "2028": 26.0,
+        "2029": 30.0,
+        "2030": 35.0,
+        "2031": 40.0,
+        "2032": 45.0,
+        "2033": 50.0,
+        "2034": 55.0,
+        "2035": 60.0
+      }
+    },
+    {
+      "metric": "Orbital launches (count)",
+      "useCase": "Other (tech demos, rideshare misc)",
+      "region": "Europe",
+      "sourceNotes": "Sources: Vega rideshare, emerging European small launchers (Isar, RFA, PLD Space). Growing from near-zero.",
+      "values": {
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0,
+        "2024": 0.0,
+        "2025": 1.0,
+        "2026": 2.0,
+        "2027": 3.0,
+        "2028": 4.0,
+        "2029": 5.0,
+        "2030": 6.0,
+        "2031": 7.0,
+        "2032": 8.0,
+        "2033": 9.0,
+        "2034": 10.0,
+        "2035": 11.0
+      }
+    }
+  ],
+  "milestones": [
+    {
+      "year": 2024,
+      "label": "Ariane 6 First Launch",
+      "type": "europe"
+    },
+    {
+      "year": 2025,
+      "label": "Starship Operational",
+      "type": "global"
+    },
+    {
+      "year": 2027,
+      "label": "IRIS\u00b2 Deployment Begins",
+      "type": "europe"
+    },
+    {
+      "year": 2028,
+      "label": "Artemis III (Moon Landing)",
+      "type": "global"
+    }
+  ],
+  "forecastStartYear": 2025
+}
