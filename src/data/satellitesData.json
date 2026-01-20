@@ -1,0 +1,1089 @@
+{
+  "years": [
+    "2020", "2021", "2022", "2023", "2024", "2025",
+    "2026", "2027", "2028", "2029", "2030", "2031",
+    "2032", "2033", "2034", "2035"
+  ],
+  "metrics": [
+    "Satellite manufacturing market (USD, $B)",
+    "Satellites launched (count)"
+  ],
+  "categories": {
+    "sizeClass": {
+      "name": "Size Class",
+      "items": [
+        "CubeSats (1-27U)",
+        "Microsats (11-200kg)",
+        "Minisats (200-600kg)",
+        "Medium (600-2500kg)",
+        "Large (2500kg+)"
+      ]
+    },
+    "application": {
+      "name": "Application",
+      "items": [
+        "Communications",
+        "Earth Observation",
+        "Navigation",
+        "IoT / M2M",
+        "Science / Tech Demo",
+        "Defense / ISR"
+      ]
+    },
+    "operatorType": {
+      "name": "Operator Type",
+      "items": [
+        "Commercial",
+        "Government / Civil",
+        "Defense / Military",
+        "Academic / Research"
+      ]
+    }
+  },
+  "regions": ["Global", "Europe"],
+  "data": [
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Total",
+      "categoryType": "total",
+      "region": "Global",
+      "sourceNotes": "Sources: Mordor Intelligence ($302.5B by 2030 total), Fortune Business Insights (17.94% CAGR). Includes satellite bus, payload, integration. Small satellite segment $6.9B 2024, reaching $32.13B by 2030.",
+      "values": {
+        "2020": 15.2, "2021": 17.8, "2022": 21.0, "2023": 24.8,
+        "2024": 29.3, "2025": 34.5, "2026": 40.6, "2027": 47.8,
+        "2028": 56.3, "2029": 66.3, "2030": 78.1, "2031": 89.5,
+        "2032": 102.6, "2033": 117.5, "2034": 134.6, "2035": 154.3
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Total",
+      "categoryType": "total",
+      "region": "Europe",
+      "sourceNotes": "Sources: Mordor Intelligence Europe ($12.38B 2025, 10.37% CAGR to $20.27B 2030). European share ~22-25% global. ESA report: EUR 8.8B industry revenue 2024.",
+      "values": {
+        "2020": 3.2, "2021": 3.7, "2022": 4.4, "2023": 5.1,
+        "2024": 6.0, "2025": 7.0, "2026": 8.1, "2027": 9.4,
+        "2028": 10.8, "2029": 12.5, "2030": 14.4, "2031": 16.4,
+        "2032": 18.7, "2033": 21.4, "2034": 24.4, "2035": 27.9
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "CubeSats (1-27U)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Sources: Straits Research (CubeSat market $0.54B 2024, 20.1% CAGR). 58% of smallsat deployments. 3U most common.",
+      "values": {
+        "2020": 0.22, "2021": 0.28, "2022": 0.36, "2023": 0.45,
+        "2024": 0.54, "2025": 0.65, "2026": 0.78, "2027": 0.94,
+        "2028": 1.13, "2029": 1.36, "2030": 1.63, "2031": 1.96,
+        "2032": 2.35, "2033": 2.82, "2034": 3.39, "2035": 4.07
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "CubeSats (1-27U)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European CubeSat share ~18% of global. Strong university/research sector. ISISPACE, GomSpace key players.",
+      "values": {
+        "2020": 0.04, "2021": 0.05, "2022": 0.06, "2023": 0.08,
+        "2024": 0.10, "2025": 0.12, "2026": 0.14, "2027": 0.17,
+        "2028": 0.20, "2029": 0.25, "2030": 0.29, "2031": 0.35,
+        "2032": 0.42, "2033": 0.51, "2034": 0.61, "2035": 0.73
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Microsats (11-200kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Sources: Growing segment driven by LEO constellations. ~25% of smallsat market. Includes Starlink V1, OneWeb class satellites.",
+      "values": {
+        "2020": 2.8, "2021": 3.5, "2022": 4.4, "2023": 5.5,
+        "2024": 6.9, "2025": 8.6, "2026": 10.8, "2027": 13.5,
+        "2028": 16.8, "2029": 21.0, "2030": 26.3, "2031": 31.5,
+        "2032": 37.8, "2033": 45.4, "2034": 54.5, "2035": 65.4
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Microsats (11-200kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European microsat market driven by SSTL, NanoAvionics, AAC Clyde Space. OneWeb manufacturing in Florida/France partnership.",
+      "values": {
+        "2020": 0.6, "2021": 0.7, "2022": 0.9, "2023": 1.1,
+        "2024": 1.4, "2025": 1.7, "2026": 2.2, "2027": 2.7,
+        "2028": 3.4, "2029": 4.2, "2030": 5.3, "2031": 6.3,
+        "2032": 7.6, "2033": 9.1, "2034": 10.9, "2035": 13.1
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Minisats (200-600kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Sources: Markets and Markets (Mini segment $21.8B by 2034). Includes Starlink V2, Planet SkySat class. Fast-growing segment.",
+      "values": {
+        "2020": 3.8, "2021": 4.5, "2022": 5.4, "2023": 6.5,
+        "2024": 7.8, "2025": 9.4, "2026": 11.2, "2027": 13.4,
+        "2028": 16.1, "2029": 19.3, "2030": 23.1, "2031": 26.6,
+        "2032": 30.6, "2033": 35.2, "2034": 40.5, "2035": 46.5
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Minisats (200-600kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European minisats: IRIS2 constellation (264 satellites), national EO programs. Growing institutional demand.",
+      "values": {
+        "2020": 0.8, "2021": 0.9, "2022": 1.1, "2023": 1.3,
+        "2024": 1.6, "2025": 1.9, "2026": 2.2, "2027": 2.7,
+        "2028": 3.2, "2029": 3.9, "2030": 4.6, "2031": 5.3,
+        "2032": 6.1, "2033": 7.0, "2034": 8.1, "2035": 9.3
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Medium (600-2500kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Medium segment includes MEO navigation, weather satellites, some GEO platforms. Relatively stable market.",
+      "values": {
+        "2020": 4.2, "2021": 4.6, "2022": 5.1, "2023": 5.6,
+        "2024": 6.2, "2025": 6.8, "2026": 7.5, "2027": 8.3,
+        "2028": 9.1, "2029": 10.0, "2030": 11.0, "2031": 12.1,
+        "2032": 13.3, "2033": 14.6, "2034": 16.0, "2035": 17.6
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Medium (600-2500kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European medium satellites: Galileo constellation, Copernicus Sentinels. Airbus and Thales Alenia Space primary.",
+      "values": {
+        "2020": 1.0, "2021": 1.1, "2022": 1.2, "2023": 1.4,
+        "2024": 1.5, "2025": 1.7, "2026": 1.9, "2027": 2.1,
+        "2028": 2.3, "2029": 2.5, "2030": 2.7, "2031": 3.0,
+        "2032": 3.3, "2033": 3.6, "2034": 4.0, "2035": 4.4
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Large (2500kg+)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Large GEO satellites declining market. High-value but low volume. ~8-12 per year globally.",
+      "values": {
+        "2020": 4.2, "2021": 4.0, "2022": 3.8, "2023": 3.6,
+        "2024": 3.4, "2025": 3.2, "2026": 3.0, "2027": 2.9,
+        "2028": 2.8, "2029": 2.7, "2030": 2.6, "2031": 2.5,
+        "2032": 2.4, "2033": 2.3, "2034": 2.2, "2035": 2.1
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Large (2500kg+)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European large satellites: Eurostar Neo (Airbus), Spacebus Neo (Thales). Traditional GEO telecom market.",
+      "values": {
+        "2020": 1.1, "2021": 1.0, "2022": 0.9, "2023": 0.9,
+        "2024": 0.8, "2025": 0.8, "2026": 0.7, "2027": 0.7,
+        "2028": 0.7, "2029": 0.6, "2030": 0.6, "2031": 0.6,
+        "2032": 0.6, "2033": 0.6, "2034": 0.5, "2035": 0.5
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Communications",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Communications largest segment. Includes LEO broadband (Starlink, OneWeb, Kuiper), GEO HTS, MSS.",
+      "values": {
+        "2020": 8.5, "2021": 10.2, "2022": 12.2, "2023": 14.6,
+        "2024": 17.5, "2025": 21.0, "2026": 25.2, "2027": 30.2,
+        "2028": 36.3, "2029": 43.5, "2030": 52.2, "2031": 60.5,
+        "2032": 70.2, "2033": 81.4, "2034": 94.4, "2035": 109.5
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Communications",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European comms: IRIS2 (~EUR10.6B), Eutelsat, SES. OneWeb manufacturing partnership.",
+      "values": {
+        "2020": 1.7, "2021": 2.0, "2022": 2.4, "2023": 2.9,
+        "2024": 3.5, "2025": 4.2, "2026": 5.0, "2027": 6.0,
+        "2028": 7.3, "2029": 8.7, "2030": 10.4, "2031": 12.1,
+        "2032": 14.0, "2033": 16.3, "2034": 18.9, "2035": 21.9
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Earth Observation",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "EO market EUR7-9B by 2032. Includes optical, SAR, hyperspectral. Planet, Maxar, Airbus DS.",
+      "values": {
+        "2020": 3.0, "2021": 3.4, "2022": 3.9, "2023": 4.5,
+        "2024": 5.2, "2025": 5.9, "2026": 6.8, "2027": 7.8,
+        "2028": 8.9, "2029": 10.2, "2030": 11.7, "2031": 13.2,
+        "2032": 14.9, "2033": 16.8, "2034": 19.0, "2035": 21.4
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Earth Observation",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European EO strong: Copernicus, IRIDE (Italy), Satellite Vu (UK thermal), OroraTech. ~25% global share.",
+      "values": {
+        "2020": 0.8, "2021": 0.9, "2022": 1.0, "2023": 1.1,
+        "2024": 1.3, "2025": 1.5, "2026": 1.7, "2027": 2.0,
+        "2028": 2.2, "2029": 2.6, "2030": 2.9, "2031": 3.3,
+        "2032": 3.7, "2033": 4.2, "2034": 4.8, "2035": 5.4
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Navigation",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Navigation: GPS, Galileo, GLONASS, BeiDou. Mature market with replacement cycles.",
+      "values": {
+        "2020": 1.8, "2021": 1.9, "2022": 2.0, "2023": 2.2,
+        "2024": 2.3, "2025": 2.5, "2026": 2.7, "2027": 2.9,
+        "2028": 3.1, "2029": 3.4, "2030": 3.6, "2031": 3.9,
+        "2032": 4.2, "2033": 4.5, "2034": 4.9, "2035": 5.3
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Navigation",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "Galileo constellation (30 satellites). Second generation beginning 2026. OHB, Thales Alenia Space.",
+      "values": {
+        "2020": 0.4, "2021": 0.4, "2022": 0.5, "2023": 0.5,
+        "2024": 0.5, "2025": 0.6, "2026": 0.6, "2027": 0.7,
+        "2028": 0.7, "2029": 0.8, "2030": 0.8, "2031": 0.9,
+        "2032": 0.9, "2033": 1.0, "2034": 1.1, "2035": 1.2
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "IoT / M2M",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "IoT constellations: Kineis, Lacuna Space, Swarm/SpaceX, Sateliot. Fast-growing niche.",
+      "values": {
+        "2020": 0.3, "2021": 0.4, "2022": 0.5, "2023": 0.7,
+        "2024": 0.9, "2025": 1.2, "2026": 1.5, "2027": 2.0,
+        "2028": 2.6, "2029": 3.4, "2030": 4.4, "2031": 5.5,
+        "2032": 6.9, "2033": 8.6, "2034": 10.8, "2035": 13.5
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "IoT / M2M",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European IoT: Kineis (France, 25 sats), Lacuna Space (UK), Sateliot (Spain). Strong position.",
+      "values": {
+        "2020": 0.08, "2021": 0.10, "2022": 0.13, "2023": 0.18,
+        "2024": 0.22, "2025": 0.30, "2026": 0.38, "2027": 0.50,
+        "2028": 0.65, "2029": 0.85, "2030": 1.10, "2031": 1.38,
+        "2032": 1.73, "2033": 2.15, "2034": 2.70, "2035": 3.38
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Science / Tech Demo",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Science missions, university satellites, tech demonstrations. Relatively stable segment.",
+      "values": {
+        "2020": 0.8, "2021": 0.9, "2022": 1.0, "2023": 1.1,
+        "2024": 1.2, "2025": 1.3, "2026": 1.4, "2027": 1.6,
+        "2028": 1.7, "2029": 1.9, "2030": 2.1, "2031": 2.3,
+        "2032": 2.5, "2033": 2.8, "2034": 3.0, "2035": 3.3
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Science / Tech Demo",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European science strong: ESA missions, university CubeSats. ~20% of global science segment.",
+      "values": {
+        "2020": 0.16, "2021": 0.18, "2022": 0.20, "2023": 0.22,
+        "2024": 0.24, "2025": 0.26, "2026": 0.28, "2027": 0.32,
+        "2028": 0.34, "2029": 0.38, "2030": 0.42, "2031": 0.46,
+        "2032": 0.50, "2033": 0.56, "2034": 0.60, "2035": 0.66
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Defense / ISR",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Defense segment 63% of European manufacturing. SDA proliferated constellations. Strong growth driver.",
+      "values": {
+        "2020": 2.5, "2021": 2.8, "2022": 3.2, "2023": 3.6,
+        "2024": 4.1, "2025": 4.7, "2026": 5.4, "2027": 6.2,
+        "2028": 7.1, "2029": 8.2, "2030": 9.4, "2031": 10.8,
+        "2032": 12.4, "2033": 14.2, "2034": 16.3, "2035": 18.7
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Defense / ISR",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European defense: CSO (France), SATCOMBw (Germany), Skynet (UK). EUR35B German space security 2026-2030.",
+      "values": {
+        "2020": 0.5, "2021": 0.56, "2022": 0.64, "2023": 0.72,
+        "2024": 0.82, "2025": 0.94, "2026": 1.08, "2027": 1.24,
+        "2028": 1.42, "2029": 1.64, "2030": 1.88, "2031": 2.16,
+        "2032": 2.48, "2033": 2.84, "2034": 3.26, "2035": 3.74
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Commercial",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Commercial operators: SpaceX, Amazon, Planet, Maxar, telecom operators. ~55% of market.",
+      "values": {
+        "2020": 8.4, "2021": 9.8, "2022": 11.6, "2023": 13.6,
+        "2024": 16.1, "2025": 19.0, "2026": 22.3, "2027": 26.3,
+        "2028": 31.0, "2029": 36.5, "2030": 43.0, "2031": 49.2,
+        "2032": 56.4, "2033": 64.6, "2034": 74.0, "2035": 84.8
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Commercial",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European commercial: Eutelsat, SES, Planet EU, NewSpace startups. Growing but behind US.",
+      "values": {
+        "2020": 1.3, "2021": 1.5, "2022": 1.8, "2023": 2.0,
+        "2024": 2.4, "2025": 2.8, "2026": 3.2, "2027": 3.8,
+        "2028": 4.3, "2029": 5.0, "2030": 5.8, "2031": 6.6,
+        "2032": 7.5, "2033": 8.6, "2034": 9.8, "2035": 11.2
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Government / Civil",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Government civil: NASA, ESA, JAXA science missions. Copernicus, weather satellites. ~20% of market.",
+      "values": {
+        "2020": 3.0, "2021": 3.6, "2022": 4.2, "2023": 5.0,
+        "2024": 5.9, "2025": 6.9, "2026": 8.1, "2027": 9.6,
+        "2028": 11.3, "2029": 13.3, "2030": 15.6, "2031": 17.9,
+        "2032": 20.5, "2033": 23.5, "2034": 26.9, "2035": 30.9
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Government / Civil",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European institutional: EUR6.3B (72% of industry revenue). ESA, Copernicus, Galileo, national programs.",
+      "values": {
+        "2020": 1.1, "2021": 1.3, "2022": 1.5, "2023": 1.8,
+        "2024": 2.1, "2025": 2.5, "2026": 2.9, "2027": 3.4,
+        "2028": 3.9, "2029": 4.5, "2030": 5.2, "2031": 5.9,
+        "2032": 6.7, "2033": 7.7, "2034": 8.8, "2035": 10.0
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Defense / Military",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Military space growing rapidly. US Space Force, China PLA, NATO nations. ~22% of market.",
+      "values": {
+        "2020": 3.3, "2021": 3.9, "2022": 4.6, "2023": 5.5,
+        "2024": 6.5, "2025": 7.6, "2026": 8.9, "2027": 10.5,
+        "2028": 12.4, "2029": 14.6, "2030": 17.2, "2031": 19.7,
+        "2032": 22.6, "2033": 25.9, "2034": 29.7, "2035": 34.0
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Defense / Military",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European defense 63% of sat manufacturing. Germany EUR35B 2026-2030, France CSO, UK Skynet.",
+      "values": {
+        "2020": 0.7, "2021": 0.8, "2022": 1.0, "2023": 1.2,
+        "2024": 1.4, "2025": 1.6, "2026": 1.9, "2027": 2.2,
+        "2028": 2.5, "2029": 2.9, "2030": 3.3, "2031": 3.8,
+        "2032": 4.4, "2033": 5.0, "2034": 5.7, "2035": 6.5
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Academic / Research",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "University CubeSats, research institutions. Small but growing. ~3% of market.",
+      "values": {
+        "2020": 0.5, "2021": 0.5, "2022": 0.6, "2023": 0.7,
+        "2024": 0.8, "2025": 1.0, "2026": 1.3, "2027": 1.4,
+        "2028": 1.6, "2029": 1.9, "2030": 2.1, "2031": 2.7,
+        "2032": 3.1, "2033": 3.5, "2034": 4.0, "2035": 4.6
+      }
+    },
+    {
+      "metric": "Satellite manufacturing market (USD, $B)",
+      "category": "Academic / Research",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European universities strong in CubeSats. ESA education programs. Delft, Surrey, polytechnics.",
+      "values": {
+        "2020": 0.1, "2021": 0.1, "2022": 0.1, "2023": 0.1,
+        "2024": 0.1, "2025": 0.1, "2026": 0.1, "2027": 0.1,
+        "2028": 0.1, "2029": 0.1, "2030": 0.1, "2031": 0.1,
+        "2032": 0.1, "2033": 0.1, "2034": 0.1, "2035": 0.2
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Total",
+      "categoryType": "total",
+      "region": "Global",
+      "sourceNotes": "Sources: BryceTech Smallsats by Numbers 2025. 2024: 2,695 satellites (record). 97% were small satellites.",
+      "values": {
+        "2020": 1283, "2021": 1807, "2022": 2233, "2023": 2664,
+        "2024": 2695, "2025": 2793, "2026": 3100, "2027": 3450,
+        "2028": 3840, "2029": 4270, "2030": 4750, "2031": 5100,
+        "2032": 5480, "2033": 5890, "2034": 6330, "2035": 6800
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Total",
+      "categoryType": "total",
+      "region": "Europe",
+      "sourceNotes": "European satellites launched ~8-12% of global. Over 460 small satellites 2017-2022. 140+ seeking launch.",
+      "values": {
+        "2020": 105, "2021": 150, "2022": 185, "2023": 220,
+        "2024": 250, "2025": 290, "2026": 340, "2027": 400,
+        "2028": 470, "2029": 550, "2030": 650, "2031": 720,
+        "2032": 800, "2033": 890, "2034": 990, "2035": 1100
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "CubeSats (1-27U)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "CubeSats 58% of smallsat deployments. Includes 1U-27U form factors. Declining share as microsats grow.",
+      "values": {
+        "2020": 450, "2021": 580, "2022": 680, "2023": 780,
+        "2024": 810, "2025": 850, "2026": 920, "2027": 990,
+        "2028": 1070, "2029": 1150, "2030": 1240, "2031": 1320,
+        "2032": 1400, "2033": 1490, "2034": 1580, "2035": 1680
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "CubeSats (1-27U)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European CubeSats: ISISPACE deployers (367+ launched), university programs, commercial IoT.",
+      "values": {
+        "2020": 45, "2021": 60, "2022": 70, "2023": 85,
+        "2024": 95, "2025": 110, "2026": 130, "2027": 150,
+        "2028": 175, "2029": 200, "2030": 230, "2031": 260,
+        "2032": 290, "2033": 325, "2034": 360, "2035": 400
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Microsats (11-200kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Microsats driven by Starlink V1 class, OneWeb. Fastest growing segment by count.",
+      "values": {
+        "2020": 720, "2021": 1080, "2022": 1380, "2023": 1700,
+        "2024": 1720, "2025": 1780, "2026": 2000, "2027": 2260,
+        "2028": 2550, "2029": 2870, "2030": 3230, "2031": 3480,
+        "2032": 3750, "2033": 4040, "2034": 4350, "2035": 4680
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Microsats (11-200kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European microsats: OneWeb (634 deployed), AAC Clyde Space constellations, NanoAvionics platforms.",
+      "values": {
+        "2020": 48, "2021": 72, "2022": 95, "2023": 115,
+        "2024": 130, "2025": 155, "2026": 180, "2027": 215,
+        "2028": 255, "2029": 305, "2030": 365, "2031": 400,
+        "2032": 440, "2033": 485, "2034": 535, "2035": 590
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Minisats (200-600kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Minisats: Starlink V2, advanced EO platforms. Growing share of constellation sats.",
+      "values": {
+        "2020": 85, "2021": 115, "2022": 140, "2023": 150,
+        "2024": 130, "2025": 125, "2026": 140, "2027": 160,
+        "2028": 180, "2029": 205, "2030": 235, "2031": 255,
+        "2032": 280, "2033": 305, "2034": 335, "2035": 370
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Minisats (200-600kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European minisats: IRIS2 deployment (2029+), advanced EO, Galileo class.",
+      "values": {
+        "2020": 8, "2021": 12, "2022": 14, "2023": 14,
+        "2024": 18, "2025": 18, "2026": 22, "2027": 27,
+        "2028": 32, "2029": 37, "2030": 47, "2031": 52,
+        "2032": 62, "2033": 72, "2034": 87, "2035": 102
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Medium (600-2500kg)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Medium satellites: Navigation constellations, weather, high-capability EO. Stable segment.",
+      "values": {
+        "2020": 20, "2021": 22, "2022": 24, "2023": 26,
+        "2024": 27, "2025": 30, "2026": 32, "2027": 34,
+        "2028": 34, "2029": 36, "2030": 38, "2031": 38,
+        "2032": 42, "2033": 43, "2034": 47, "2035": 50
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Medium (600-2500kg)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European medium: Galileo Gen 2, Sentinel series, MetOp. ESA/EU institutional.",
+      "values": {
+        "2020": 3, "2021": 4, "2022": 4, "2023": 4,
+        "2024": 5, "2025": 5, "2026": 6, "2027": 6,
+        "2028": 6, "2029": 6, "2030": 6, "2031": 6,
+        "2032": 6, "2033": 6, "2034": 6, "2035": 6
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Large (2500kg+)",
+      "categoryType": "sizeClass",
+      "region": "Global",
+      "sourceNotes": "Large GEO satellites declining. 8-12 per year. High-value but low volume.",
+      "values": {
+        "2020": 8, "2021": 10, "2022": 9, "2023": 8,
+        "2024": 8, "2025": 8, "2026": 8, "2027": 6,
+        "2028": 6, "2029": 4, "2030": 7, "2031": 7,
+        "2032": 8, "2033": 8, "2034": 8, "2035": 8
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Large (2500kg+)",
+      "categoryType": "sizeClass",
+      "region": "Europe",
+      "sourceNotes": "European large: 2-3 GEO per year. Eutelsat, SES replenishment. Declining segment.",
+      "values": {
+        "2020": 1, "2021": 2, "2022": 2, "2023": 2,
+        "2024": 2, "2025": 2, "2026": 2, "2027": 2,
+        "2028": 2, "2029": 2, "2030": 2, "2031": 2,
+        "2032": 2, "2033": 2, "2034": 2, "2035": 2
+      }
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": "airbus-ds",
+      "name": "Airbus Defence and Space",
+      "shortName": "Airbus",
+      "country": "France/Germany",
+      "countryCode": "EU",
+      "type": "Prime Contractor",
+      "status": "Active",
+      "founded": 2000,
+      "employees": 35000,
+      "description": "Europe's largest space company. Builds satellites from CubeSats to large GEO platforms. Eurostar Neo product line.",
+      "capabilities": ["Large GEO", "Medium LEO/MEO", "Small satellites", "Full integration"],
+      "notablePrograms": ["Eurostar Neo", "OneSat", "Copernicus Sentinels", "Galileo", "OneWeb"],
+      "annualRevenueBillionUSD": 12.5,
+      "satellitesBuilt": 450,
+      "preferredLaunchers": ["ariane-6", "falcon-9", "vega-c"],
+      "customers": ["Eutelsat", "SES", "ESA", "OneWeb", "Inmarsat"],
+      "sizeClasses": ["Medium (600-2500kg)", "Large (2500kg+)", "Minisats (200-600kg)"],
+      "website": "https://www.airbus.com/en/space"
+    },
+    {
+      "id": "thales-alenia",
+      "name": "Thales Alenia Space",
+      "shortName": "Thales",
+      "country": "France/Italy",
+      "countryCode": "EU",
+      "type": "Prime Contractor",
+      "status": "Active",
+      "founded": 2007,
+      "employees": 8900,
+      "description": "Joint venture between Thales (67%) and Leonardo (33%). Leader in telecom, navigation, and observation satellites.",
+      "capabilities": ["GEO telecom", "Navigation", "Earth observation", "Constellation systems"],
+      "notablePrograms": ["Spacebus Neo", "Galileo", "Copernicus", "IRIS2", "Iridium NEXT"],
+      "annualRevenueBillionUSD": 2.8,
+      "satellitesBuilt": 280,
+      "preferredLaunchers": ["ariane-6", "falcon-9", "vega-c"],
+      "customers": ["ESA", "CNES", "Telesat", "SES", "Iridium"],
+      "sizeClasses": ["Medium (600-2500kg)", "Large (2500kg+)", "Minisats (200-600kg)"],
+      "website": "https://www.thalesaleniaspace.com"
+    },
+    {
+      "id": "ohb",
+      "name": "OHB SE",
+      "shortName": "OHB",
+      "country": "Germany",
+      "countryCode": "EU",
+      "type": "Prime Contractor",
+      "status": "Active",
+      "founded": 1981,
+      "employees": 3200,
+      "description": "German space and technology company. Strong in medium satellites and science missions.",
+      "capabilities": ["Medium satellites", "Science missions", "Reconnaissance", "Navigation"],
+      "notablePrograms": ["Galileo FOC", "SARah", "EnMAP", "MTG", "Pleiades Neo"],
+      "annualRevenueBillionUSD": 1.2,
+      "satellitesBuilt": 80,
+      "preferredLaunchers": ["ariane-6", "vega-c", "falcon-9"],
+      "customers": ["ESA", "DLR", "Bundeswehr", "CNES"],
+      "sizeClasses": ["Medium (600-2500kg)", "Minisats (200-600kg)"],
+      "website": "https://www.ohb.de"
+    },
+    {
+      "id": "sstl",
+      "name": "SSTL (Surrey Satellite)",
+      "shortName": "SSTL",
+      "country": "United Kingdom",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 1985,
+      "employees": 380,
+      "description": "Airbus subsidiary. Pioneer in small satellite technology. Built 74 satellites including TYCHE for UK MOD.",
+      "capabilities": ["Small satellites", "Earth observation", "Navigation", "Telecom"],
+      "notablePrograms": ["TYCHE", "DMC constellation", "RemoveDEBRIS", "Lunar Pathfinder"],
+      "annualRevenueBillionUSD": 0.15,
+      "satellitesBuilt": 74,
+      "preferredLaunchers": ["falcon-9", "vega-c", "pslv"],
+      "customers": ["UK MOD", "ESA", "International governments"],
+      "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
+      "website": "https://www.sstl.co.uk"
+    },
+    {
+      "id": "endurosat",
+      "name": "EnduroSat",
+      "shortName": "EnduroSat",
+      "country": "Bulgaria",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2015,
+      "employees": 180,
+      "description": "Bulgarian NewSpace leader. Shared satellite platform and mission services. 250%+ annual growth.",
+      "capabilities": ["CubeSats", "Nanosatellites", "Shared satellite platform", "Ground segment"],
+      "notablePrograms": ["EnduroSat Platform", "Shared missions", "Ground station network"],
+      "annualRevenueBillionUSD": 0.025,
+      "totalFundingMillionUSD": 100,
+      "satellitesBuilt": 15,
+      "satellitesDeployed": 15,
+      "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
+      "customers": ["Commercial", "Research institutions", "Government"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://www.endurosat.com"
+    },
+    {
+      "id": "nanoavionics",
+      "name": "NanoAvionics",
+      "shortName": "NanoAvionics",
+      "country": "Lithuania",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2014,
+      "employees": 220,
+      "description": "Lithuanian smallsat manufacturer, acquired by Kongsberg (Norway) in 2022. Turnkey nanosatellite missions.",
+      "capabilities": ["Nanosatellites", "CubeSats", "Turnkey missions", "Bus platforms"],
+      "notablePrograms": ["M6P bus", "MP42 platform", "Commercial constellations"],
+      "annualRevenueBillionUSD": 0.03,
+      "satellitesBuilt": 120,
+      "preferredLaunchers": ["falcon-9", "vega-c", "electron", "pslv"],
+      "customers": ["NASA", "ESA", "Alba Orbital", "Spire"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://nanoavionics.com"
+    },
+    {
+      "id": "aac-clyde",
+      "name": "AAC Clyde Space",
+      "shortName": "AAC Clyde",
+      "country": "Sweden/UK",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2019,
+      "employees": 200,
+      "description": "First profitable public NewSpace company. Formed by merger of AAC Microtec and Clyde Space.",
+      "capabilities": ["CubeSats", "Smallsats", "Subsystems", "Mission services"],
+      "notablePrograms": ["EPIC platform", "Kelpie constellation", "INFLECION"],
+      "annualRevenueBillionUSD": 0.036,
+      "satellitesBuilt": 85,
+      "preferredLaunchers": ["falcon-9", "electron", "vega-c"],
+      "customers": ["UK Space Agency", "ESA", "NASA", "Commercial"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://www.aac-clyde.space"
+    },
+    {
+      "id": "isispace",
+      "name": "ISISPACE",
+      "shortName": "ISISPACE",
+      "country": "Netherlands",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2006,
+      "employees": 150,
+      "description": "Delft University spin-off. Pioneer in CubeSat deployers and platforms. 367+ satellites launched.",
+      "capabilities": ["CubeSats", "Deployers", "Subsystems", "Launch services"],
+      "notablePrograms": ["DuoPack deployer", "BRIK-II", "Multiple rideshare missions"],
+      "annualRevenueBillionUSD": 0.02,
+      "satellitesBuilt": 367,
+      "preferredLaunchers": ["falcon-9", "vega-c", "pslv", "electron"],
+      "customers": ["ESA", "Dutch Air Force", "Universities", "Commercial"],
+      "sizeClasses": ["CubeSats (1-27U)"],
+      "website": "https://www.isispace.nl"
+    },
+    {
+      "id": "gomspace",
+      "name": "GomSpace",
+      "shortName": "GomSpace",
+      "country": "Denmark",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2007,
+      "employees": 130,
+      "description": "Danish nanosatellite company. Strong ESA relationship. Recent EUR19.5M 18-satellite contract.",
+      "capabilities": ["Nanosatellites", "CubeSats", "Subsystems", "Constellations"],
+      "notablePrograms": ["GOMX series", "Juventas (HERA)", "ESA missions"],
+      "annualRevenueBillionUSD": 0.015,
+      "totalFundingMillionUSD": 50,
+      "satellitesBuilt": 60,
+      "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
+      "customers": ["ESA", "Danish Defense", "Commercial"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://gomspace.com"
+    },
+    {
+      "id": "open-cosmos",
+      "name": "Open Cosmos",
+      "shortName": "Open Cosmos",
+      "country": "United Kingdom",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2015,
+      "employees": 150,
+      "description": "UK-based end-to-end mission provider. EUR120M contracts in 2024. Expanding to Greece, Portugal.",
+      "capabilities": ["End-to-end missions", "Small satellites", "Data services", "Ground segment"],
+      "notablePrograms": ["Greek EO constellation (7 sats)", "NanoMagSat (ESA)", "OpenConstellation"],
+      "annualRevenueBillionUSD": 0.04,
+      "totalFundingMillionUSD": 60,
+      "satellitesBuilt": 12,
+      "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
+      "customers": ["ESA", "UK Space Agency", "Hellenic Space Agency", "Commercial"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://www.open-cosmos.com"
+    },
+    {
+      "id": "d-orbit",
+      "name": "D-Orbit",
+      "shortName": "D-Orbit",
+      "country": "Italy",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2011,
+      "employees": 250,
+      "description": "Italian space logistics company. ION Satellite Carrier for last-mile delivery. EUR150M Series C.",
+      "capabilities": ["Orbital transfer vehicles", "Last-mile delivery", "Hosted payloads", "Deorbiting"],
+      "notablePrograms": ["ION Satellite Carrier", "Aurora hosted payload", "Space logistics"],
+      "annualRevenueBillionUSD": 0.06,
+      "totalFundingMillionUSD": 259,
+      "satellitesBuilt": 25,
+      "preferredLaunchers": ["falcon-9", "vega-c"],
+      "customers": ["ESA", "ASI", "Commercial", "US Government"],
+      "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
+      "website": "https://www.dorbit.space"
+    },
+    {
+      "id": "loft-orbital",
+      "name": "Loft Orbital",
+      "shortName": "Loft Orbital",
+      "country": "France",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2017,
+      "employees": 200,
+      "description": "French/US Space-as-a-Service provider. EUR1B+ valuation (unicorn). Condosat shared satellite model.",
+      "capabilities": ["Space-as-a-Service", "Hosted payloads", "Shared satellites", "Mission operations"],
+      "notablePrograms": ["YAM missions", "Helsing defense constellation", "Condosat platform"],
+      "annualRevenueBillionUSD": 0.08,
+      "totalFundingMillionUSD": 300,
+      "satellitesBuilt": 5,
+      "backlogSatellites": 30,
+      "preferredLaunchers": ["falcon-9", "electron"],
+      "customers": ["Helsing", "NASA", "US DoD", "Commercial"],
+      "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
+      "website": "https://www.loftorbital.com"
+    },
+    {
+      "id": "exolaunch",
+      "name": "Exolaunch",
+      "shortName": "Exolaunch",
+      "country": "Germany",
+      "countryCode": "EU",
+      "type": "Launch Services",
+      "status": "Active",
+      "founded": 2011,
+      "employees": 85,
+      "description": "German rideshare and deployment services. 500+ satellite deployments. EUR18M DLR contract.",
+      "capabilities": ["Rideshare services", "Deployment systems", "Mission management", "Separation systems"],
+      "notablePrograms": ["CarboNIX deployer", "EXOpod", "Quadro separation", "Transporter missions"],
+      "annualRevenueBillionUSD": 0.05,
+      "satellitesDeployed": 500,
+      "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
+      "customers": ["SpaceX", "Planet", "Spire", "NASA", "ESA"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://exolaunch.com"
+    },
+    {
+      "id": "satellite-vu",
+      "name": "Satellite Vu",
+      "shortName": "SatVu",
+      "country": "United Kingdom",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2016,
+      "employees": 75,
+      "description": "UK thermal imaging constellation. Unique 3.5m resolution MWIR capability. TIME Top GreenTech 2025.",
+      "capabilities": ["Thermal imaging", "Earth observation", "Data analytics", "Climate monitoring"],
+      "notablePrograms": ["HotSat constellation", "Building heat monitoring", "Industrial surveillance"],
+      "annualRevenueBillionUSD": 0.01,
+      "totalFundingMillionUSD": 80,
+      "satellitesBuilt": 1,
+      "satellitesPlanned": 8,
+      "preferredLaunchers": ["falcon-9", "electron"],
+      "customers": ["Commercial", "Government", "Energy sector"],
+      "sizeClasses": ["Microsats (11-200kg)"],
+      "website": "https://www.satellitevu.com"
+    },
+    {
+      "id": "spire",
+      "name": "Spire Global",
+      "shortName": "Spire",
+      "country": "United Kingdom",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2012,
+      "employees": 550,
+      "description": "Glasgow-based manufacturing hub. Builds 2 satellites/week. 170+ satellites in orbit. Full vertical integration.",
+      "capabilities": ["Nanosatellites", "Weather data", "Maritime AIS", "Aviation tracking"],
+      "notablePrograms": ["LEMUR constellation", "Weather data network", "Space-as-a-Service"],
+      "annualRevenueBillionUSD": 0.1,
+      "satellitesBuilt": 170,
+      "satellitesOperational": 100,
+      "preferredLaunchers": ["falcon-9", "electron", "pslv", "vega-c"],
+      "customers": ["NOAA", "Commercial shipping", "Aviation", "Insurance"],
+      "sizeClasses": ["CubeSats (1-27U)"],
+      "website": "https://spire.com"
+    },
+    {
+      "id": "argotec",
+      "name": "Argotec",
+      "shortName": "Argotec",
+      "country": "Italy",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2008,
+      "employees": 300,
+      "description": "Italian aerospace company. Building 15 of 21 IRIDE constellation satellites. Deep space capable.",
+      "capabilities": ["Small satellites", "Deep space", "Earth observation", "Scientific missions"],
+      "notablePrograms": ["IRIDE constellation", "LICIACube", "ArgoMoon"],
+      "annualRevenueBillionUSD": 0.08,
+      "satellitesBuilt": 25,
+      "preferredLaunchers": ["vega-c", "falcon-9"],
+      "customers": ["ASI", "ESA", "Italian government"],
+      "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
+      "website": "https://www.argotecgroup.com"
+    },
+    {
+      "id": "orotech",
+      "name": "OroraTech",
+      "shortName": "OroraTech",
+      "country": "Germany",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2018,
+      "employees": 100,
+      "description": "Munich-based wildfire detection constellation. Thermal imaging from CubeSats. EUR15M raised.",
+      "capabilities": ["Thermal imaging", "Wildfire detection", "Data analytics", "CubeSats"],
+      "notablePrograms": ["FOREST-1", "Wildfire early warning"],
+      "annualRevenueBillionUSD": 0.005,
+      "totalFundingMillionUSD": 15,
+      "satellitesBuilt": 2,
+      "satellitesPlanned": 100,
+      "preferredLaunchers": ["falcon-9", "electron"],
+      "customers": ["Insurance", "Government", "Environmental agencies"],
+      "sizeClasses": ["CubeSats (1-27U)"],
+      "website": "https://ororatech.com"
+    },
+    {
+      "id": "kineis",
+      "name": "Kineis",
+      "shortName": "Kineis",
+      "country": "France",
+      "countryCode": "EU",
+      "type": "Manufacturer",
+      "status": "Active",
+      "founded": 2018,
+      "employees": 130,
+      "description": "French IoT constellation. 25 nanosatellites (28kg each). First European IoT constellation with global coverage.",
+      "capabilities": ["IoT connectivity", "Asset tracking", "Environmental monitoring", "Nanosatellites"],
+      "notablePrograms": ["Kineis constellation", "ARGOS heritage", "100% Made in France"],
+      "annualRevenueBillionUSD": 0.015,
+      "satellitesBuilt": 25,
+      "satellitesOperational": 25,
+      "preferredLaunchers": ["electron", "vega-c"],
+      "customers": ["Maritime", "Agriculture", "Wildlife tracking", "Logistics"],
+      "sizeClasses": ["Microsats (11-200kg)"],
+      "website": "https://www.kineis.com"
+    }
+  ],
+  "manufacturerTypes": {
+    "Prime Contractor": {
+      "name": "Prime Contractor",
+      "description": "Full satellite integration and delivery",
+      "color": "#8b5cf6"
+    },
+    "Manufacturer": {
+      "name": "Satellite Manufacturer",
+      "description": "Builds satellites and subsystems",
+      "color": "#06b6d4"
+    },
+    "Launch Services": {
+      "name": "Launch Services",
+      "description": "Deployment and rideshare services",
+      "color": "#f59e0b"
+    }
+  },
+  "sizeClassColors": {
+    "CubeSats (1-27U)": "#06b6d4",
+    "Microsats (11-200kg)": "#8b5cf6",
+    "Minisats (200-600kg)": "#ec4899",
+    "Medium (600-2500kg)": "#f59e0b",
+    "Large (2500kg+)": "#10b981"
+  },
+  "applicationColors": {
+    "Communications": "#38bdf8",
+    "Earth Observation": "#10b981",
+    "Navigation": "#f59e0b",
+    "IoT / M2M": "#ec4899",
+    "Science / Tech Demo": "#8b5cf6",
+    "Defense / ISR": "#ef4444"
+  },
+  "operatorTypeColors": {
+    "Commercial": "#06b6d4",
+    "Government / Civil": "#8b5cf6",
+    "Defense / Military": "#ef4444",
+    "Academic / Research": "#10b981"
+  },
+  "countries": {
+    "EU": { "name": "European Union", "flag": "EU" },
+    "FR": { "name": "France", "flag": "FR" },
+    "DE": { "name": "Germany", "flag": "DE" },
+    "IT": { "name": "Italy", "flag": "IT" },
+    "UK": { "name": "United Kingdom", "flag": "GB" },
+    "NL": { "name": "Netherlands", "flag": "NL" },
+    "DK": { "name": "Denmark", "flag": "DK" },
+    "SE": { "name": "Sweden", "flag": "SE" },
+    "LT": { "name": "Lithuania", "flag": "LT" },
+    "BG": { "name": "Bulgaria", "flag": "BG" },
+    "ES": { "name": "Spain", "flag": "ES" }
+  },
+  "milestones": [
+    {
+      "year": 2024,
+      "label": "Ariane 6 First Flight",
+      "type": "europe"
+    },
+    {
+      "year": 2025,
+      "label": "Isar/PLD First Orbital",
+      "type": "europe"
+    },
+    {
+      "year": 2026,
+      "label": "Galileo Gen 2 Begins",
+      "type": "europe"
+    },
+    {
+      "year": 2029,
+      "label": "IRIS2 Deployment",
+      "type": "europe"
+    }
+  ],
+  "forecastStartYear": 2025,
+  "keyInsights": {
+    "marketGap": {
+      "title": "European Launch Gap",
+      "description": "140+ European satellites currently lack committed launch slots. Only 10-13 European launches available per year through 2026.",
+      "opportunity": "High"
+    },
+    "priceGap": {
+      "title": "Price Disadvantage",
+      "description": "Ariane 6 costs 74% more per kg ($4,700) than Falcon 9 ($2,720). European launchers require EUR350M annual subsidies.",
+      "opportunity": "High"
+    },
+    "newSpaceGrowth": {
+      "title": "NewSpace Momentum",
+      "description": "European upstream startups worth EUR21B+ (vs EUR4B a decade ago). AAC Clyde Space first profitable NewSpace public company.",
+      "opportunity": "Medium"
+    },
+    "institutionalDemand": {
+      "title": "Institutional Anchor",
+      "description": "IRIS2 (290+ satellites), Galileo, Copernicus provide stable demand. EUR6.3B European institutional market (72% of industry).",
+      "opportunity": "High"
+    }
+  }
+}

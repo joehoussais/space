@@ -7,6 +7,7 @@ import MainChart from './components/MainChart'
 import DataTable from './components/DataTable'
 import SourcesPanel from './components/SourcesPanel'
 import LaunchersPage from './pages/LaunchersPage'
+import SatellitesPage from './pages/SatellitesPage'
 import ConstellationsPage from './pages/ConstellationsPage'
 import marketData from './data/marketData.json'
 import './App.css'
@@ -214,6 +215,8 @@ function App() {
         return <MarketOverviewPage />
       case 'launchers':
         return <LaunchersPage />
+      case 'satellites':
+        return <SatellitesPage />
       case 'constellations':
         return <ConstellationsPage />
       default:
