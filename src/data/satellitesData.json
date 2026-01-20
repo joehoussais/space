@@ -613,9 +613,291 @@
         "2028": 2, "2029": 2, "2030": 2, "2031": 2,
         "2032": 2, "2033": 2, "2034": 2, "2035": 2
       }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Communications",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Communications dominated by Starlink/LEO broadband. 75%+ of all launches. Includes OneWeb, Kuiper.",
+      "values": {
+        "2020": 880, "2021": 1280, "2022": 1600, "2023": 1950,
+        "2024": 1980, "2025": 2050, "2026": 2300, "2027": 2580,
+        "2028": 2900, "2029": 3250, "2030": 3650, "2031": 3950,
+        "2032": 4270, "2033": 4610, "2034": 4970, "2035": 5350
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Communications",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European comms: IRIS2, OneWeb, Eutelsat. Growing with sovereign constellation programs.",
+      "values": {
+        "2020": 55, "2021": 85, "2022": 105, "2023": 130,
+        "2024": 150, "2025": 180, "2026": 220, "2027": 270,
+        "2028": 330, "2029": 400, "2030": 490, "2031": 550,
+        "2032": 620, "2033": 700, "2034": 790, "2035": 890
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Earth Observation",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "EO segment: Planet, Maxar, commercial constellations. Strong growth in SAR and hyperspectral.",
+      "values": {
+        "2020": 220, "2021": 290, "2022": 350, "2023": 400,
+        "2024": 420, "2025": 450, "2026": 500, "2027": 560,
+        "2028": 620, "2029": 690, "2030": 770, "2031": 830,
+        "2032": 900, "2033": 970, "2034": 1050, "2035": 1130
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Earth Observation",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European EO strong: Copernicus, IRIDE (Italy), Satellite Vu, OroraTech. ~25% global EO share.",
+      "values": {
+        "2020": 28, "2021": 38, "2022": 48, "2023": 58,
+        "2024": 65, "2025": 75, "2026": 88, "2027": 105,
+        "2028": 120, "2029": 140, "2030": 160, "2031": 180,
+        "2032": 200, "2033": 225, "2034": 250, "2035": 280
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Navigation",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Navigation: GPS, Galileo, GLONASS, BeiDou. Steady replacement cycles. Low volume, high value.",
+      "values": {
+        "2020": 18, "2021": 20, "2022": 18, "2023": 20,
+        "2024": 22, "2025": 24, "2026": 26, "2027": 28,
+        "2028": 26, "2029": 28, "2030": 26, "2031": 28,
+        "2032": 26, "2033": 28, "2034": 26, "2035": 28
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Navigation",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "Galileo constellation replenishment. Gen 2 starting 2026. OHB, Thales Alenia primary.",
+      "values": {
+        "2020": 4, "2021": 4, "2022": 4, "2023": 4,
+        "2024": 6, "2025": 6, "2026": 8, "2027": 8,
+        "2028": 6, "2029": 6, "2030": 6, "2031": 6,
+        "2032": 4, "2033": 4, "2034": 4, "2035": 4
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "IoT / M2M",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "IoT constellations: Kineis, Lacuna Space, Swarm/SpaceX, Sateliot. Fast-growing niche segment.",
+      "values": {
+        "2020": 85, "2021": 120, "2022": 160, "2023": 180,
+        "2024": 150, "2025": 140, "2026": 160, "2027": 180,
+        "2028": 200, "2029": 220, "2030": 250, "2031": 270,
+        "2032": 290, "2033": 320, "2034": 350, "2035": 380
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "IoT / M2M",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European IoT: Kineis (France, 25 sats), Lacuna Space (UK), Sateliot (Spain). Strong position.",
+      "values": {
+        "2020": 12, "2021": 18, "2022": 25, "2023": 30,
+        "2024": 32, "2025": 35, "2026": 42, "2027": 50,
+        "2028": 58, "2029": 68, "2030": 80, "2031": 90,
+        "2032": 100, "2033": 115, "2034": 130, "2035": 145
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Science / Tech Demo",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Science missions, university satellites, tech demonstrations. Stable segment with steady growth.",
+      "values": {
+        "2020": 55, "2021": 70, "2022": 80, "2023": 85,
+        "2024": 95, "2025": 100, "2026": 110, "2027": 120,
+        "2028": 130, "2029": 140, "2030": 150, "2031": 160,
+        "2032": 170, "2033": 185, "2034": 200, "2035": 215
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Science / Tech Demo",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European science: ESA missions, university CubeSats. ~20% of global science segment.",
+      "values": {
+        "2020": 8, "2021": 10, "2022": 12, "2023": 14,
+        "2024": 16, "2025": 18, "2026": 20, "2027": 24,
+        "2028": 28, "2029": 32, "2030": 36, "2031": 40,
+        "2032": 45, "2033": 50, "2034": 55, "2035": 60
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Defense / ISR",
+      "categoryType": "application",
+      "region": "Global",
+      "sourceNotes": "Defense segment growing rapidly. SDA proliferated constellations, national programs. High priority.",
+      "values": {
+        "2020": 25, "2021": 27, "2022": 25, "2023": 29,
+        "2024": 28, "2025": 29, "2026": 34, "2027": 42,
+        "2028": 54, "2029": 72, "2030": 104, "2031": 122,
+        "2032": 144, "2033": 167, "2034": 194, "2035": 227
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Defense / ISR",
+      "categoryType": "application",
+      "region": "Europe",
+      "sourceNotes": "European defense: CSO (France), SARah (Germany), Skynet (UK). EUR35B German space security 2026-2030.",
+      "values": {
+        "2020": 3, "2021": 3, "2022": 4, "2023": 4,
+        "2024": 5, "2025": 6, "2026": 8, "2027": 11,
+        "2028": 14, "2029": 18, "2030": 28, "2031": 34,
+        "2032": 40, "2033": 50, "2034": 60, "2035": 71
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Commercial",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Commercial operators: SpaceX Starlink dominates. Also Planet, Maxar, telecom operators. ~78% of market.",
+      "values": {
+        "2020": 1000, "2021": 1410, "2022": 1740, "2023": 2080,
+        "2024": 2100, "2025": 2180, "2026": 2420, "2027": 2690,
+        "2028": 2995, "2029": 3330, "2030": 3700, "2031": 3975,
+        "2032": 4270, "2033": 4590, "2034": 4935, "2035": 5300
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Commercial",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European commercial: Eutelsat, SES, NewSpace startups. Growing but behind US in volume.",
+      "values": {
+        "2020": 60, "2021": 88, "2022": 115, "2023": 140,
+        "2024": 160, "2025": 190, "2026": 225, "2027": 270,
+        "2028": 320, "2029": 380, "2030": 455, "2031": 510,
+        "2032": 575, "2033": 650, "2034": 730, "2035": 820
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Government / Civil",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Government civil: NASA, ESA, JAXA science missions. Copernicus, weather satellites. ~13% of market.",
+      "values": {
+        "2020": 170, "2021": 240, "2022": 300, "2023": 355,
+        "2024": 360, "2025": 370, "2026": 410, "2027": 460,
+        "2028": 510, "2029": 570, "2030": 640, "2031": 690,
+        "2032": 740, "2033": 800, "2034": 860, "2035": 930
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Government / Civil",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European institutional: ESA, Copernicus, Galileo, national programs. Strong government demand.",
+      "values": {
+        "2020": 28, "2021": 40, "2022": 48, "2023": 56,
+        "2024": 62, "2025": 72, "2026": 85, "2027": 100,
+        "2028": 118, "2029": 138, "2030": 160, "2031": 175,
+        "2032": 190, "2033": 210, "2034": 230, "2035": 255
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Defense / Military",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "Military space growing rapidly. US Space Force, China PLA, NATO nations. ~6% of market by count.",
+      "values": {
+        "2020": 70, "2021": 100, "2022": 125, "2023": 150,
+        "2024": 155, "2025": 160, "2026": 180, "2027": 205,
+        "2028": 230, "2029": 260, "2030": 295, "2031": 315,
+        "2032": 340, "2033": 365, "2034": 395, "2035": 425
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Defense / Military",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European defense: France CSO, Germany SARah, UK Skynet. Growing with security concerns.",
+      "values": {
+        "2020": 8, "2021": 12, "2022": 14, "2023": 16,
+        "2024": 18, "2025": 18, "2026": 22, "2027": 26,
+        "2028": 30, "2029": 36, "2030": 45, "2031": 52,
+        "2032": 60, "2033": 70, "2034": 82, "2035": 95
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Academic / Research",
+      "categoryType": "operatorType",
+      "region": "Global",
+      "sourceNotes": "University CubeSats, research institutions. Small but stable. ~3% of market by count.",
+      "values": {
+        "2020": 43, "2021": 57, "2022": 68, "2023": 79,
+        "2024": 80, "2025": 83, "2026": 90, "2027": 95,
+        "2028": 105, "2029": 110, "2030": 115, "2031": 120,
+        "2032": 130, "2033": 135, "2034": 140, "2035": 145
+      }
+    },
+    {
+      "metric": "Satellites launched (count)",
+      "category": "Academic / Research",
+      "categoryType": "operatorType",
+      "region": "Europe",
+      "sourceNotes": "European universities strong in CubeSats. ESA education programs. Delft, Surrey, polytechnics.",
+      "values": {
+        "2020": 9, "2021": 10, "2022": 8, "2023": 8,
+        "2024": 10, "2025": 10, "2026": 8, "2027": 4,
+        "2028": 2, "2029": 6, "2030": 10, "2031": 13,
+        "2032": 15, "2033": 18, "2034": 20, "2035": 25
+      }
     }
   ],
   "manufacturers": [
+    {
+      "id": "spacex",
+      "name": "SpaceX",
+      "shortName": "SpaceX",
+      "country": "United States",
+      "countryCode": "US",
+      "type": "Prime Contractor",
+      "status": "Active",
+      "founded": 2002,
+      "employees": 13000,
+      "description": "World's largest satellite manufacturer by volume. Builds Starlink constellation in-house at unprecedented scale (2+ satellites/day). Vertically integrated with launch services.",
+      "capabilities": ["Mass production", "Vertical integration", "LEO broadband", "Phased array antennas", "Laser inter-satellite links"],
+      "notablePrograms": ["Starlink (6500+ deployed)", "Starshield (defense)", "Direct-to-cell"],
+      "annualRevenueBillionUSD": 9.0,
+      "satellitesBuilt": 7000,
+      "satellitesOperational": 6500,
+      "backlogSatellites": 36000,
+      "preferredLaunchers": ["falcon-9", "falcon-heavy", "starship"],
+      "customers": ["SpaceX (internal)", "US DoD", "US Government"],
+      "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
+      "website": "https://www.spacex.com"
+    },
     {
       "id": "airbus-ds",
       "name": "Airbus Defence and Space",
@@ -1029,6 +1311,7 @@
     "Academic / Research": "#10b981"
   },
   "countries": {
+    "US": { "name": "United States", "flag": "US" },
     "EU": { "name": "European Union", "flag": "EU" },
     "FR": { "name": "France", "flag": "FR" },
     "DE": { "name": "Germany", "flag": "DE" },
