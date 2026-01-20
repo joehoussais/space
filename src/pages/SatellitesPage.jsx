@@ -398,11 +398,24 @@ function SatellitesPage() {
   // Get categories for the selected category type
   const categories = satellitesData.categories[categoryType]?.items || []
 
+  // SpaceX Starlink satellites launched by year (Starlink dominates global satellite deployments)
+  // Note: "Launched" = deployed to orbit, "Manufactured" = built (may include backlog not yet launched)
+  // SpaceX has built 7000+ Starlink satellites, with 6500+ operational in orbit
+  const spacexLaunches = {
+    '2020': 833, '2021': 1000, '2022': 1400, '2023': 1800,
+    '2024': 1850, '2025': 1900, '2026': 2100, '2027': 2300,
+    '2028': 2500, '2029': 2700, '2030': 2900, '2031': 3100,
+    '2032': 3300, '2033': 3500, '2034': 3700, '2035': 3900
+  }
+
   // Prepare chart data with year range filter
   const chartData = useMemo(() => {
     const metricName = metric === 'market'
       ? 'Satellite manufacturing market (USD, $B)'
       : 'Satellites launched (count)'
+
+    // Determine which region to show
+    const region = showEurope ? 'Europe' : 'Global'
 
     // Filter years by range
     const filteredYears = satellitesData.years.filter(y => {
@@ -413,27 +426,21 @@ function SatellitesPage() {
     return filteredYears.map(year => {
       const dataPoint = { year }
 
-      // Get data for each category
+      // Get data for each category from the selected region
       categories.forEach(category => {
         const entry = satellitesData.data.find(
           d => d.metric === metricName &&
                d.category === category &&
                d.categoryType === categoryType &&
-               d.region === 'Global'
+               d.region === region
         )
         dataPoint[category] = entry?.values[year] || 0
-
-        // Get Europe data if showing overlay
-        if (showEurope) {
-          const europeEntry = satellitesData.data.find(
-            d => d.metric === metricName &&
-                 d.category === category &&
-                 d.categoryType === categoryType &&
-                 d.region === 'Europe'
-          )
-          dataPoint[`${category}_europe`] = europeEntry?.values[year] || 0
-        }
       })
+
+      // Add SpaceX reference for count metric (show on both views for comparison)
+      if (metric === 'count') {
+        dataPoint.spacexRef = spacexLaunches[year] || 0
+      }
 
       return dataPoint
     })
@@ -473,6 +480,14 @@ function SatellitesPage() {
       ? 'Satellite manufacturing market (USD, $B)'
       : 'Satellites launched (count)'
 
+    const region = showEurope ? 'Europe' : 'Global'
+
+    const regionTotal = satellitesData.data.find(
+      d => d.metric === metricName &&
+           d.category === 'Total' &&
+           d.region === region
+    )
+
     const globalTotal = satellitesData.data.find(
       d => d.metric === metricName &&
            d.category === 'Total' &&
@@ -488,13 +503,13 @@ function SatellitesPage() {
     const currentYear = '2025'
     const endYear = '2030'
 
+    const regionCurrent = regionTotal?.values[currentYear] || 0
+    const regionEnd = regionTotal?.values[endYear] || 0
     const globalCurrent = globalTotal?.values[currentYear] || 0
-    const globalEnd = globalTotal?.values[endYear] || 0
     const europeCurrent = europeTotal?.values[currentYear] || 0
-    const europeEnd = europeTotal?.values[endYear] || 0
 
-    const globalCAGR = globalCurrent > 0
-      ? ((Math.pow(globalEnd / globalCurrent, 1/5) - 1) * 100).toFixed(1)
+    const regionCAGR = regionCurrent > 0
+      ? ((Math.pow(regionEnd / regionCurrent, 1/5) - 1) * 100).toFixed(1)
       : 0
 
     const europeShare = globalCurrent > 0
@@ -502,13 +517,13 @@ function SatellitesPage() {
       : 0
 
     return {
-      globalCurrent,
-      globalEnd,
-      europeCurrent,
-      globalCAGR,
-      europeShare
+      regionCurrent,
+      regionEnd,
+      regionCAGR,
+      europeShare,
+      isEurope: showEurope
     }
-  }, [satellitesData, metric])
+  }, [satellitesData, metric, showEurope])
 
   return (
     <div className="satellites-page">
@@ -542,13 +557,16 @@ function SatellitesPage() {
             <div className="header-stat">
               <span className="header-stat-value">
                 {metric === 'market'
-                  ? `$${totals.globalCurrent.toFixed(1)}B`
-                  : totals.globalCurrent.toLocaleString()}
+                  ? `$${totals.regionCurrent.toFixed(1)}B`
+                  : totals.regionCurrent.toLocaleString()}
               </span>
-              <span className="header-stat-label">{metric === 'market' ? '2025 Market' : '2025 Satellites'}</span>
+              <span className="header-stat-label">
+                {metric === 'market' ? '2025 Market' : '2025 Satellites'}
+                {totals.isEurope ? ' (EU)' : ''}
+              </span>
             </div>
             <div className="header-stat">
-              <span className="header-stat-value">{totals.globalCAGR}%</span>
+              <span className="header-stat-value">{totals.regionCAGR}%</span>
               <span className="header-stat-label">CAGR to 2030</span>
             </div>
             <div className="header-stat europe-stat">
@@ -626,19 +644,6 @@ function SatellitesPage() {
                     name={category}
                   />
                 ))}
-                {/* Europe overlay areas */}
-                {showEurope && categories.map((category) => (
-                  <Area
-                    key={`${category}_europe`}
-                    type="monotone"
-                    dataKey={`${category}_europe`}
-                    stackId="2"
-                    stroke="none"
-                    fill="url(#europePattern)"
-                    name={`${category} (Europe)`}
-                    legendType="none"
-                  />
-                ))}
               </>
             ) : (
               <>
@@ -654,32 +659,32 @@ function SatellitesPage() {
                     name={category}
                   />
                 ))}
-                {/* Europe lines */}
-                {showEurope && categories.map((category) => (
-                  <Line
-                    key={`${category}_europe`}
-                    type="monotone"
-                    dataKey={`${category}_europe`}
-                    stroke={colors[category]}
-                    strokeWidth={2}
-                    strokeDasharray="5 5"
-                    dot={false}
-                    name={`${category} (Europe)`}
-                    legendType="none"
-                  />
-                ))}
               </>
+            )}
+
+            {/* SpaceX reference line for count metric */}
+            {metric === 'count' && (
+              <Line
+                type="monotone"
+                dataKey="spacexRef"
+                stroke="#ef4444"
+                strokeWidth={2}
+                strokeDasharray="8 4"
+                dot={false}
+                name="SpaceX (Starlink)"
+                legendType="line"
+              />
             )}
           </ComposedChart>
         </ResponsiveContainer>
 
-        {showEurope && (
+        {metric === 'count' && (
           <div className="europe-legend">
-            <span className={`europe-legend-icon ${chartMode === 'line' ? 'dashed' : ''}`} />
+            <span className="spacex-legend-icon" />
             <span>
-              {chartMode === 'area'
-                ? 'European market share (diagonal pattern)'
-                : 'European market share (dashed lines)'}
+              {showEurope
+                ? 'SpaceX Starlink vs Europe (satellites launched to orbit)'
+                : 'SpaceX Starlink (for reference)'}
             </span>
           </div>
         )}

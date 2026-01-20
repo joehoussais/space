@@ -81,7 +81,7 @@ function SatellitesSidebar({
             className={`region-btn ${showEurope ? 'active' : ''}`}
             onClick={() => setShowEurope(true)}
           >
-            🇪🇺 + Europe
+            🇪🇺 Europe
           </button>
         </div>
       </div>

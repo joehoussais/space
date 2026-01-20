@@ -179,6 +179,12 @@
   margin-top: 6px;
 }
 
+.spacex-legend-icon {
+  width: 24px;
+  height: 0;
+  border-top: 2px dashed #ef4444;
+}
+
 /* Tooltip */
 .satellite-tooltip {
   background: rgba(15, 23, 42, 0.95);
