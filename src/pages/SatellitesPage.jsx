@@ -406,6 +406,7 @@ function SatellitesPage() {
   const [categoryType, setCategoryType] = useState('sizeClass') // 'sizeClass', 'application', 'operatorType'
   const [showEurope, setShowEurope] = useState(true)
   const [excludeStarlink, setExcludeStarlink] = useState(false) // For Global view, exclude SpaceX Starlink
+  const [showStarlinkRef, setShowStarlinkRef] = useState(true) // For Europe view, show SpaceX reference line
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
   const [yearRange, setYearRange] = useState([2020, 2035])
   const [filters, setFilters] = useState({
@@ -493,14 +494,19 @@ function SatellitesPage() {
         dataPoint[category] = value
       })
 
-      // Add SpaceX reference for count metric (show when not excluding, or always for Europe comparison)
-      if (metric === 'count' && (showEurope || !excludeStarlink)) {
-        dataPoint.spacexRef = starlinkCount
+      // Add SpaceX reference for count metric
+      // For Europe: show if showStarlinkRef is true
+      // For Global: show if not excluding Starlink
+      if (metric === 'count') {
+        const shouldShowRef = showEurope ? showStarlinkRef : !excludeStarlink
+        if (shouldShowRef) {
+          dataPoint.spacexRef = starlinkCount
+        }
       }
 
       return dataPoint
     })
-  }, [satellitesData, metric, categoryType, categories, showEurope, excludeStarlink, yearRange])
+  }, [satellitesData, metric, categoryType, categories, showEurope, excludeStarlink, showStarlinkRef, yearRange])
 
   // Filtered manufacturers
   const filteredManufacturers = useMemo(() => {
@@ -603,6 +609,8 @@ function SatellitesPage() {
         setShowEurope={setShowEurope}
         excludeStarlink={excludeStarlink}
         setExcludeStarlink={setExcludeStarlink}
+        showStarlinkRef={showStarlinkRef}
+        setShowStarlinkRef={setShowStarlinkRef}
         yearRange={yearRange}
         setYearRange={setYearRange}
         chartMode={chartMode}
@@ -748,13 +756,17 @@ function SatellitesPage() {
 
         {metric === 'count' && (
           <div className="europe-legend">
-            {(showEurope || !excludeStarlink) && <span className="spacex-legend-icon" />}
+            {((showEurope && showStarlinkRef) || (!showEurope && !excludeStarlink)) && (
+              <span className="spacex-legend-icon" />
+            )}
             <span>
               {showEurope
-                ? 'SpaceX Starlink vs Europe (satellites launched to orbit)'
-                : excludeStarlink
-                  ? 'Global market excluding SpaceX Starlink constellation'
-                  : 'SpaceX Starlink (for reference)'}
+                ? (showStarlinkRef
+                    ? 'SpaceX Starlink vs Europe (satellites launched to orbit)'
+                    : 'Europe satellite launches (total)')
+                : (excludeStarlink
+                    ? 'Global market excluding SpaceX Starlink constellation'
+                    : 'SpaceX Starlink (for reference)')}
             </span>
           </div>
         )}

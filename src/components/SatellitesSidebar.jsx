@@ -18,6 +18,8 @@ function SatellitesSidebar({
   setShowEurope,
   excludeStarlink,
   setExcludeStarlink,
+  showStarlinkRef,
+  setShowStarlinkRef,
   yearRange,
   setYearRange,
   chartMode,
@@ -90,28 +92,51 @@ function SatellitesSidebar({
         </div>
       </div>
 
-      {/* Starlink Toggle - only show for Global + Count metric */}
-      {!showEurope && metric === 'count' && (
+      {/* SpaceX Starlink Toggle - show for Count metric */}
+      {metric === 'count' && (
         <div className="filter-section">
           <h3 className="filter-title">SpaceX Starlink</h3>
           <div className="starlink-buttons">
-            <button
-              className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
-              onClick={() => setExcludeStarlink(false)}
-            >
-              Include
-            </button>
-            <button
-              className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
-              onClick={() => setExcludeStarlink(true)}
-            >
-              Exclude
-            </button>
+            {showEurope ? (
+              <>
+                <button
+                  className={`starlink-btn ${!showStarlinkRef ? 'active' : ''}`}
+                  onClick={() => setShowStarlinkRef(false)}
+                >
+                  Hide
+                </button>
+                <button
+                  className={`starlink-btn compare ${showStarlinkRef ? 'active' : ''}`}
+                  onClick={() => setShowStarlinkRef(true)}
+                >
+                  Compare
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
+                  onClick={() => setExcludeStarlink(false)}
+                >
+                  Include
+                </button>
+                <button
+                  className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
+                  onClick={() => setExcludeStarlink(true)}
+                >
+                  Exclude
+                </button>
+              </>
+            )}
           </div>
           <p className="filter-hint">
-            {excludeStarlink
-              ? 'Showing market without Starlink dominance'
-              : 'Starlink accounts for ~60% of global satellites'}
+            {showEurope
+              ? (showStarlinkRef
+                  ? 'Showing Starlink reference line for comparison'
+                  : 'Europe-only view without SpaceX comparison')
+              : (excludeStarlink
+                  ? 'Showing market without Starlink dominance'
+                  : 'Starlink accounts for ~60% of global satellites')}
           </p>
         </div>
       )}
