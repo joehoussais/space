@@ -572,6 +572,60 @@
   color: #64748b;
 }
 
+/* Vertical Integration */
+.manufacturer-integration {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.integration-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.integration-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.integration-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.integration-badge.manufactures {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.integration-badge.operates {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.integration-badge.maintains {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c4b5fd;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.integration-badge.launches {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
 /* Manufacturer Detail Modal */
 .manufacturer-detail-overlay {
   position: fixed;

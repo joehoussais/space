@@ -4,7 +4,8 @@ import './Sidebar.css'
 const categoryLabels = {
   'sizeClass': 'Size Class',
   'application': 'Application',
-  'operatorType': 'Operator Type'
+  'operatorType': 'Operator Type',
+  'orbitType': 'Orbit Type'
 }
 
 function SatellitesSidebar({
@@ -61,6 +62,7 @@ function SatellitesSidebar({
               {cat === 'sizeClass' && '📏 '}
               {cat === 'application' && '🎯 '}
               {cat === 'operatorType' && '🏢 '}
+              {cat === 'orbitType' && '🛰️ '}
               {categoryLabels[cat]}
             </button>
           ))}

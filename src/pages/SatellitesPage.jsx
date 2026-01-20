@@ -70,7 +70,11 @@ const SHORT_LABELS = {
   'Commercial': 'Commercial',
   'Government / Civil': 'Gov/Civil',
   'Defense / Military': 'Defense',
-  'Academic / Research': 'Academic'
+  'Academic / Research': 'Academic',
+  'LEO (Low Earth Orbit)': 'LEO',
+  'MEO (Medium Earth Orbit)': 'MEO',
+  'GEO (Geostationary)': 'GEO',
+  'Other (HEO/SSO/Cislunar)': 'Other'
 }
 
 function CustomTooltip({ active, payload, label, metric, forecastStartYear }) {
@@ -144,13 +148,18 @@ function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer 
               src={logoUrl}
               alt={manufacturer.name}
               className="company-logo"
-              onError={(e) => { e.target.style.display = 'none' }}
+              onError={(e) => {
+                e.target.style.display = 'none'
+                e.target.nextSibling.style.display = 'flex'
+              }}
             />
-          ) : (
-            <div className="company-logo-placeholder">
-              {manufacturer.shortName?.charAt(0) || manufacturer.name.charAt(0)}
-            </div>
-          )}
+          ) : null}
+          <div
+            className="company-logo-placeholder"
+            style={{ display: logoUrl ? 'none' : 'flex' }}
+          >
+            {manufacturer.shortName?.charAt(0) || manufacturer.name.charAt(0)}
+          </div>
           <div className="manufacturer-titles">
             <h3 className="manufacturer-name">{manufacturer.shortName || manufacturer.name}</h3>
             <div className="manufacturer-company">
@@ -208,6 +217,26 @@ function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer 
             ))}
             {launchers.length > 3 && (
               <span className="launcher-more">+{launchers.length - 3}</span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {manufacturer.verticalIntegration && (
+        <div className="manufacturer-integration">
+          <div className="integration-label">Vertical Integration</div>
+          <div className="integration-badges">
+            {manufacturer.verticalIntegration.manufactures && (
+              <span className="integration-badge manufactures">Builds</span>
+            )}
+            {manufacturer.verticalIntegration.operates && (
+              <span className="integration-badge operates">Operates</span>
+            )}
+            {manufacturer.verticalIntegration.maintains && (
+              <span className="integration-badge maintains">Maintains</span>
+            )}
+            {manufacturer.verticalIntegration.launches && (
+              <span className="integration-badge launches">Launches</span>
             )}
           </div>
         </div>
@@ -367,6 +396,7 @@ function SatellitesPage() {
     sizeClassColors,
     applicationColors,
     operatorTypeColors,
+    orbitTypeColors,
     countries
   } = useData()
 
@@ -389,6 +419,7 @@ function SatellitesPage() {
       case 'sizeClass': return sizeClassColors
       case 'application': return applicationColors
       case 'operatorType': return operatorTypeColors
+      case 'orbitType': return orbitTypeColors
       default: return sizeClassColors
     }
   }

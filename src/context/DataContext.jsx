@@ -136,7 +136,8 @@ export function DataProvider({ children }) {
     manufacturerTypes: satellitesData.manufacturerTypes,
     sizeClassColors: satellitesData.sizeClassColors,
     applicationColors: satellitesData.applicationColors,
-    operatorTypeColors: satellitesData.operatorTypeColors
+    operatorTypeColors: satellitesData.operatorTypeColors,
+    orbitTypeColors: satellitesData.orbitTypeColors
   }
 
   return (
