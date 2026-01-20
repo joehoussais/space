@@ -3,6 +3,7 @@ import { useData } from '../context/DataContext'
 import {
   ComposedChart,
   Area,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -11,6 +12,7 @@ import {
   ResponsiveContainer,
   ReferenceLine
 } from 'recharts'
+import SatellitesSidebar from '../components/SatellitesSidebar'
 import './SatellitesPage.css'
 
 // Country flag emoji mapping
@@ -31,6 +33,7 @@ const flagEmoji = {
 
 // Company logo URLs
 const companyLogos = {
+  'SpaceX': 'https://logo.clearbit.com/spacex.com',
   'Airbus Defence and Space': 'https://logo.clearbit.com/airbus.com',
   'Thales Alenia Space': 'https://logo.clearbit.com/thalesgroup.com',
   'OHB SE': 'https://logo.clearbit.com/ohb.de',
@@ -371,6 +374,8 @@ function SatellitesPage() {
   const [metric, setMetric] = useState('market') // 'market' or 'count'
   const [categoryType, setCategoryType] = useState('sizeClass') // 'sizeClass', 'application', 'operatorType'
   const [showEurope, setShowEurope] = useState(true)
+  const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
+  const [yearRange, setYearRange] = useState([2020, 2035])
   const [filters, setFilters] = useState({
     type: 'all',
     country: 'all',
@@ -393,13 +398,19 @@ function SatellitesPage() {
   // Get categories for the selected category type
   const categories = satellitesData.categories[categoryType]?.items || []
 
-  // Prepare chart data
+  // Prepare chart data with year range filter
   const chartData = useMemo(() => {
     const metricName = metric === 'market'
       ? 'Satellite manufacturing market (USD, $B)'
       : 'Satellites launched (count)'
 
-    return satellitesData.years.map(year => {
+    // Filter years by range
+    const filteredYears = satellitesData.years.filter(y => {
+      const year = parseInt(y)
+      return year >= yearRange[0] && year <= yearRange[1]
+    })
+
+    return filteredYears.map(year => {
       const dataPoint = { year }
 
       // Get data for each category
@@ -426,7 +437,7 @@ function SatellitesPage() {
 
       return dataPoint
     })
-  }, [satellitesData, metric, categoryType, categories, showEurope])
+  }, [satellitesData, metric, categoryType, categories, showEurope, yearRange])
 
   // Filtered manufacturers
   const filteredManufacturers = useMemo(() => {
@@ -501,94 +512,53 @@ function SatellitesPage() {
 
   return (
     <div className="satellites-page">
-      <div className="page-header">
-        <div className="header-content">
-          <h1>Satellite Manufacturing</h1>
-          <p className="page-subtitle">
-            Market evolution, projections, and European manufacturers
-          </p>
-        </div>
-        <div className="header-stats">
-          <div className="header-stat">
-            <span className="header-stat-value">{satellitesData.manufacturers.length}</span>
-            <span className="header-stat-label">Manufacturers</span>
-          </div>
-          <div className="header-stat">
-            <span className="header-stat-value">
-              {metric === 'market'
-                ? `$${totals.globalCurrent.toFixed(1)}B`
-                : totals.globalCurrent.toLocaleString()}
-            </span>
-            <span className="header-stat-label">{metric === 'market' ? '2025 Market' : '2025 Satellites'}</span>
-          </div>
-          <div className="header-stat">
-            <span className="header-stat-value">{totals.globalCAGR}%</span>
-            <span className="header-stat-label">CAGR to 2030</span>
-          </div>
-          <div className="header-stat europe-stat">
-            <span className="header-stat-value">{totals.europeShare}%</span>
-            <span className="header-stat-label">Europe Share</span>
-          </div>
-        </div>
-      </div>
+      <SatellitesSidebar
+        years={satellitesData.years}
+        metric={metric}
+        setMetric={setMetric}
+        categoryType={categoryType}
+        setCategoryType={setCategoryType}
+        showEurope={showEurope}
+        setShowEurope={setShowEurope}
+        yearRange={yearRange}
+        setYearRange={setYearRange}
+        chartMode={chartMode}
+        setChartMode={setChartMode}
+      />
 
-      {/* Chart Controls */}
-      <div className="chart-controls">
-        <div className="control-group">
-          <label>Metric</label>
-          <div className="toggle-buttons">
-            <button
-              className={metric === 'market' ? 'active' : ''}
-              onClick={() => setMetric('market')}
-            >
-              Market Value ($B)
-            </button>
-            <button
-              className={metric === 'count' ? 'active' : ''}
-              onClick={() => setMetric('count')}
-            >
-              Satellites Launched
-            </button>
+      <main className="satellites-main">
+        <div className="page-header">
+          <div className="header-content">
+            <h1>Satellite Manufacturing</h1>
+            <p className="page-subtitle">
+              Market evolution, projections, and key manufacturers
+            </p>
+          </div>
+          <div className="header-stats">
+            <div className="header-stat">
+              <span className="header-stat-value">{satellitesData.manufacturers.length}</span>
+              <span className="header-stat-label">Manufacturers</span>
+            </div>
+            <div className="header-stat">
+              <span className="header-stat-value">
+                {metric === 'market'
+                  ? `$${totals.globalCurrent.toFixed(1)}B`
+                  : totals.globalCurrent.toLocaleString()}
+              </span>
+              <span className="header-stat-label">{metric === 'market' ? '2025 Market' : '2025 Satellites'}</span>
+            </div>
+            <div className="header-stat">
+              <span className="header-stat-value">{totals.globalCAGR}%</span>
+              <span className="header-stat-label">CAGR to 2030</span>
+            </div>
+            <div className="header-stat europe-stat">
+              <span className="header-stat-value">{totals.europeShare}%</span>
+              <span className="header-stat-label">Europe Share</span>
+            </div>
           </div>
         </div>
 
-        <div className="control-group">
-          <label>Category</label>
-          <div className="toggle-buttons">
-            <button
-              className={categoryType === 'sizeClass' ? 'active' : ''}
-              onClick={() => setCategoryType('sizeClass')}
-            >
-              Size Class
-            </button>
-            <button
-              className={categoryType === 'application' ? 'active' : ''}
-              onClick={() => setCategoryType('application')}
-            >
-              Application
-            </button>
-            <button
-              className={categoryType === 'operatorType' ? 'active' : ''}
-              onClick={() => setCategoryType('operatorType')}
-            >
-              Operator Type
-            </button>
-          </div>
-        </div>
-
-        <div className="control-group">
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={showEurope}
-              onChange={(e) => setShowEurope(e.target.checked)}
-            />
-            Show Europe Overlay
-          </label>
-        </div>
-      </div>
-
-      {/* Chart */}
+        {/* Chart */}
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={400}>
           <ComposedChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -642,39 +612,75 @@ function SatellitesPage() {
               }}
             />
 
-            {/* Stacked areas for each category */}
-            {categories.map((category, idx) => (
-              <Area
-                key={category}
-                type="monotone"
-                dataKey={category}
-                stackId="1"
-                stroke={colors[category]}
-                fill={`url(#gradient-${idx})`}
-                name={category}
-              />
-            ))}
-
-            {/* Europe overlay areas */}
-            {showEurope && categories.map((category) => (
-              <Area
-                key={`${category}_europe`}
-                type="monotone"
-                dataKey={`${category}_europe`}
-                stackId="2"
-                stroke="none"
-                fill="url(#europePattern)"
-                name={`${category} (Europe)`}
-                legendType="none"
-              />
-            ))}
+            {/* Chart series - Area or Line based on chartMode */}
+            {chartMode === 'area' ? (
+              <>
+                {categories.map((category, idx) => (
+                  <Area
+                    key={category}
+                    type="monotone"
+                    dataKey={category}
+                    stackId="1"
+                    stroke={colors[category]}
+                    fill={`url(#gradient-${idx})`}
+                    name={category}
+                  />
+                ))}
+                {/* Europe overlay areas */}
+                {showEurope && categories.map((category) => (
+                  <Area
+                    key={`${category}_europe`}
+                    type="monotone"
+                    dataKey={`${category}_europe`}
+                    stackId="2"
+                    stroke="none"
+                    fill="url(#europePattern)"
+                    name={`${category} (Europe)`}
+                    legendType="none"
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                {categories.map((category) => (
+                  <Line
+                    key={category}
+                    type="monotone"
+                    dataKey={category}
+                    stroke={colors[category]}
+                    strokeWidth={2}
+                    dot={false}
+                    activeDot={{ r: 5, fill: colors[category] }}
+                    name={category}
+                  />
+                ))}
+                {/* Europe lines */}
+                {showEurope && categories.map((category) => (
+                  <Line
+                    key={`${category}_europe`}
+                    type="monotone"
+                    dataKey={`${category}_europe`}
+                    stroke={colors[category]}
+                    strokeWidth={2}
+                    strokeDasharray="5 5"
+                    dot={false}
+                    name={`${category} (Europe)`}
+                    legendType="none"
+                  />
+                ))}
+              </>
+            )}
           </ComposedChart>
         </ResponsiveContainer>
 
         {showEurope && (
           <div className="europe-legend">
-            <span className="europe-legend-icon" />
-            <span>European market share (diagonal pattern)</span>
+            <span className={`europe-legend-icon ${chartMode === 'line' ? 'dashed' : ''}`} />
+            <span>
+              {chartMode === 'area'
+                ? 'European market share (diagonal pattern)'
+                : 'European market share (dashed lines)'}
+            </span>
           </div>
         )}
       </div>
@@ -698,8 +704,8 @@ function SatellitesPage() {
       </div>
 
       {/* Manufacturers Section */}
-      <div className="manufacturers-section">
-        <h2>European Satellite Manufacturers</h2>
+        <div className="manufacturers-section">
+          <h2>Satellite Manufacturers</h2>
 
         <div className="filters-bar">
           <div className="filter-group">
@@ -768,11 +774,12 @@ function SatellitesPage() {
         </div>
 
         {filteredManufacturers.length === 0 && (
-          <div className="no-results">
-            No manufacturers match the selected filters.
-          </div>
-        )}
-      </div>
+            <div className="no-results">
+              No manufacturers match the selected filters.
+            </div>
+          )}
+        </div>
+      </main>
 
       {selectedManufacturer && (
         <ManufacturerDetail

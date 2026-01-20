@@ -1,7 +1,14 @@
 .satellites-page {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.satellites-main {
+  flex: 1;
   padding: 32px 40px;
+  overflow-y: auto;
   max-width: 1400px;
-  margin: 0 auto;
 }
 
 .page-header {
@@ -162,6 +169,14 @@
   );
   border: 1px solid rgba(139, 92, 246, 0.4);
   border-radius: 2px;
+}
+
+.europe-legend-icon.dashed {
+  background: none;
+  border: none;
+  border-top: 2px dashed rgba(139, 92, 246, 0.6);
+  height: 0;
+  margin-top: 6px;
 }
 
 /* Tooltip */
@@ -785,11 +800,17 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .satellites-page {
-    padding: 20px 16px;
+    flex-direction: column;
   }
 
+  .satellites-main {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 768px) {
   .page-header {
     flex-direction: column;
   }
@@ -802,15 +823,6 @@
 
   .header-stat {
     padding: 10px 12px;
-  }
-
-  .chart-controls {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .toggle-buttons {
-    flex-wrap: wrap;
   }
 
   .insights-grid {

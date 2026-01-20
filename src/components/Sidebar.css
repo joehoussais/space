@@ -225,6 +225,39 @@
   margin-top: 14px;
 }
 
+/* Category Buttons (Satellites page) */
+.category-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.category-btn {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(99, 179, 237, 0.15);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.category-btn:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(99, 179, 237, 0.3);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  border-color: #38bdf8;
+  color: #f1f5f9;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
 /* Chart Mode Buttons */
 .chart-mode-buttons {
   display: flex;
