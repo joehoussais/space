@@ -147,7 +147,7 @@
   margin-bottom: 32px;
 }
 
-.europe-legend {
+.global-legend {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -157,24 +157,24 @@
   color: #64748b;
 }
 
-.europe-legend-icon {
+.global-legend-icon {
   width: 20px;
   height: 12px;
   background: repeating-linear-gradient(
     45deg,
-    rgba(139, 92, 246, 0.3),
-    rgba(139, 92, 246, 0.3) 2px,
+    rgba(56, 189, 248, 0.3),
+    rgba(56, 189, 248, 0.3) 2px,
     transparent 2px,
     transparent 6px
   );
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   border-radius: 2px;
 }
 
-.europe-legend-icon.dashed {
+.global-legend-icon.dashed {
   background: none;
   border: none;
-  border-top: 2px dashed rgba(139, 92, 246, 0.6);
+  border-top: 2px dashed rgba(56, 189, 248, 0.6);
   height: 0;
   margin-top: 6px;
 }
@@ -331,6 +331,32 @@
   color: #94a3b8;
   line-height: 1.6;
   margin: 0;
+}
+
+.insight-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.sources-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.source-tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 4px;
+  color: #94a3b8;
 }
 
 /* Manufacturers Section */

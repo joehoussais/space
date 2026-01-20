@@ -1351,22 +1351,26 @@
     "marketGap": {
       "title": "European Launch Gap",
       "description": "140+ European satellites currently lack committed launch slots. Only 10-13 European launches available per year through 2026.",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": ["ESA Annual Report 2024", "BryceTech Smallsats by Numbers 2025"]
     },
     "priceGap": {
       "title": "Price Disadvantage",
       "description": "Ariane 6 costs 74% more per kg ($4,700) than Falcon 9 ($2,720). European launchers require EUR350M annual subsidies.",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": ["ESA/CNES Launch Cost Analysis 2024", "SpaceX Rideshare Pricing 2025"]
     },
     "newSpaceGrowth": {
       "title": "NewSpace Momentum",
       "description": "European upstream startups worth EUR21B+ (vs EUR4B a decade ago). AAC Clyde Space first profitable NewSpace public company.",
-      "opportunity": "Medium"
+      "opportunity": "Medium",
+      "sources": ["Seraphim Space Investment Report 2024", "AAC Clyde Space Annual Report 2024"]
     },
     "institutionalDemand": {
       "title": "Institutional Anchor",
       "description": "IRIS2 (290+ satellites), Galileo, Copernicus provide stable demand. EUR6.3B European institutional market (72% of industry).",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": ["European Commission IRIS2 Program", "ESA Industry Facts & Figures 2024"]
     }
   }
 }

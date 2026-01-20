@@ -13,8 +13,8 @@ function SatellitesSidebar({
   setMetric,
   categoryType,
   setCategoryType,
-  showEurope,
-  setShowEurope,
+  showGlobal,
+  setShowGlobal,
   yearRange,
   setYearRange,
   chartMode,
@@ -24,8 +24,8 @@ function SatellitesSidebar({
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="logo">
-          <span className="logo-icon">🛰️</span>
-          <span className="logo-text">Satellite Market</span>
+          <span className="logo-icon">🇪🇺</span>
+          <span className="logo-text">European Satellites</span>
         </div>
       </div>
 
@@ -67,21 +67,21 @@ function SatellitesSidebar({
         </div>
       </div>
 
-      {/* Region Toggle */}
+      {/* Region Toggle - Europe is primary, Global is overlay */}
       <div className="filter-section">
-        <h3 className="filter-title">Region</h3>
+        <h3 className="filter-title">Compare With</h3>
         <div className="region-buttons">
           <button
-            className={`region-btn ${!showEurope ? 'active' : ''}`}
-            onClick={() => setShowEurope(false)}
+            className={`region-btn ${!showGlobal ? 'active' : ''}`}
+            onClick={() => setShowGlobal(false)}
           >
-            🌍 Global
+            🇪🇺 Europe Only
           </button>
           <button
-            className={`region-btn ${showEurope ? 'active' : ''}`}
-            onClick={() => setShowEurope(true)}
+            className={`region-btn ${showGlobal ? 'active' : ''}`}
+            onClick={() => setShowGlobal(true)}
           >
-            🇪🇺 + Europe
+            🌍 + Global
           </button>
         </div>
       </div>

@@ -373,7 +373,7 @@ function SatellitesPage() {
   const [selectedManufacturer, setSelectedManufacturer] = useState(null)
   const [metric, setMetric] = useState('market') // 'market' or 'count'
   const [categoryType, setCategoryType] = useState('sizeClass') // 'sizeClass', 'application', 'operatorType'
-  const [showEurope, setShowEurope] = useState(true)
+  const [showGlobal, setShowGlobal] = useState(false) // Europe is primary, Global is overlay
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
   const [yearRange, setYearRange] = useState([2020, 2035])
   const [filters, setFilters] = useState({
@@ -398,7 +398,7 @@ function SatellitesPage() {
   // Get categories for the selected category type
   const categories = satellitesData.categories[categoryType]?.items || []
 
-  // Prepare chart data with year range filter
+  // Prepare chart data with year range filter - EUROPE is PRIMARY
   const chartData = useMemo(() => {
     const metricName = metric === 'market'
       ? 'Satellite manufacturing market (USD, $B)'
@@ -413,31 +413,31 @@ function SatellitesPage() {
     return filteredYears.map(year => {
       const dataPoint = { year }
 
-      // Get data for each category
+      // Get EUROPE data for each category (primary)
       categories.forEach(category => {
-        const entry = satellitesData.data.find(
+        const europeEntry = satellitesData.data.find(
           d => d.metric === metricName &&
                d.category === category &&
                d.categoryType === categoryType &&
-               d.region === 'Global'
+               d.region === 'Europe'
         )
-        dataPoint[category] = entry?.values[year] || 0
+        dataPoint[category] = europeEntry?.values[year] || 0
 
-        // Get Europe data if showing overlay
-        if (showEurope) {
-          const europeEntry = satellitesData.data.find(
+        // Get Global data if showing overlay (for comparison)
+        if (showGlobal) {
+          const globalEntry = satellitesData.data.find(
             d => d.metric === metricName &&
                  d.category === category &&
                  d.categoryType === categoryType &&
-                 d.region === 'Europe'
+                 d.region === 'Global'
           )
-          dataPoint[`${category}_europe`] = europeEntry?.values[year] || 0
+          dataPoint[`${category}_global`] = globalEntry?.values[year] || 0
         }
       })
 
       return dataPoint
     })
-  }, [satellitesData, metric, categoryType, categories, showEurope, yearRange])
+  }, [satellitesData, metric, categoryType, categories, showGlobal, yearRange])
 
   // Filtered manufacturers
   const filteredManufacturers = useMemo(() => {
@@ -467,7 +467,7 @@ function SatellitesPage() {
   const uniqueTypes = [...new Set(satellitesData.manufacturers.map(m => m.type))]
   const uniqueCountries = [...new Set(satellitesData.manufacturers.map(m => m.countryCode))]
 
-  // Calculate totals for KPIs
+  // Calculate totals for KPIs - EUROPE focused
   const totals = useMemo(() => {
     const metricName = metric === 'market'
       ? 'Satellite manufacturing market (USD, $B)'
@@ -493,8 +493,8 @@ function SatellitesPage() {
     const europeCurrent = europeTotal?.values[currentYear] || 0
     const europeEnd = europeTotal?.values[endYear] || 0
 
-    const globalCAGR = globalCurrent > 0
-      ? ((Math.pow(globalEnd / globalCurrent, 1/5) - 1) * 100).toFixed(1)
+    const europeCAGR = europeCurrent > 0
+      ? ((Math.pow(europeEnd / europeCurrent, 1/5) - 1) * 100).toFixed(1)
       : 0
 
     const europeShare = globalCurrent > 0
@@ -505,7 +505,8 @@ function SatellitesPage() {
       globalCurrent,
       globalEnd,
       europeCurrent,
-      globalCAGR,
+      europeEnd,
+      europeCAGR,
       europeShare
     }
   }, [satellitesData, metric])
@@ -518,8 +519,8 @@ function SatellitesPage() {
         setMetric={setMetric}
         categoryType={categoryType}
         setCategoryType={setCategoryType}
-        showEurope={showEurope}
-        setShowEurope={setShowEurope}
+        showGlobal={showGlobal}
+        setShowGlobal={setShowGlobal}
         yearRange={yearRange}
         setYearRange={setYearRange}
         chartMode={chartMode}
@@ -529,15 +530,27 @@ function SatellitesPage() {
       <main className="satellites-main">
         <div className="page-header">
           <div className="header-content">
-            <h1>Satellite Manufacturing</h1>
+            <h1>🇪🇺 European Satellite Market</h1>
             <p className="page-subtitle">
-              Market evolution, projections, and key manufacturers
+              Europe's satellite manufacturing & launch opportunity
             </p>
           </div>
           <div className="header-stats">
+            <div className="header-stat europe-stat">
+              <span className="header-stat-value">
+                {metric === 'market'
+                  ? `$${totals.europeCurrent.toFixed(1)}B`
+                  : totals.europeCurrent.toLocaleString()}
+              </span>
+              <span className="header-stat-label">{metric === 'market' ? '2025 EU Market' : '2025 EU Satellites'}</span>
+            </div>
+            <div className="header-stat europe-stat">
+              <span className="header-stat-value">{totals.europeCAGR}%</span>
+              <span className="header-stat-label">EU CAGR to 2030</span>
+            </div>
             <div className="header-stat">
-              <span className="header-stat-value">{satellitesData.manufacturers.length}</span>
-              <span className="header-stat-label">Manufacturers</span>
+              <span className="header-stat-value">{totals.europeShare}%</span>
+              <span className="header-stat-label">of Global</span>
             </div>
             <div className="header-stat">
               <span className="header-stat-value">
@@ -545,15 +558,7 @@ function SatellitesPage() {
                   ? `$${totals.globalCurrent.toFixed(1)}B`
                   : totals.globalCurrent.toLocaleString()}
               </span>
-              <span className="header-stat-label">{metric === 'market' ? '2025 Market' : '2025 Satellites'}</span>
-            </div>
-            <div className="header-stat">
-              <span className="header-stat-value">{totals.globalCAGR}%</span>
-              <span className="header-stat-label">CAGR to 2030</span>
-            </div>
-            <div className="header-stat europe-stat">
-              <span className="header-stat-value">{totals.europeShare}%</span>
-              <span className="header-stat-label">Europe Share</span>
+              <span className="header-stat-label">{metric === 'market' ? 'Global Market' : 'Global Satellites'}</span>
             </div>
           </div>
         </div>
@@ -569,7 +574,7 @@ function SatellitesPage() {
                   <stop offset="95%" stopColor={colors[category]} stopOpacity={0.3} />
                 </linearGradient>
               ))}
-              <pattern id="europePattern" patternUnits="userSpaceOnUse" width="6" height="6">
+              <pattern id="globalPattern" patternUnits="userSpaceOnUse" width="6" height="6">
                 <path d="M0,6 L6,0" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
               </pattern>
             </defs>
@@ -623,19 +628,19 @@ function SatellitesPage() {
                     stackId="1"
                     stroke={colors[category]}
                     fill={`url(#gradient-${idx})`}
-                    name={category}
+                    name={`${category} (EU)`}
                   />
                 ))}
-                {/* Europe overlay areas */}
-                {showEurope && categories.map((category) => (
+                {/* Global overlay areas for comparison */}
+                {showGlobal && categories.map((category) => (
                   <Area
-                    key={`${category}_europe`}
+                    key={`${category}_global`}
                     type="monotone"
-                    dataKey={`${category}_europe`}
+                    dataKey={`${category}_global`}
                     stackId="2"
                     stroke="none"
-                    fill="url(#europePattern)"
-                    name={`${category} (Europe)`}
+                    fill="url(#globalPattern)"
+                    name={`${category} (Global)`}
                     legendType="none"
                   />
                 ))}
@@ -651,20 +656,20 @@ function SatellitesPage() {
                     strokeWidth={2}
                     dot={false}
                     activeDot={{ r: 5, fill: colors[category] }}
-                    name={category}
+                    name={`${category} (EU)`}
                   />
                 ))}
-                {/* Europe lines */}
-                {showEurope && categories.map((category) => (
+                {/* Global lines for comparison */}
+                {showGlobal && categories.map((category) => (
                   <Line
-                    key={`${category}_europe`}
+                    key={`${category}_global`}
                     type="monotone"
-                    dataKey={`${category}_europe`}
+                    dataKey={`${category}_global`}
                     stroke={colors[category]}
                     strokeWidth={2}
                     strokeDasharray="5 5"
                     dot={false}
-                    name={`${category} (Europe)`}
+                    name={`${category} (Global)`}
                     legendType="none"
                   />
                 ))}
@@ -673,13 +678,13 @@ function SatellitesPage() {
           </ComposedChart>
         </ResponsiveContainer>
 
-        {showEurope && (
-          <div className="europe-legend">
-            <span className={`europe-legend-icon ${chartMode === 'line' ? 'dashed' : ''}`} />
+        {showGlobal && (
+          <div className="global-legend">
+            <span className={`global-legend-icon ${chartMode === 'line' ? 'dashed' : ''}`} />
             <span>
               {chartMode === 'area'
-                ? 'European market share (diagonal pattern)'
-                : 'European market share (dashed lines)'}
+                ? 'Global total (diagonal pattern) - includes SpaceX Starlink'
+                : 'Global total (dashed lines) - includes SpaceX Starlink'}
             </span>
           </div>
         )}
@@ -698,6 +703,14 @@ function SatellitesPage() {
                 </span>
               </div>
               <p>{insight.description}</p>
+              {insight.sources && insight.sources.length > 0 && (
+                <div className="insight-sources">
+                  <span className="sources-label">Sources:</span>
+                  {insight.sources.map((source, idx) => (
+                    <span key={idx} className="source-tag">{source}</span>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
