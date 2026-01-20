@@ -3,6 +3,7 @@ import './Navigation.css'
 const tabs = [
   { id: 'market', label: 'Market Overview', icon: 'chart' },
   { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' },
+  { id: 'satellites', label: 'Satellites', icon: 'sat-dish' },
   { id: 'constellations', label: 'Constellations', icon: 'satellite' }
 ]
 

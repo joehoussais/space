@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo } from 'react'
 import marketData from '../data/marketData.json'
 import launchersData from '../data/launchersData.json'
 import constellationsData from '../data/constellationsData.json'
+import satellitesData from '../data/satellitesData.json'
 
 const DataContext = createContext(null)
 
@@ -19,6 +20,14 @@ export function DataProvider({ children }) {
     const map = {}
     constellationsData.constellations.forEach(constellation => {
       map[constellation.id] = constellation
+    })
+    return map
+  }, [])
+
+  const manufacturersById = useMemo(() => {
+    const map = {}
+    satellitesData.manufacturers.forEach(manufacturer => {
+      map[manufacturer.id] = manufacturer
     })
     return map
   }, [])
@@ -45,6 +54,26 @@ export function DataProvider({ children }) {
     }
   }, [constellationsById, launchersById])
 
+  // Get preferred launchers for a manufacturer
+  const getLaunchersForManufacturer = useMemo(() => {
+    return (manufacturerId) => {
+      const manufacturer = manufacturersById[manufacturerId]
+      if (!manufacturer) return []
+      return (manufacturer.preferredLaunchers || [])
+        .map(id => launchersById[id])
+        .filter(Boolean)
+    }
+  }, [manufacturersById, launchersById])
+
+  // Get manufacturers that use a specific launcher
+  const getManufacturersForLauncher = useMemo(() => {
+    return (launcherId) => {
+      return satellitesData.manufacturers.filter(m =>
+        (m.preferredLaunchers || []).includes(launcherId)
+      )
+    }
+  }, [])
+
   // Statistics computed from data
   const stats = useMemo(() => {
     const totalLaunchers = launchersData.launchers.length
@@ -59,13 +88,22 @@ export function DataProvider({ children }) {
       (sum, c) => sum + (c.satellitesPlanned || 0), 0
     )
 
+    const totalManufacturers = satellitesData.manufacturers.length
+    const europeanManufacturers = satellitesData.manufacturers.filter(m => m.countryCode === 'EU').length
+    const totalManufacturerSatellites = satellitesData.manufacturers.reduce(
+      (sum, m) => sum + (m.satellitesBuilt || 0), 0
+    )
+
     return {
       totalLaunchers,
       activeLaunchers,
       totalConstellations,
       operationalConstellations,
       totalSatellitesDeployed,
-      totalSatellitesPlanned
+      totalSatellitesPlanned,
+      totalManufacturers,
+      europeanManufacturers,
+      totalManufacturerSatellites
     }
   }, [])
 
@@ -74,23 +112,31 @@ export function DataProvider({ children }) {
     marketData,
     launchersData,
     constellationsData,
+    satellitesData,
 
     // Lookup maps
     launchersById,
     constellationsById,
+    manufacturersById,
 
     // Relationship functions
     getLaunchersForConstellation,
     getConstellationsForLauncher,
+    getLaunchersForManufacturer,
+    getManufacturersForLauncher,
 
     // Computed stats
     stats,
 
     // Utility data
     engineTypes: launchersData.engineTypes,
-    countries: { ...launchersData.countries, ...constellationsData.countries },
+    countries: { ...launchersData.countries, ...constellationsData.countries, ...satellitesData.countries },
     orbitTypes: constellationsData.orbitTypes,
-    constellationTypes: constellationsData.constellationTypes
+    constellationTypes: constellationsData.constellationTypes,
+    manufacturerTypes: satellitesData.manufacturerTypes,
+    sizeClassColors: satellitesData.sizeClassColors,
+    applicationColors: satellitesData.applicationColors,
+    operatorTypeColors: satellitesData.operatorTypeColors
   }
 
   return (
