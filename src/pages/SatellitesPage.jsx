@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { useData } from '../context/DataContext'
 import {
   ComposedChart,
@@ -31,11 +31,10 @@ const flagEmoji = {
   US: '\u{1F1FA}\u{1F1F8}'
 }
 
-// Company logo URLs
+// Company logo URLs - using Clearbit Logo API with fallbacks tracked via state
 const companyLogos = {
-  'SpaceX': 'https://logo.clearbit.com/spacex.com',
   'Airbus Defence and Space': 'https://logo.clearbit.com/airbus.com',
-  'Thales Alenia Space': 'https://logo.clearbit.com/thalesgroup.com',
+  'Thales Alenia Space': 'https://logo.clearbit.com/thalesaleniaspace.com',
   'OHB SE': 'https://logo.clearbit.com/ohb.de',
   'SSTL (Surrey Satellite)': 'https://logo.clearbit.com/sstl.co.uk',
   'EnduroSat': 'https://logo.clearbit.com/endurosat.com',
@@ -49,7 +48,7 @@ const companyLogos = {
   'Exolaunch': 'https://logo.clearbit.com/exolaunch.com',
   'Satellite Vu': 'https://logo.clearbit.com/satellitevu.com',
   'Spire Global': 'https://logo.clearbit.com/spire.com',
-  'Argotec': 'https://logo.clearbit.com/argotecgroup.com',
+  'Argotec': 'https://logo.clearbit.com/argotec.it',
   'OroraTech': 'https://logo.clearbit.com/ororatech.com',
   'Kineis': 'https://logo.clearbit.com/kineis.com'
 }
@@ -114,9 +113,10 @@ function CustomTooltip({ active, payload, label, metric, forecastStartYear }) {
   )
 }
 
-function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer }) {
+function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer, failedLogos, onLogoError }) {
   const launchers = getLaunchersForManufacturer(manufacturer.id)
   const logoUrl = companyLogos[manufacturer.name]
+  const logoFailed = failedLogos.has(manufacturer.name)
 
   const formatNumber = (num) => {
     if (num === null || num === undefined) return 'TBD'
@@ -143,23 +143,18 @@ function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer 
     <div className="manufacturer-card" onClick={() => onSelect(manufacturer)}>
       <div className="manufacturer-card-header">
         <div className="manufacturer-identity">
-          {logoUrl ? (
+          {logoUrl && !logoFailed ? (
             <img
               src={logoUrl}
               alt={manufacturer.name}
               className="company-logo"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.nextSibling.style.display = 'flex'
-              }}
+              onError={() => onLogoError(manufacturer.name)}
             />
-          ) : null}
-          <div
-            className="company-logo-placeholder"
-            style={{ display: logoUrl ? 'none' : 'flex' }}
-          >
-            {manufacturer.shortName?.charAt(0) || manufacturer.name.charAt(0)}
-          </div>
+          ) : (
+            <div className="company-logo-placeholder">
+              {manufacturer.shortName?.charAt(0) || manufacturer.name.charAt(0)}
+            </div>
+          )}
           <div className="manufacturer-titles">
             <h3 className="manufacturer-name">{manufacturer.shortName || manufacturer.name}</h3>
             <div className="manufacturer-company">
@@ -245,9 +240,10 @@ function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer 
   )
 }
 
-function ManufacturerDetail({ manufacturer, onClose, getLaunchersForManufacturer }) {
+function ManufacturerDetail({ manufacturer, onClose, getLaunchersForManufacturer, failedLogos, onLogoError }) {
   const launchers = getLaunchersForManufacturer(manufacturer.id)
   const logoUrl = companyLogos[manufacturer.name]
+  const logoFailed = failedLogos.has(manufacturer.name)
 
   const formatRevenue = (num) => {
     if (!num) return 'N/A'
@@ -261,8 +257,13 @@ function ManufacturerDetail({ manufacturer, onClose, getLaunchersForManufacturer
         <button className="detail-close" onClick={onClose}>&times;</button>
 
         <div className="detail-header">
-          {logoUrl ? (
-            <img src={logoUrl} alt={manufacturer.name} className="detail-logo" />
+          {logoUrl && !logoFailed ? (
+            <img
+              src={logoUrl}
+              alt={manufacturer.name}
+              className="detail-logo"
+              onError={() => onLogoError(manufacturer.name)}
+            />
           ) : (
             <div className="detail-logo-placeholder">
               {manufacturer.shortName?.charAt(0) || manufacturer.name.charAt(0)}
@@ -412,6 +413,11 @@ function SatellitesPage() {
     sizeClass: 'all'
   })
   const [sortBy, setSortBy] = useState('satellitesBuilt')
+  const [failedLogos, setFailedLogos] = useState(new Set())
+
+  const handleLogoError = useCallback((name) => {
+    setFailedLogos(prev => new Set([...prev, name]))
+  }, [])
 
   // Get the appropriate color palette based on category type
   const getColors = () => {
@@ -805,6 +811,8 @@ function SatellitesPage() {
               manufacturer={manufacturer}
               onSelect={setSelectedManufacturer}
               getLaunchersForManufacturer={getLaunchersForManufacturer}
+              failedLogos={failedLogos}
+              onLogoError={handleLogoError}
             />
           ))}
         </div>
@@ -822,6 +830,8 @@ function SatellitesPage() {
           manufacturer={selectedManufacturer}
           onClose={() => setSelectedManufacturer(null)}
           getLaunchersForManufacturer={getLaunchersForManufacturer}
+          failedLogos={failedLogos}
+          onLogoError={handleLogoError}
         />
       )}
     </div>
