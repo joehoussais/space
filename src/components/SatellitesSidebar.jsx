@@ -16,6 +16,8 @@ function SatellitesSidebar({
   setCategoryType,
   showEurope,
   setShowEurope,
+  excludeStarlink,
+  setExcludeStarlink,
   yearRange,
   setYearRange,
   chartMode,
@@ -87,6 +89,32 @@ function SatellitesSidebar({
           </button>
         </div>
       </div>
+
+      {/* Starlink Toggle - only show for Global + Count metric */}
+      {!showEurope && metric === 'count' && (
+        <div className="filter-section">
+          <h3 className="filter-title">SpaceX Starlink</h3>
+          <div className="starlink-buttons">
+            <button
+              className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
+              onClick={() => setExcludeStarlink(false)}
+            >
+              Include
+            </button>
+            <button
+              className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
+              onClick={() => setExcludeStarlink(true)}
+            >
+              Exclude
+            </button>
+          </div>
+          <p className="filter-hint">
+            {excludeStarlink
+              ? 'Showing market without Starlink dominance'
+              : 'Starlink accounts for ~60% of global satellites'}
+          </p>
+        </div>
+      )}
 
       {/* Year Range */}
       <div className="filter-section">

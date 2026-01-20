@@ -405,6 +405,7 @@ function SatellitesPage() {
   const [metric, setMetric] = useState('market') // 'market' or 'count'
   const [categoryType, setCategoryType] = useState('sizeClass') // 'sizeClass', 'application', 'operatorType'
   const [showEurope, setShowEurope] = useState(true)
+  const [excludeStarlink, setExcludeStarlink] = useState(false) // For Global view, exclude SpaceX Starlink
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
   const [yearRange, setYearRange] = useState([2020, 2035])
   const [filters, setFilters] = useState({
@@ -462,6 +463,7 @@ function SatellitesPage() {
 
     return filteredYears.map(year => {
       const dataPoint = { year }
+      const starlinkCount = spacexLaunches[year] || 0
 
       // Get data for each category from the selected region
       categories.forEach(category => {
@@ -471,17 +473,34 @@ function SatellitesPage() {
                d.categoryType === categoryType &&
                d.region === region
         )
-        dataPoint[category] = entry?.values[year] || 0
+        let value = entry?.values[year] || 0
+
+        // If excluding Starlink from Global count, subtract from LEO/Communications/Commercial categories
+        // Starlink is: LEO orbit, Communications application, Commercial operator
+        if (!showEurope && metric === 'count' && excludeStarlink && value > 0) {
+          if (categoryType === 'orbitType' && category === 'LEO (Low Earth Orbit)') {
+            value = Math.max(0, value - starlinkCount)
+          } else if (categoryType === 'application' && category === 'Communications') {
+            value = Math.max(0, value - starlinkCount)
+          } else if (categoryType === 'operatorType' && category === 'Commercial') {
+            value = Math.max(0, value - starlinkCount)
+          } else if (categoryType === 'sizeClass' && category === 'Minisats (200-600kg)') {
+            // Starlink v2 Mini satellites are ~800kg, but v1.5 are ~306kg (Minisats category)
+            value = Math.max(0, value - starlinkCount)
+          }
+        }
+
+        dataPoint[category] = value
       })
 
-      // Add SpaceX reference for count metric (show on both views for comparison)
-      if (metric === 'count') {
-        dataPoint.spacexRef = spacexLaunches[year] || 0
+      // Add SpaceX reference for count metric (show when not excluding, or always for Europe comparison)
+      if (metric === 'count' && (showEurope || !excludeStarlink)) {
+        dataPoint.spacexRef = starlinkCount
       }
 
       return dataPoint
     })
-  }, [satellitesData, metric, categoryType, categories, showEurope, yearRange])
+  }, [satellitesData, metric, categoryType, categories, showEurope, excludeStarlink, yearRange])
 
   // Filtered manufacturers
   const filteredManufacturers = useMemo(() => {
@@ -540,10 +559,19 @@ function SatellitesPage() {
     const currentYear = '2025'
     const endYear = '2030'
 
-    const regionCurrent = regionTotal?.values[currentYear] || 0
-    const regionEnd = regionTotal?.values[endYear] || 0
-    const globalCurrent = globalTotal?.values[currentYear] || 0
+    let regionCurrent = regionTotal?.values[currentYear] || 0
+    let regionEnd = regionTotal?.values[endYear] || 0
+    let globalCurrent = globalTotal?.values[currentYear] || 0
     const europeCurrent = europeTotal?.values[currentYear] || 0
+
+    // Adjust for Starlink exclusion
+    if (!showEurope && metric === 'count' && excludeStarlink) {
+      const starlinkCurrent = spacexLaunches[currentYear] || 0
+      const starlinkEnd = spacexLaunches[endYear] || 0
+      regionCurrent = Math.max(0, regionCurrent - starlinkCurrent)
+      regionEnd = Math.max(0, regionEnd - starlinkEnd)
+      globalCurrent = Math.max(0, globalCurrent - starlinkCurrent)
+    }
 
     const regionCAGR = regionCurrent > 0
       ? ((Math.pow(regionEnd / regionCurrent, 1/5) - 1) * 100).toFixed(1)
@@ -558,9 +586,10 @@ function SatellitesPage() {
       regionEnd,
       regionCAGR,
       europeShare,
-      isEurope: showEurope
+      isEurope: showEurope,
+      excludingStarlink: !showEurope && metric === 'count' && excludeStarlink
     }
-  }, [satellitesData, metric, showEurope])
+  }, [satellitesData, metric, showEurope, excludeStarlink])
 
   return (
     <div className="satellites-page">
@@ -572,6 +601,8 @@ function SatellitesPage() {
         setCategoryType={setCategoryType}
         showEurope={showEurope}
         setShowEurope={setShowEurope}
+        excludeStarlink={excludeStarlink}
+        setExcludeStarlink={setExcludeStarlink}
         yearRange={yearRange}
         setYearRange={setYearRange}
         chartMode={chartMode}
@@ -599,7 +630,7 @@ function SatellitesPage() {
               </span>
               <span className="header-stat-label">
                 {metric === 'market' ? '2025 Market' : '2025 Satellites'}
-                {totals.isEurope ? ' (EU)' : ''}
+                {totals.isEurope ? ' (EU)' : totals.excludingStarlink ? ' (excl. Starlink)' : ''}
               </span>
             </div>
             <div className="header-stat">
@@ -717,11 +748,13 @@ function SatellitesPage() {
 
         {metric === 'count' && (
           <div className="europe-legend">
-            <span className="spacex-legend-icon" />
+            {(showEurope || !excludeStarlink) && <span className="spacex-legend-icon" />}
             <span>
               {showEurope
                 ? 'SpaceX Starlink vs Europe (satellites launched to orbit)'
-                : 'SpaceX Starlink (for reference)'}
+                : excludeStarlink
+                  ? 'Global market excluding SpaceX Starlink constellation'
+                  : 'SpaceX Starlink (for reference)'}
             </span>
           </div>
         )}

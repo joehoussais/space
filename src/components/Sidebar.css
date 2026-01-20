@@ -161,6 +161,44 @@
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
+/* Starlink Toggle Buttons */
+.starlink-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.starlink-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.starlink-btn:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.starlink-btn.active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.filter-hint {
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 8px;
+  line-height: 1.4;
+  font-style: italic;
+}
+
 /* Year Range Selectors */
 .year-range-controls {
   display: flex;
