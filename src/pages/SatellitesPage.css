@@ -896,6 +896,218 @@
   font-size: 14px;
 }
 
+/* Customer Markets - Card View */
+.manufacturer-markets {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.markets-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.market-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.market-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.market-bar-label {
+  font-size: 10px;
+  color: #94a3b8;
+  width: 70px;
+  flex-shrink: 0;
+}
+
+.market-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.market-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.market-bar-pct {
+  font-size: 10px;
+  font-weight: 600;
+  color: #67e8f9;
+  width: 30px;
+  text-align: right;
+}
+
+/* Customer Markets - Detail View */
+.detail-markets {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.market-breakdown {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.market-breakdown-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.market-bars-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.market-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.market-region {
+  font-size: 12px;
+  color: #e2e8f0;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.market-bar-track-detail {
+  flex: 1;
+  height: 8px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.market-bar-fill-detail {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #38bdf8 50%, #06b6d4 100%);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.market-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #67e8f9;
+  width: 40px;
+  text-align: right;
+}
+
+/* Key Contracts */
+.key-contracts {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.key-contracts-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.contracts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contract-item {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.contract-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.contract-customer {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.contract-region-badge {
+  padding: 3px 8px;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #c4b5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.contract-details {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contract-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.contract-satellites {
+  font-size: 12px;
+  color: #38bdf8;
+}
+
+.contract-program {
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Market Notes */
+.market-notes {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  color: #fbbf24;
+  line-height: 1.5;
+}
+
+.notes-icon {
+  flex-shrink: 0;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .satellites-page {

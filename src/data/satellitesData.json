@@ -1139,6 +1139,16 @@
       "satellitesBuilt": 450,
       "preferredLaunchers": ["ariane-6", "falcon-9", "vega-c"],
       "customers": ["Eutelsat", "SES", "ESA", "OneWeb", "Inmarsat"],
+      "customerMarkets": {
+        "regions": ["Europe", "Middle East", "Asia-Pacific"],
+        "breakdown": { "Europe": 70, "Middle East": 15, "Asia-Pacific": 10, "Americas": 5 },
+        "keyContracts": [
+          { "customer": "Eutelsat/OneWeb", "region": "Europe", "value": "€2.2B", "satellites": 440 },
+          { "customer": "UK MoD", "region": "Europe", "value": "$157M", "satellites": 2 },
+          { "customer": "German Bundeswehr", "region": "Europe", "value": "$2.5B", "satellites": 2 }
+        ],
+        "notes": "Primarily European institutional and commercial. Limited US market access. Project BROMO merger with Thales/Leonardo planned."
+      },
       "sizeClasses": ["Medium (600-2500kg)", "Large (2500kg+)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1166,6 +1176,17 @@
       "satellitesBuilt": 280,
       "preferredLaunchers": ["ariane-6", "falcon-9", "vega-c"],
       "customers": ["ESA", "CNES", "Telesat", "SES", "Iridium"],
+      "customerMarkets": {
+        "regions": ["Europe", "Asia-Pacific", "Americas"],
+        "breakdown": { "Europe": 65, "Asia-Pacific": 20, "Americas": 10, "Middle East": 5 },
+        "keyContracts": [
+          { "customer": "Iridium NEXT", "region": "Americas", "value": "$2.9B", "satellites": 81 },
+          { "customer": "SES", "region": "Europe", "value": "Multi-year", "satellites": 3 },
+          { "customer": "Galileo 2nd Gen", "region": "Europe", "value": "ESA", "satellites": 6 },
+          { "customer": "SKY Perfect JSAT", "region": "Asia-Pacific", "value": "Contract", "satellites": 1 }
+        ],
+        "notes": "60% GEO telecom market share 2022. Limited US access - Leostella JV with BlackSky. Strong in Turkey, Brazil, South Korea."
+      },
       "sizeClasses": ["Medium (600-2500kg)", "Large (2500kg+)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1193,6 +1214,16 @@
       "satellitesBuilt": 80,
       "preferredLaunchers": ["ariane-6", "vega-c", "falcon-9"],
       "customers": ["ESA", "DLR", "Bundeswehr", "CNES"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas"],
+        "breakdown": { "Europe": 85, "Americas": 15 },
+        "keyContracts": [
+          { "customer": "ESA/EU", "region": "Europe", "value": "€566M+", "satellites": 34, "program": "Galileo FOC" },
+          { "customer": "SpaceLink (US)", "region": "Americas", "value": "$300M", "satellites": 4 },
+          { "customer": "German MoD", "region": "Europe", "value": "Contract", "satellites": 3, "program": "SARah" }
+        ],
+        "notes": "Primary European institutional customer base. US expansion via SpaceLink relay satellite contract. KKR (US) holds shares since 2023."
+      },
       "sizeClasses": ["Medium (600-2500kg)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1220,6 +1251,16 @@
       "satellitesBuilt": 74,
       "preferredLaunchers": ["falcon-9", "vega-c", "pslv"],
       "customers": ["UK MOD", "ESA", "International governments"],
+      "customerMarkets": {
+        "regions": ["Europe", "Asia-Pacific"],
+        "breakdown": { "Europe": 75, "Asia-Pacific": 15, "Americas": 10 },
+        "keyContracts": [
+          { "customer": "UK MoD", "region": "Europe", "value": "£40M", "satellites": 1, "program": "JUNO ISR" },
+          { "customer": "ESA/EU", "region": "Europe", "value": "Contract", "satellites": 34, "program": "Galileo nav payloads" },
+          { "customer": "Viasat Lunar", "region": "Americas", "value": "Partnership", "program": "Lunar data highway" }
+        ],
+        "notes": "Airbus subsidiary. 50+ satellites for 20 international customers. US subsidiary closed 2017. Strong UK defense focus."
+      },
       "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1249,6 +1290,16 @@
       "satellitesDeployed": 15,
       "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
       "customers": ["Commercial", "Research institutions", "Government"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas"],
+        "breakdown": { "Europe": 60, "Americas": 35, "Asia-Pacific": 5 },
+        "keyContracts": [
+          { "customer": "NASA", "region": "Americas", "value": "Multiple", "program": "Various missions" },
+          { "customer": "ESA", "region": "Europe", "value": "Multiple", "program": "Agency missions" },
+          { "customer": "IBM Spaces", "region": "Americas", "value": "Contract", "program": "Commercial" }
+        ],
+        "notes": "360+ customers globally. US expansion with Denver office & clean room. €43M Series B for US government contracts. Washington DC team for federal business."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1276,6 +1327,16 @@
       "satellitesBuilt": 120,
       "preferredLaunchers": ["falcon-9", "vega-c", "electron", "pslv"],
       "customers": ["NASA", "ESA", "Alba Orbital", "Spire"],
+      "customerMarkets": {
+        "regions": ["Americas", "Europe", "Asia-Pacific"],
+        "breakdown": { "Americas": 40, "Europe": 40, "Asia-Pacific": 15, "Middle East": 5 },
+        "keyContracts": [
+          { "customer": "SpinLaunch (US)", "region": "Americas", "value": "€122.5M", "satellites": 282, "program": "Meridian constellation" },
+          { "customer": "Startical (Spain)", "region": "Europe", "value": "Contract", "satellites": 270, "program": "Air traffic" },
+          { "customer": "OQ Technology", "region": "Middle East", "value": "Contract", "satellites": 4, "program": "5G IoT" }
+        ],
+        "notes": "Kongsberg (Norway) owned. 40+ countries. Biggest order intake ever. Seeing increased demand from US defense and European NATO budgets."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1303,6 +1364,16 @@
       "satellitesBuilt": 85,
       "preferredLaunchers": ["falcon-9", "electron", "vega-c"],
       "customers": ["UK Space Agency", "ESA", "NASA", "Commercial"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas", "Asia-Pacific"],
+        "breakdown": { "Europe": 50, "Americas": 35, "Asia-Pacific": 15 },
+        "keyContracts": [
+          { "customer": "Wyvern", "region": "Americas", "value": "£8.4M", "program": "4-year DaaS contract" },
+          { "customer": "Scottish Government", "region": "Europe", "value": "Contract", "program": "Cyclops constellation" },
+          { "customer": "US Air Force Academy", "region": "Americas", "value": "Contract", "program": "Training satellites" }
+        ],
+        "notes": "US presence via SpaceQuest acquisition (Virginia). Customers include NASA, US Air Force, Navy, Orbcomm, ICEYE, Northrop Grumman."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1330,6 +1401,16 @@
       "satellitesBuilt": 367,
       "preferredLaunchers": ["falcon-9", "vega-c", "pslv", "electron"],
       "customers": ["ESA", "Dutch Air Force", "Universities", "Commercial"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas", "Asia-Pacific"],
+        "breakdown": { "Europe": 55, "Americas": 25, "Asia-Pacific": 15, "Other": 5 },
+        "keyContracts": [
+          { "customer": "US Space Force", "region": "Americas", "value": "GSA Contract", "program": "Transporter-13 rideshare" },
+          { "customer": "ISRO", "region": "Asia-Pacific", "value": "Contract", "satellites": 101, "program": "PSLV-C37 record" },
+          { "customer": "INNOSPACE", "region": "Asia-Pacific", "value": "Partnership", "program": "Launch distribution" }
+        ],
+        "notes": "775+ satellites launched. First national satellites for Ireland and Armenia. 5 countries on Transporter-13. European leader in CubeSat deployers."
+      },
       "sizeClasses": ["CubeSats (1-27U)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1358,6 +1439,16 @@
       "satellitesBuilt": 60,
       "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
       "customers": ["ESA", "Danish Defense", "Commercial"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas", "Asia-Pacific"],
+        "breakdown": { "Europe": 60, "Americas": 25, "Asia-Pacific": 15 },
+        "keyContracts": [
+          { "customer": "European company", "region": "Europe", "value": "€19.5M", "satellites": 18, "program": "Proof-of-concept network" },
+          { "customer": "North American space co", "region": "Americas", "value": "€2.9M", "satellites": 2, "program": "Lunar exploration" },
+          { "customer": "Indra/Enaire (Spain)", "region": "Europe", "value": "Contract", "program": "Air navigation demo" }
+        ],
+        "notes": "60+ countries served. Offices in Luxembourg, France, USA, Singapore. ESA SECUSAT secure comms contract. Key ESA formation-flying partner."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1386,6 +1477,17 @@
       "satellitesBuilt": 12,
       "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
       "customers": ["ESA", "UK Space Agency", "Hellenic Space Agency", "Commercial"],
+      "customerMarkets": {
+        "regions": ["Europe"],
+        "breakdown": { "Europe": 90, "Asia-Pacific": 10 },
+        "keyContracts": [
+          { "customer": "Greece/ESA", "region": "Europe", "value": "€60M", "satellites": 7, "program": "Sea pollution/agriculture EO" },
+          { "customer": "Spain/Atlantic", "region": "Europe", "value": "Contract", "satellites": 8, "program": "Atlantic Constellation" },
+          { "customer": "UK DSTL", "region": "Europe", "value": "£5.15M", "satellites": 2, "program": "Space weather/SSA" },
+          { "customer": "i2CAT (Spain)", "region": "Europe", "value": "€1.65M", "satellites": 1, "program": "6GStarLab" }
+        ],
+        "notes": "€100M+ contracts closed 2024. Manufacturing in UK, Spain, Portugal, Greece. Europe-focused with Panasonic Japan partnership (QUIVER)."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1414,6 +1516,16 @@
       "satellitesBuilt": 25,
       "preferredLaunchers": ["falcon-9", "vega-c"],
       "customers": ["ESA", "ASI", "Commercial", "US Government"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas"],
+        "breakdown": { "Europe": 70, "Americas": 25, "Other": 5 },
+        "keyContracts": [
+          { "customer": "ESA", "region": "Europe", "value": "€119.6M", "program": "GEA in-orbit servicing (RISE mission)" },
+          { "customer": "Italy/PNRR", "region": "Europe", "value": "€26M", "satellites": 1, "program": "IRIDE SAR satellite" },
+          { "customer": "Astrocast (Swiss)", "region": "Europe", "value": "Multi-year", "program": "IoT deployment" }
+        ],
+        "notes": "D-Orbit USA JV formed 2024 for US satellite manufacturing. €150M Series C raised. Supported by Italy, UK, Germany, Swiss, Spain space agencies."
+      },
       "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1443,6 +1555,17 @@
       "backlogSatellites": 30,
       "preferredLaunchers": ["falcon-9", "electron"],
       "customers": ["Helsing", "NASA", "US DoD", "Commercial"],
+      "customerMarkets": {
+        "regions": ["Americas", "Europe"],
+        "breakdown": { "Americas": 60, "Europe": 35, "Other": 5 },
+        "keyContracts": [
+          { "customer": "Ball Aerospace/SDA", "region": "Americas", "value": "$176M", "satellites": 10, "program": "NExT testbed" },
+          { "customer": "NASA", "region": "Americas", "value": "$45M IDIQ", "program": "RISC-V flight computer" },
+          { "customer": "EarthDaily (Canada)", "region": "Americas", "value": "Contract", "satellites": 10, "program": "Longbow EO" },
+          { "customer": "Helsing", "region": "Europe", "value": "Partnership", "program": "Defense constellation" }
+        ],
+        "notes": "$500M+ lifetime bookings. Loft Federal subsidiary for classified US government. CNES and ESA customers. Currently more commercial-weighted, ramping US defense."
+      },
       "sizeClasses": ["Microsats (11-200kg)", "Minisats (200-600kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1470,6 +1593,16 @@
       "satellitesDeployed": 500,
       "preferredLaunchers": ["falcon-9", "vega-c", "electron"],
       "customers": ["SpaceX", "Planet", "Spire", "NASA", "ESA"],
+      "customerMarkets": {
+        "regions": ["Americas", "Europe"],
+        "breakdown": { "Americas": 50, "Europe": 45, "Asia-Pacific": 5 },
+        "keyContracts": [
+          { "customer": "DLR (Germany)", "region": "Europe", "value": "€18M", "program": "Smallsat initiative launches" },
+          { "customer": "ESA", "region": "Europe", "value": "Contract", "program": "Arctic Weather Satellite" },
+          { "customer": "HawkEye 360", "region": "Americas", "value": "Multi-mission", "satellites": 10, "program": "Geospatial intel" }
+        ],
+        "notes": "576 satellites deployed across 38 missions. 80%+ of commercial smallsat operators. 95% customer repeat rate. Offices: Germany, USA, France, Japan."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": false,
@@ -1499,6 +1632,16 @@
       "satellitesPlanned": 8,
       "preferredLaunchers": ["falcon-9", "electron"],
       "customers": ["Commercial", "Government", "Energy sector"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas", "Asia-Pacific"],
+        "breakdown": { "Europe": 50, "Americas": 30, "Asia-Pacific": 20 },
+        "keyContracts": [
+          { "customer": "ESA/Copernicus", "region": "Europe", "value": "€3M", "program": "Contributing Mission (first UK company)" },
+          { "customer": "Japan Space Imaging", "region": "Asia-Pacific", "value": "Multi-million GBP", "program": "Early Access thermal data" },
+          { "customer": "Viasat (US)", "region": "Americas", "value": "Partnership", "program": "Ground services" }
+        ],
+        "notes": "Investors include Lockheed Martin and In-Q-Tel (US). ESA anchor-style contracts. Airborne data archive for UK, Europe, USA sites."
+      },
       "sizeClasses": ["Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1527,6 +1670,17 @@
       "satellitesOperational": 100,
       "preferredLaunchers": ["falcon-9", "electron", "pslv", "vega-c"],
       "customers": ["NOAA", "Commercial shipping", "Aviation", "Insurance"],
+      "customerMarkets": {
+        "regions": ["Americas", "Europe"],
+        "breakdown": { "Americas": 55, "Europe": 40, "Other": 5 },
+        "keyContracts": [
+          { "customer": "US Space Force", "region": "Americas", "value": "$237M ceiling", "program": "STEP 2.0 IDIQ (10-year)" },
+          { "customer": "NOAA", "region": "Americas", "value": "$11.2M", "program": "GNSS radio occultation data" },
+          { "customer": "EUMETSAT", "region": "Europe", "value": "€3M renewal", "program": "Weather data (1-year)" },
+          { "customer": "ESA", "region": "Europe", "value": "Contract", "program": "Historical weather data (TPM)" }
+        ],
+        "notes": "$200M+ backlog. 45 countries served. Strong US gov demand (NRO, NGA, NASA, NOAA). Robust European defense demand especially Germany."
+      },
       "sizeClasses": ["CubeSats (1-27U)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1554,6 +1708,16 @@
       "satellitesBuilt": 25,
       "preferredLaunchers": ["vega-c", "falcon-9"],
       "customers": ["ASI", "ESA", "Italian government"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas"],
+        "breakdown": { "Europe": 80, "Americas": 20 },
+        "keyContracts": [
+          { "customer": "Italy/PNRR", "region": "Europe", "value": "Contract", "satellites": 25, "program": "IRIDE EO constellation" },
+          { "customer": "NASA", "region": "Americas", "value": "Contract", "satellites": 1, "program": "ArgoMoon (Artemis 1)" },
+          { "customer": "NASA JPL", "region": "Americas", "value": "Partnership", "program": "UST-Lite deep space transponder" }
+        ],
+        "notes": "US facilities in Maryland and Florida. Hybrid production model (Italy modules + US assembly). Only European satellite on NASA Artemis 1. Up to 1 satellite/week production."
+      },
       "sizeClasses": ["CubeSats (1-27U)", "Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1583,6 +1747,17 @@
       "satellitesPlanned": 100,
       "preferredLaunchers": ["falcon-9", "electron"],
       "customers": ["Insurance", "Government", "Environmental agencies"],
+      "customerMarkets": {
+        "regions": ["Europe", "Americas", "Asia-Pacific", "South America"],
+        "breakdown": { "Europe": 45, "Americas": 30, "Asia-Pacific": 10, "South America": 10, "Other": 5 },
+        "keyContracts": [
+          { "customer": "ESA/Copernicus", "region": "Europe", "value": "Multi-million", "program": "Contributing Mission (wildfire data)" },
+          { "customer": "Greek Government", "region": "Europe", "value": "€20M", "program": "National wildfire early warning" },
+          { "customer": "Larimer County (US)", "region": "Americas", "value": "Contract", "program": "Wildfire Solution Coop" },
+          { "customer": "Suzano/Klabin (Brazil)", "region": "South America", "value": "Contract", "program": "Forest fire monitoring" }
+        ],
+        "notes": "US HQ opened Denver 2025. Also serves British Columbia, NSW Australia, Indonesia. NSF ASCEND partnership for Wyoming/Colorado. €25M Series B raised."
+      },
       "sizeClasses": ["CubeSats (1-27U)"],
       "verticalIntegration": {
         "manufactures": true,
@@ -1611,6 +1786,16 @@
       "satellitesOperational": 25,
       "preferredLaunchers": ["electron", "vega-c"],
       "customers": ["Maritime", "Agriculture", "Wildlife tracking", "Logistics"],
+      "customerMarkets": {
+        "regions": ["Europe", "Global"],
+        "breakdown": { "Europe": 70, "Americas": 15, "Other": 15 },
+        "keyContracts": [
+          { "customer": "Europorte-Kerlink", "region": "Europe", "value": "Contract", "program": "IoT connectivity" },
+          { "customer": "CLS", "region": "Europe", "value": "Contract", "program": "Heritage ARGOS services" },
+          { "customer": "France 2030", "region": "Europe", "value": "Bid won", "program": "Government initiative" }
+        ],
+        "notes": "First European IoT constellation. ARGOS heritage (French-American since 1978). 20,000 devices connected, targeting 2M by 2032. €100M raised. Launched via Rocket Lab."
+      },
       "sizeClasses": ["Microsats (11-200kg)"],
       "verticalIntegration": {
         "manufactures": true,

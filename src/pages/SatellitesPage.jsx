@@ -236,6 +236,30 @@ function ManufacturerCard({ manufacturer, onSelect, getLaunchersForManufacturer,
           </div>
         </div>
       )}
+
+      {manufacturer.customerMarkets && (
+        <div className="manufacturer-markets">
+          <div className="markets-label">Customer Markets</div>
+          <div className="market-bars">
+            {Object.entries(manufacturer.customerMarkets.breakdown)
+              .filter(([, pct]) => pct > 0)
+              .sort((a, b) => b[1] - a[1])
+              .slice(0, 3)
+              .map(([region, pct]) => (
+                <div key={region} className="market-bar-item">
+                  <div className="market-bar-label">{region}</div>
+                  <div className="market-bar-track">
+                    <div
+                      className="market-bar-fill"
+                      style={{ width: `${pct}%` }}
+                    />
+                  </div>
+                  <div className="market-bar-pct">{pct}%</div>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -369,6 +393,62 @@ function ManufacturerDetail({ manufacturer, onClose, getLaunchersForManufacturer
               {manufacturer.customers.map((customer, idx) => (
                 <span key={idx} className="customer-chip">{customer}</span>
               ))}
+            </div>
+          </div>
+        )}
+
+        {manufacturer.customerMarkets && (
+          <div className="detail-section">
+            <h3>Customer Markets</h3>
+            <div className="detail-markets">
+              <div className="market-breakdown">
+                <div className="market-breakdown-header">Regional Sales Breakdown</div>
+                <div className="market-bars-detail">
+                  {Object.entries(manufacturer.customerMarkets.breakdown)
+                    .filter(([, pct]) => pct > 0)
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([region, pct]) => (
+                      <div key={region} className="market-bar-row">
+                        <span className="market-region">{region}</span>
+                        <div className="market-bar-track-detail">
+                          <div
+                            className="market-bar-fill-detail"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                        <span className="market-pct">{pct}%</span>
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              {manufacturer.customerMarkets.keyContracts && manufacturer.customerMarkets.keyContracts.length > 0 && (
+                <div className="key-contracts">
+                  <div className="key-contracts-header">Key Contracts</div>
+                  <div className="contracts-list">
+                    {manufacturer.customerMarkets.keyContracts.map((contract, idx) => (
+                      <div key={idx} className="contract-item">
+                        <div className="contract-main">
+                          <span className="contract-customer">{contract.customer}</span>
+                          <span className="contract-region-badge">{contract.region}</span>
+                        </div>
+                        <div className="contract-details">
+                          {contract.value && <span className="contract-value">{contract.value}</span>}
+                          {contract.satellites && <span className="contract-satellites">{contract.satellites} satellites</span>}
+                          {contract.program && <span className="contract-program">{contract.program}</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {manufacturer.customerMarkets.notes && (
+                <div className="market-notes">
+                  <span className="notes-icon">💡</span>
+                  {manufacturer.customerMarkets.notes}
+                </div>
+              )}
             </div>
           </div>
         )}
