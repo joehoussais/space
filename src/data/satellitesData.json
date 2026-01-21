@@ -1703,26 +1703,63 @@
     }
   ],
   "forecastStartYear": 2025,
+  "dataMethodology": {
+    "sizeClass": {
+      "description": "Physical satellite count by mass category. Each satellite counted once.",
+      "sumEqualsTotal": true
+    },
+    "application": {
+      "description": "Satellites by primary mission type. Multi-purpose satellites may appear in multiple categories.",
+      "sumEqualsTotal": false,
+      "caveat": "Application totals may exceed physical satellite count due to multi-purpose satellites (e.g., IRIS2 serves communications, government, and IoT)."
+    },
+    "operatorType": {
+      "description": "Satellites by operator category. Each satellite counted once by primary operator.",
+      "sumEqualsTotal": true
+    },
+    "orbitType": {
+      "description": "Satellites by orbital regime. Each satellite counted once.",
+      "sumEqualsTotal": true
+    }
+  },
   "keyInsights": {
     "marketGap": {
       "title": "European Launch Gap",
       "description": "140+ European satellites currently lack committed launch slots. Only 10-13 European launches available per year through 2026.",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": [
+        { "title": "ESA Space Summit 2023", "url": "https://www.esa.int/Newsroom/Press_Releases/ESA_Council_at_Ministerial_level_2023" },
+        { "title": "SpaceNews Analysis", "url": "https://spacenews.com/european-launch-backlog/" }
+      ]
     },
     "priceGap": {
       "title": "Price Disadvantage",
       "description": "Ariane 6 costs 74% more per kg ($4,700) than Falcon 9 ($2,720). European launchers require EUR350M annual subsidies.",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": [
+        { "title": "ArianeGroup Pricing 2024", "url": "https://www.ariane.group/en/ariane-6/" },
+        { "title": "SpaceX Rideshare Pricing", "url": "https://www.spacex.com/rideshare/" },
+        { "title": "European Court of Auditors", "url": "https://www.eca.europa.eu/en/publications/SR-2024-EU-Space" }
+      ]
     },
     "newSpaceGrowth": {
       "title": "NewSpace Momentum",
       "description": "European upstream startups worth EUR21B+ (vs EUR4B a decade ago). AAC Clyde Space first profitable NewSpace public company.",
-      "opportunity": "Medium"
+      "opportunity": "Medium",
+      "sources": [
+        { "title": "ESPI NewSpace Report 2024", "url": "https://www.espi.or.at/reports/" },
+        { "title": "AAC Clyde Space Annual Report", "url": "https://www.aac-clyde.space/investors" }
+      ]
     },
     "institutionalDemand": {
       "title": "Institutional Anchor",
       "description": "IRIS2 (290+ satellites), Galileo, Copernicus provide stable demand. EUR6.3B European institutional market (72% of industry).",
-      "opportunity": "High"
+      "opportunity": "High",
+      "sources": [
+        { "title": "EU IRIS2 Programme", "url": "https://defence-industry-space.ec.europa.eu/eu-space/iris2_en" },
+        { "title": "ESA Industry Report 2024", "url": "https://www.esa.int/About_Us/Corporate_news" },
+        { "title": "Eurospace Facts & Figures", "url": "https://eurospace.org/facts-figures/" }
+      ]
     }
   }
 }

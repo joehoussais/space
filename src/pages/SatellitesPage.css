@@ -339,6 +339,43 @@
   margin: 0;
 }
 
+.insight-sources {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.sources-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+}
+
+.source-link {
+  font-size: 11px;
+  color: #38bdf8;
+  text-decoration: none;
+  padding: 2px 8px;
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.source-link:hover {
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+}
+
+.source-link:not(:last-child)::after {
+  content: none;
+}
+
 /* Manufacturers Section */
 .manufacturers-section {
   margin-top: 40px;

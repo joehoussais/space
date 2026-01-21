@@ -785,6 +785,22 @@ function SatellitesPage() {
                 </span>
               </div>
               <p>{insight.description}</p>
+              {insight.sources && insight.sources.length > 0 && (
+                <div className="insight-sources">
+                  <span className="sources-label">Sources:</span>
+                  {insight.sources.map((source, idx) => (
+                    <a
+                      key={idx}
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="source-link"
+                    >
+                      {source.title}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

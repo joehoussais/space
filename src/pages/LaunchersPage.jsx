@@ -120,6 +120,20 @@ function LauncherCard({ launcher, onSelect, getConstellationsForLauncher }) {
         </div>
       </div>
 
+      {launcher.typicalPayload && (
+        <div className="launcher-payload-info">
+          <div className="payload-label">Typical Satellites/Launch</div>
+          <div className="payload-value">{launcher.typicalPayload.satellitesPerLaunch}</div>
+          {launcher.typicalPayload.notes && (
+            <div className="payload-notes" title={launcher.typicalPayload.notes}>
+              {launcher.typicalPayload.notes.length > 50
+                ? launcher.typicalPayload.notes.substring(0, 50) + '...'
+                : launcher.typicalPayload.notes}
+            </div>
+          )}
+        </div>
+      )}
+
       {constellations.length > 0 && (
         <div className="launcher-constellations">
           <div className="constellations-label">Serves</div>
@@ -310,6 +324,43 @@ function LauncherDetail({ launcher, onClose, getConstellationsForLauncher, engin
                   <span className="served-operator">{c.operator}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {launcher.typicalPayload && (
+          <div className="detail-section">
+            <h3>Typical Payload Configuration</h3>
+            <div className="payload-detail">
+              <div className="payload-detail-main">
+                <span className="payload-detail-label">Satellites per Launch</span>
+                <span className="payload-detail-value">{launcher.typicalPayload.satellitesPerLaunch}</span>
+              </div>
+              {launcher.typicalPayload.rideshareMax && (
+                <div className="payload-detail-secondary">
+                  <span className="payload-detail-label">Rideshare Max</span>
+                  <span className="payload-detail-value">{launcher.typicalPayload.rideshareMax}</span>
+                </div>
+              )}
+              {launcher.typicalPayload.examples && launcher.typicalPayload.examples.length > 0 && (
+                <div className="payload-examples">
+                  <span className="examples-label">Example Missions:</span>
+                  {launcher.typicalPayload.examples.map((ex, idx) => (
+                    <div key={idx} className="payload-example">
+                      <span className="example-mission">{ex.mission}</span>
+                      <span className="example-count">{ex.satellites} sats</span>
+                      <span className="example-year">({ex.year})</span>
+                      {ex.type && <span className="example-type">{ex.type}</span>}
+                    </div>
+                  ))}
+                </div>
+              )}
+              {launcher.typicalPayload.notes && (
+                <p className="payload-notes-detail">{launcher.typicalPayload.notes}</p>
+              )}
+              {launcher.typicalPayload.source && (
+                <p className="payload-source">Source: {launcher.typicalPayload.source}</p>
+              )}
             </div>
           </div>
         )}

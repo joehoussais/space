@@ -71,6 +71,12 @@ function SatellitesSidebar({
             </button>
           ))}
         </div>
+        {categoryType === 'application' && (
+          <p className="filter-hint methodology-note">
+            <span className="info-icon">ℹ️</span>
+            Multi-purpose satellites counted in each application served. Totals may exceed physical count.
+          </p>
+        )}
       </div>
 
       {/* Region Toggle */}

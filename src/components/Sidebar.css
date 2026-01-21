@@ -205,6 +205,22 @@
   font-style: italic;
 }
 
+.filter-hint.methodology-note {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-style: normal;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.filter-hint.methodology-note .info-icon {
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
 /* Year Range Selectors */
 .year-range-controls {
   display: flex;

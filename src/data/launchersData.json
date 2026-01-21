@@ -48,7 +48,17 @@
       ],
       "launchSites": ["KSC LC-39A", "CCSFS SLC-40", "Vandenberg SLC-4E"],
       "primaryCustomers": ["NASA", "SpaceX (Starlink)", "Commercial", "DoD"],
-      "constellationsServed": ["starlink", "oneweb", "iridium-next"]
+      "constellationsServed": ["starlink", "oneweb", "iridium-next"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "20-60",
+        "rideshareMax": "100+",
+        "examples": [
+          { "mission": "Starlink 6-32", "satellites": 23, "year": 2024 },
+          { "mission": "Transporter-9", "satellites": 113, "year": 2024, "type": "rideshare" }
+        ],
+        "notes": "Starlink missions ~23 V2 Mini sats; Transporter rideshare 100+ smallsats",
+        "source": "SpaceX Mission Manifest"
+      }
     },
     {
       "id": "falcon-heavy",
@@ -96,7 +106,15 @@
       ],
       "launchSites": ["KSC LC-39A"],
       "primaryCustomers": ["NASA", "DoD", "Commercial GEO"],
-      "constellationsServed": []
+      "constellationsServed": [],
+      "typicalPayload": {
+        "satellitesPerLaunch": "1-4",
+        "examples": [
+          { "mission": "USSF-44", "satellites": 2, "year": 2022 }
+        ],
+        "notes": "Primarily heavy/GEO payloads; rarely used for constellation deployment",
+        "source": "SpaceX Mission Manifest"
+      }
     },
     {
       "id": "starship",
@@ -153,7 +171,15 @@
       ],
       "launchSites": ["Starbase, TX"],
       "primaryCustomers": ["NASA (HLS)", "SpaceX (Starlink V2)", "Commercial"],
-      "constellationsServed": ["starlink"]
+      "constellationsServed": ["starlink"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "100-400",
+        "examples": [
+          { "mission": "Starlink V3 (projected)", "satellites": 50, "year": 2025, "type": "projected" }
+        ],
+        "notes": "Projected to deploy 50+ Starlink V3 sats per launch; massive rideshare potential",
+        "source": "SpaceX Projections"
+      }
     },
     {
       "id": "ariane-6",
@@ -210,7 +236,16 @@
       ],
       "launchSites": ["CSG ELA-4 (Kourou)"],
       "primaryCustomers": ["ESA", "Eutelsat", "Commercial GEO", "IRIS²"],
-      "constellationsServed": ["iris2", "oneweb"]
+      "constellationsServed": ["iris2", "oneweb"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "2-4",
+        "rideshareMax": "10-30",
+        "examples": [
+          { "mission": "VA262 (Inaugural)", "satellites": 2, "year": 2024 }
+        ],
+        "notes": "Dual-launch GEO capability; LEO rideshare developing for IRIS2",
+        "source": "Arianespace Manifest"
+      }
     },
     {
       "id": "vega-c",
@@ -274,7 +309,16 @@
       ],
       "launchSites": ["CSG ELV (Kourou)"],
       "primaryCustomers": ["ESA", "EU (Copernicus)", "Commercial smallsats"],
-      "constellationsServed": ["copernicus"]
+      "constellationsServed": ["copernicus"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "4-8",
+        "rideshareMax": "12",
+        "examples": [
+          { "mission": "SSMS POC", "satellites": 7, "year": 2020 }
+        ],
+        "notes": "SSMS dispenser optimized for microsats; Copernicus Sentinel dedicated",
+        "source": "Arianespace/Avio"
+      }
     },
     {
       "id": "electron",
@@ -322,7 +366,16 @@
       ],
       "launchSites": ["Mahia LC-1 (NZ)", "Wallops LC-2"],
       "primaryCustomers": ["NASA", "NRO", "Commercial smallsats"],
-      "constellationsServed": ["blacksky", "planet"]
+      "constellationsServed": ["blacksky", "planet"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "1-3",
+        "rideshareMax": "5-10",
+        "examples": [
+          { "mission": "There and Back Again", "satellites": 34, "year": 2022, "type": "rideshare" }
+        ],
+        "notes": "Dedicated smallsat missions; occasional cubesat rideshare",
+        "source": "Rocket Lab Manifest"
+      }
     },
     {
       "id": "neutron",
@@ -368,7 +421,12 @@
       ],
       "launchSites": ["Wallops LC-3"],
       "primaryCustomers": ["Commercial constellations", "NASA"],
-      "constellationsServed": []
+      "constellationsServed": [],
+      "typicalPayload": {
+        "satellitesPerLaunch": "15-30",
+        "notes": "Designed for mega-constellation deployment; targets Starlink-class efficiency",
+        "source": "Rocket Lab Projections"
+      }
     },
     {
       "id": "long-march-5",
@@ -427,7 +485,15 @@
       ],
       "launchSites": ["Wenchang LC-101"],
       "primaryCustomers": ["CNSA", "Chinese military"],
-      "constellationsServed": ["guowang", "qianfan"]
+      "constellationsServed": ["guowang", "qianfan"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "1-2",
+        "examples": [
+          { "mission": "Tiangong Module", "satellites": 1, "year": 2022 }
+        ],
+        "notes": "Heavy-lift for space station and lunar missions; not optimized for constellations",
+        "source": "CASC"
+      }
     },
     {
       "id": "long-march-2d",
@@ -473,7 +539,15 @@
       ],
       "launchSites": ["Jiuquan", "Xichang", "Taiyuan"],
       "primaryCustomers": ["CNSA", "Commercial imaging"],
-      "constellationsServed": ["yaogan", "jilin-1"]
+      "constellationsServed": ["yaogan", "jilin-1"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "10-40",
+        "examples": [
+          { "mission": "Jilin-1 batch", "satellites": 41, "year": 2023 }
+        ],
+        "notes": "Primary vehicle for Chinese commercial imaging constellations",
+        "source": "CASC/Chang Guang"
+      }
     },
     {
       "id": "soyuz-2",
@@ -532,7 +606,16 @@
       ],
       "launchSites": ["Baikonur", "Plesetsk", "Vostochny"],
       "primaryCustomers": ["Roscosmos", "ISS Partner Nations"],
-      "constellationsServed": ["glonass", "sfera"]
+      "constellationsServed": ["glonass", "sfera"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "1-36",
+        "examples": [
+          { "mission": "OneWeb Launch", "satellites": 36, "year": 2022 },
+          { "mission": "Progress MS-25", "satellites": 1, "year": 2023, "type": "cargo" }
+        ],
+        "notes": "Standard OneWeb deployment = 36 sats; also ISS crew/cargo",
+        "source": "Roscosmos/Arianespace"
+      }
     },
     {
       "id": "h3",
@@ -589,7 +672,12 @@
       ],
       "launchSites": ["Tanegashima"],
       "primaryCustomers": ["JAXA", "Commercial GEO/LEO"],
-      "constellationsServed": []
+      "constellationsServed": [],
+      "typicalPayload": {
+        "satellitesPerLaunch": "2-10",
+        "notes": "New vehicle; limited flight history. Targeting commercial competitiveness",
+        "source": "JAXA/MHI"
+      }
     },
     {
       "id": "pslv",
@@ -662,7 +750,16 @@
       ],
       "launchSites": ["Sriharikota (SDSC)"],
       "primaryCustomers": ["ISRO", "International smallsats"],
-      "constellationsServed": ["irnss", "cartosat"]
+      "constellationsServed": ["irnss", "cartosat"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "10-104",
+        "rideshareMax": "104",
+        "examples": [
+          { "mission": "PSLV-C37", "satellites": 104, "year": 2017, "type": "record" }
+        ],
+        "notes": "World record 104 satellites in single launch. Famous for rideshare efficiency",
+        "source": "ISRO"
+      }
     },
     {
       "id": "lvm3",
@@ -717,7 +814,16 @@
       ],
       "launchSites": ["Sriharikota (SDSC)"],
       "primaryCustomers": ["ISRO", "OneWeb", "Gaganyaan"],
-      "constellationsServed": ["oneweb"]
+      "constellationsServed": ["oneweb"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "1-36",
+        "examples": [
+          { "mission": "LVM3-M2/OneWeb", "satellites": 36, "year": 2022 },
+          { "mission": "Chandrayaan-3", "satellites": 1, "year": 2023 }
+        ],
+        "notes": "OneWeb deployment = 36 sats; also used for lunar missions",
+        "source": "ISRO"
+      }
     },
     {
       "id": "vulcan-centaur",
@@ -772,7 +878,15 @@
       ],
       "launchSites": ["CCSFS SLC-41"],
       "primaryCustomers": ["DoD (NSSL)", "Amazon Kuiper", "Commercial"],
-      "constellationsServed": ["kuiper"]
+      "constellationsServed": ["kuiper"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "2-40",
+        "examples": [
+          { "mission": "Cert-1", "satellites": 2, "year": 2024 }
+        ],
+        "notes": "Kuiper constellation primary vehicle; replaces Atlas V/Delta IV",
+        "source": "ULA"
+      }
     },
     {
       "id": "new-glenn",
@@ -818,7 +932,12 @@
       ],
       "launchSites": ["CCSFS LC-36"],
       "primaryCustomers": ["Amazon Kuiper", "NASA", "Commercial"],
-      "constellationsServed": ["kuiper"]
+      "constellationsServed": ["kuiper"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "20-50",
+        "notes": "Designed for Kuiper mega-constellation deployment; not yet operational",
+        "source": "Blue Origin Projections"
+      }
     },
     {
       "id": "terran-r",
@@ -864,7 +983,12 @@
       ],
       "launchSites": ["CCSFS LC-16"],
       "primaryCustomers": ["Commercial constellations", "OneWeb"],
-      "constellationsServed": ["oneweb"]
+      "constellationsServed": ["oneweb"],
+      "typicalPayload": {
+        "satellitesPerLaunch": "10-30",
+        "notes": "3D-printed vehicle targeting constellation market; not yet operational",
+        "source": "Relativity Space Projections"
+      }
     }
   ],
   "engineTypes": {

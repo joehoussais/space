@@ -303,6 +303,37 @@
   color: #64748b;
 }
 
+/* Payload Info in Card */
+.launcher-payload-info {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+}
+
+.payload-label {
+  font-size: 10px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.payload-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.payload-notes {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 4px;
+  line-height: 1.4;
+  cursor: help;
+}
+
 .launcher-features {
   display: flex;
   gap: 8px;
@@ -560,6 +591,102 @@
 .served-operator {
   font-size: 11px;
   color: #64748b;
+}
+
+/* Payload Detail Section */
+.payload-detail {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.payload-detail-main,
+.payload-detail-secondary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.payload-detail-main {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+}
+
+.payload-detail-label {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.payload-detail-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #34d399;
+}
+
+.payload-detail-secondary .payload-detail-value {
+  font-size: 14px;
+}
+
+.payload-examples {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.examples-label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.payload-example {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 12px;
+}
+
+.example-mission {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.example-count {
+  color: #34d399;
+  font-weight: 600;
+}
+
+.example-year {
+  color: #64748b;
+}
+
+.example-type {
+  padding: 2px 6px;
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #a78bfa;
+  text-transform: uppercase;
+}
+
+.payload-notes-detail {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.payload-source {
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 8px;
+  font-style: italic;
 }
 
 .no-results {
