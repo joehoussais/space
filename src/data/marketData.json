@@ -378,7 +378,7 @@
       "Lunar / cislunar": { "multiplier": 3.0, "orbit": "TLI", "notes": "TLI requires ~3x LEO capacity (delta-v: +3.1 km/s from LEO)" },
       "Other (rideshare, demos)": { "multiplier": 1.2, "orbit": "Mixed", "notes": "Mostly LEO rideshare with occasional GTO secondaries" }
     },
-    "userAdjustable": true
+    "userAdjustable": false
   },
   "forecastStartYear": 2025,
   "dataMethodology": {

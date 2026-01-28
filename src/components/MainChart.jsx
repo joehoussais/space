@@ -159,6 +159,7 @@ function MainChart({
   launcherClass
 }) {
   const isMass = selectedMetric.includes('Mass')
+  const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
   const isRevenue = selectedMetric.includes('revenue')
 
   // Filter milestones to visible year range
@@ -175,8 +176,6 @@ function MainChart({
     }
     return value >= 1000 ? `${(value / 1000).toFixed(1)}K` : value
   }
-
-  const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
 
   const getChartTitle = () => {
     if (isLeoEquiv) return 'LEO-Equivalent Mass'

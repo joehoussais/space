@@ -1,8 +1,9 @@
 import './KPICards.css'
 
 function KPICards({ kpis, selectedRegion, showAddressable }) {
-  const isMass = kpis.metric.includes('Mass')
+  const isMass = kpis.metric.includes('Mass') || kpis.metric.includes('LEO-equivalent')
   const isRevenue = kpis.metric.includes('revenue')
+  const isLeoEquiv = kpis.metric.includes('LEO-equivalent')
 
   const formatValue = (value) => {
     if (isMass) {
@@ -18,6 +19,7 @@ function KPICards({ kpis, selectedRegion, showAddressable }) {
   }
 
   const getMetricLabel = () => {
+    if (isLeoEquiv) return 'LEO-equiv Mass'
     if (isMass) return 'Mass'
     if (isRevenue) return 'Revenue'
     return 'Launches'

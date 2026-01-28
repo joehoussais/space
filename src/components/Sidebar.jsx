@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './Sidebar.css'
 
 // Segment short labels for display
@@ -29,6 +30,67 @@ const orbitLabels = {
   'Other (rideshare, demos)': 'Other'
 }
 
+function OrbitExplainer({ orbitConversionData }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <div className="filter-section">
+      <div
+        className="orbit-explainer-banner"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <div className="orbit-explainer-banner-top">
+          <span className="orbit-explainer-banner-icon">🎯</span>
+          <span className="orbit-explainer-banner-text">
+            Mass normalized to LEO-equivalent
+          </span>
+          <span className={`orbit-explainer-chevron ${expanded ? 'expanded' : ''}`}>
+            ▾
+          </span>
+        </div>
+        <div className="orbit-explainer-banner-factors">
+          <span className="orbit-factor-pill">GEO ×2.2</span>
+          <span className="orbit-factor-pill">Lunar ×3.0</span>
+          <span className="orbit-factor-pill subtle">Gov. ×1.1</span>
+          <span className="orbit-factor-pill subtle">Other ×1.2</span>
+        </div>
+      </div>
+
+      {expanded && (
+        <div className="orbit-explainer-detail">
+          <p className="orbit-explainer-desc">
+            Higher orbits require more launcher capacity. 1 kg to GEO uses ~2.2x the
+            launcher effort of 1 kg to LEO. This view shows the true launcher demand.
+          </p>
+
+          <table className="orbit-explainer-table">
+            <thead>
+              <tr>
+                <th>Segment</th>
+                <th>Factor</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(orbitConversionData.factors).map(([segment, data]) => (
+                <tr key={segment} className={data.multiplier > 1.0 ? 'row-converted' : ''}>
+                  <td className="explainer-col-segment">{orbitLabels[segment]}</td>
+                  <td className="explainer-col-factor">{data.multiplier > 1.0 ? `×${data.multiplier}` : '—'}</td>
+                  <td className="explainer-col-why">{data.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="orbit-explainer-validation">
+            Validated by real launcher data: Falcon Heavy LEO:GTO = 2.4:1, Delta IV Heavy = 2.0:1
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function Sidebar({
   metrics,
   segments,
@@ -46,8 +108,6 @@ function Sidebar({
   setChartMode,
   priceMultiplier,
   setPriceMultiplier,
-  orbitMultipliers,
-  setOrbitMultipliers,
   orbitConversionData
 }) {
   const handleSegmentToggle = (segment) => {
@@ -120,42 +180,9 @@ function Sidebar({
         </div>
       )}
 
-      {/* Orbit Conversion Multipliers - only show for LEO-equivalent */}
+      {/* Orbit conversion explainer - only show for LEO-equivalent */}
       {selectedMetric === 'LEO-equivalent mass (tonnes)' && orbitConversionData && (
-        <div className="filter-section">
-          <h3 className="filter-title">
-            Orbit Multipliers
-            <span className="info-tooltip" title={orbitConversionData.description}>ℹ️</span>
-          </h3>
-          <div className="orbit-multipliers-grid">
-            {Object.entries(orbitConversionData.factors)
-              .filter(([segment]) => orbitMultipliers[segment] !== 1.0 || segment === 'GEO comsat' || segment === 'Lunar / cislunar')
-              .map(([segment, data]) => (
-                <div key={segment} className="orbit-multiplier-item">
-                  <div className="orbit-multiplier-header">
-                    <span className="orbit-segment-label">{orbitLabels[segment]}</span>
-                    <span className="orbit-value">{orbitMultipliers[segment]?.toFixed(1)}x</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1.0"
-                    max="5.0"
-                    step="0.1"
-                    value={orbitMultipliers[segment] || data.multiplier}
-                    onChange={(e) => setOrbitMultipliers(prev => ({
-                      ...prev,
-                      [segment]: parseFloat(e.target.value)
-                    }))}
-                    className="orbit-slider"
-                  />
-                  <span className="orbit-type-hint">{data.orbit}</span>
-                </div>
-              ))}
-          </div>
-          <p className="filter-hint">
-            Adjust based on your launcher's LEO:GTO ratio. Default 2.2x for GEO matches Falcon Heavy.
-          </p>
-        </div>
+        <OrbitExplainer orbitConversionData={orbitConversionData} />
       )}
 
       <div className="filter-section">

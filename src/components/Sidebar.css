@@ -595,87 +595,156 @@
   color: #38bdf8;
 }
 
-/* Orbit Multiplier Controls */
-.orbit-multipliers-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* Orbit Explainer Banner */
+.orbit-explainer-banner {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.orbit-multiplier-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 10px 12px;
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 8px;
+.orbit-explainer-banner:hover {
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.4);
 }
 
-.orbit-multiplier-header {
+.orbit-explainer-banner-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.orbit-segment-label {
+.orbit-explainer-banner-icon {
+  font-size: 14px;
+}
+
+.orbit-explainer-banner-text {
   font-size: 12px;
   font-weight: 600;
   color: #e2e8f0;
+  flex: 1;
 }
 
-.orbit-value {
-  font-size: 14px;
-  font-weight: 700;
-  color: #6366f1;
+.orbit-explainer-chevron {
+  font-size: 12px;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.orbit-explainer-chevron.expanded {
+  transform: rotate(180deg);
+}
+
+.orbit-explainer-banner-factors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.orbit-factor-pill {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
   font-variant-numeric: tabular-nums;
 }
 
-.orbit-slider {
-  width: 100%;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(30, 41, 59, 0.8);
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 4px 0;
-}
-
-.orbit-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.orbit-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.orbit-type-hint {
-  font-size: 10px;
+.orbit-factor-pill.subtle {
   color: #64748b;
+  background: rgba(30, 41, 59, 0.5);
+  font-weight: 500;
+}
+
+/* Orbit Explainer Detail (expandable) */
+.orbit-explainer-detail {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(99, 102, 241, 0.15);
+  animation: explainerFadeIn 0.15s ease-out;
+}
+
+@keyframes explainerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.orbit-explainer-desc {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+/* Explainer table */
+.orbit-explainer-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 8px 0;
+  font-size: 10px;
+}
+
+.orbit-explainer-table th {
+  text-align: left;
+  color: #475569;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 9px;
+  padding: 4px 4px 6px 4px;
+  border-bottom: 1px solid rgba(99, 179, 237, 0.15);
+}
+
+.orbit-explainer-table td {
+  padding: 3px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.4);
+}
+
+.orbit-explainer-table tr:last-child td {
+  border-bottom: none;
+}
+
+.row-converted .explainer-col-factor {
+  color: #a5b4fc;
+  font-weight: 700;
+}
+
+.explainer-col-segment {
+  color: #cbd5e1;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.explainer-col-factor {
+  font-variant-numeric: tabular-nums;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.explainer-col-why {
+  color: #64748b;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+/* Validation line */
+.orbit-explainer-validation {
+  font-size: 9px;
+  color: #475569;
+  text-align: center;
+  padding-top: 6px;
+  border-top: 1px solid rgba(99, 179, 237, 0.1);
   font-style: italic;
-}
-
-.info-tooltip {
-  cursor: help;
-  font-size: 12px;
-  margin-left: 6px;
-  opacity: 0.7;
-}
-
-.info-tooltip:hover {
-  opacity: 1;
+  line-height: 1.4;
 }

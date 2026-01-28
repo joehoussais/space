@@ -12,7 +12,8 @@ const SHORT_LABELS = {
 }
 
 function DataTable({ data, series, selectedMetric }) {
-  const isMass = selectedMetric.includes('Mass')
+  const isMass = selectedMetric.includes('Mass') || selectedMetric.includes('LEO-equivalent')
+  const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
   const isRevenue = selectedMetric.includes('revenue')
 
   const formatValue = (value) => {
@@ -27,6 +28,7 @@ function DataTable({ data, series, selectedMetric }) {
   }
 
   const getMetricLabel = () => {
+    if (isLeoEquiv) return 'LEO-Equivalent Mass (tonnes)'
     if (isMass) return 'Mass to Orbit (tonnes)'
     if (isRevenue) return 'Derived Revenue ($B)'
     return 'Launch Count'
