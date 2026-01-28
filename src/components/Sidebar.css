@@ -161,6 +161,16 @@
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
 }
 
+/* Three-way Region Buttons */
+.region-buttons.three-way {
+  gap: 6px;
+}
+
+.region-buttons.three-way .region-btn {
+  padding: 10px 8px;
+  font-size: 12px;
+}
+
 /* Starlink Toggle Buttons */
 .starlink-buttons {
   display: flex;

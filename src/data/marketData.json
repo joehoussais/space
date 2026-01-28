@@ -33,8 +33,26 @@
   ],
   "regions": [
     "Global",
-    "Europe"
+    "Europe",
+    "Western-aligned"
   ],
+  "regionDefinitions": {
+    "Global": {
+      "description": "Worldwide total including all nations",
+      "multiplier": 1.0
+    },
+    "Europe": {
+      "description": "European Space Agency member states and EU",
+      "multiplier": null
+    },
+    "Western-aligned": {
+      "description": "Global excluding Russia and China (~69% of global launches, ~65% of market value)",
+      "derivedFrom": "Global",
+      "launchMultiplier": 0.69,
+      "revenueMultiplier": 0.65,
+      "note": "Based on 2024 data: US 57%, Europe 1%, Japan/India/Others 11% = ~69% of launches. Revenue share slightly lower due to China's domestic market size."
+    }
+  },
   "launcherClasses": {
     "15t-reusable": {
       "name": "15t Reusable First-Stage",

@@ -14,8 +14,8 @@ function SatellitesSidebar({
   setMetric,
   categoryType,
   setCategoryType,
-  showEurope,
-  setShowEurope,
+  selectedRegion,
+  setSelectedRegion,
   excludeStarlink,
   setExcludeStarlink,
   showStarlinkRef,
@@ -82,20 +82,32 @@ function SatellitesSidebar({
       {/* Region Toggle */}
       <div className="filter-section">
         <h3 className="filter-title">Region</h3>
-        <div className="region-buttons">
+        <div className="region-buttons three-way">
           <button
-            className={`region-btn ${!showEurope ? 'active' : ''}`}
-            onClick={() => setShowEurope(false)}
+            className={`region-btn ${selectedRegion === 'Global' ? 'active' : ''}`}
+            onClick={() => setSelectedRegion('Global')}
           >
             🌍 Global
           </button>
           <button
-            className={`region-btn ${showEurope ? 'active' : ''}`}
-            onClick={() => setShowEurope(true)}
+            className={`region-btn ${selectedRegion === 'Western-aligned' ? 'active' : ''}`}
+            onClick={() => setSelectedRegion('Western-aligned')}
+            title="Excluding Russia and China"
+          >
+            🌐 Western
+          </button>
+          <button
+            className={`region-btn ${selectedRegion === 'Europe' ? 'active' : ''}`}
+            onClick={() => setSelectedRegion('Europe')}
           >
             🇪🇺 Europe
           </button>
         </div>
+        {selectedRegion === 'Western-aligned' && (
+          <p className="filter-hint">
+            Global market excluding Russia & China (~65-70% of total)
+          </p>
+        )}
       </div>
 
       {/* SpaceX Starlink Toggle - show for Count metric */}
@@ -103,7 +115,7 @@ function SatellitesSidebar({
         <div className="filter-section">
           <h3 className="filter-title">SpaceX Starlink</h3>
           <div className="starlink-buttons">
-            {showEurope ? (
+            {selectedRegion !== 'Global' ? (
               <>
                 <button
                   className={`starlink-btn ${!showStarlinkRef ? 'active' : ''}`}
@@ -136,13 +148,17 @@ function SatellitesSidebar({
             )}
           </div>
           <p className="filter-hint">
-            {showEurope
+            {selectedRegion === 'Europe'
               ? (showStarlinkRef
                   ? 'Showing Starlink reference line for comparison'
                   : 'Europe-only view without SpaceX comparison')
-              : (excludeStarlink
-                  ? 'Showing market without Starlink dominance'
-                  : 'Starlink accounts for ~60% of global satellites')}
+              : selectedRegion === 'Western-aligned'
+                ? (showStarlinkRef
+                    ? 'Showing Starlink reference for Western markets'
+                    : 'Western-aligned view without SpaceX comparison')
+                : (excludeStarlink
+                    ? 'Showing market without Starlink dominance'
+                    : 'Starlink accounts for ~60% of global satellites')}
           </p>
         </div>
       )}

@@ -49,7 +49,24 @@
       ]
     }
   },
-  "regions": ["Global", "Europe"],
+  "regions": ["Global", "Europe", "Western-aligned"],
+  "regionDefinitions": {
+    "Global": {
+      "description": "Worldwide total including all nations",
+      "multiplier": 1.0
+    },
+    "Europe": {
+      "description": "European Space Agency member states and EU",
+      "multiplier": null
+    },
+    "Western-aligned": {
+      "description": "Global excluding Russia and China (~70% of satellites, ~65% of market value)",
+      "derivedFrom": "Global",
+      "countMultiplier": 0.70,
+      "marketMultiplier": 0.65,
+      "note": "Based on 2024 data: China ~25% of global launches, Russia ~6%. Excludes state-controlled markets inaccessible to Western/European industry."
+    }
+  },
   "data": [
     {
       "metric": "Satellite manufacturing market (USD, $B)",
