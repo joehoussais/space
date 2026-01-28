@@ -1,4 +1,13 @@
 {
+  "dataSources": {
+    "primary": [
+      { "id": "newspace-index", "name": "NewSpace Index", "url": "https://www.newspace.im/", "description": "Comprehensive database of satellite constellations worldwide" },
+      { "id": "spacenews", "name": "SpaceNews", "url": "https://spacenews.com/", "description": "Industry news and constellation updates" },
+      { "id": "esa", "name": "European Space Agency", "url": "https://www.esa.int/", "description": "European programs and statistics" },
+      { "id": "nasa", "name": "NASA", "url": "https://www.nasa.gov/", "description": "US space agency data" }
+    ],
+    "lastUpdated": "2026-01-28"
+  },
   "constellations": [
     {
       "id": "starlink",
@@ -8,6 +17,7 @@
       "countryCode": "US",
       "status": "Operational",
       "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
       "description": "World's largest satellite constellation providing high-speed, low-latency internet globally.",
       "orbitType": "LEO",
       "altitudeKm": [340, 550, 570],
@@ -32,7 +42,11 @@
       "primaryMarkets": ["Consumer broadband", "Aviation", "Maritime", "Enterprise", "Government"],
       "interSatelliteLinks": true,
       "propulsion": "Krypton Hall-effect",
-      "groundStations": 150
+      "groundStations": 150,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceX Starlink", "url": "https://www.starlink.com/" }
+      ]
     },
     {
       "id": "oneweb",
@@ -42,6 +56,7 @@
       "countryCode": "EU",
       "status": "Operational",
       "type": "Broadband Internet",
+      "subcategory": "B2B/Enterprise LEO",
       "description": "Global LEO constellation focused on B2B connectivity, backhaul, and government services.",
       "orbitType": "LEO",
       "altitudeKm": [1200],
@@ -66,7 +81,11 @@
       "primaryMarkets": ["Enterprise", "Government", "Aviation", "Maritime", "Backhaul"],
       "interSatelliteLinks": false,
       "propulsion": "Xenon Hall-effect",
-      "groundStations": 44
+      "groundStations": 44,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "OneWeb", "url": "https://oneweb.net/" }
+      ]
     },
     {
       "id": "kuiper",
@@ -76,6 +95,7 @@
       "countryCode": "US",
       "status": "Deployment",
       "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
       "description": "Amazon's planned LEO broadband constellation to compete with Starlink globally.",
       "orbitType": "LEO",
       "altitudeKm": [590, 610, 630],
@@ -100,7 +120,11 @@
       "primaryMarkets": ["Consumer broadband", "AWS integration", "Enterprise"],
       "interSatelliteLinks": true,
       "propulsion": "Hall-effect",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Amazon Kuiper", "url": "https://www.aboutamazon.com/what-we-do/devices-services/project-kuiper" }
+      ]
     },
     {
       "id": "iris2",
@@ -110,6 +134,7 @@
       "countryCode": "EU",
       "status": "Development",
       "type": "Government Secure Comms",
+      "subcategory": null,
       "description": "EU sovereign secure satellite constellation for government, defense, and commercial services.",
       "orbitType": "MEO/LEO",
       "altitudeKm": [8000, 500],
@@ -134,7 +159,11 @@
       "primaryMarkets": ["EU Government", "Defense", "Emergency services", "Commercial backfill"],
       "interSatelliteLinks": true,
       "propulsion": "Electric",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "European Commission", "url": "https://defence-industry-space.ec.europa.eu/eu-space-policy/iris2_en" },
+        { "title": "ESA", "url": "https://www.esa.int/" }
+      ]
     },
     {
       "id": "guowang",
@@ -144,6 +173,7 @@
       "countryCode": "CN",
       "status": "Development",
       "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
       "description": "China's state-owned mega-constellation for domestic and global internet services.",
       "orbitType": "LEO",
       "altitudeKm": [500, 600, 1145],
@@ -168,7 +198,11 @@
       "primaryMarkets": ["Chinese domestic", "Belt and Road", "Government"],
       "interSatelliteLinks": true,
       "propulsion": "Electric",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/" }
+      ]
     },
     {
       "id": "qianfan",
@@ -178,6 +212,7 @@
       "countryCode": "CN",
       "status": "Deployment",
       "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
       "description": "Shanghai's commercial LEO constellation, first Chinese mega-constellation to begin deployment.",
       "orbitType": "LEO",
       "altitudeKm": [500, 600],
@@ -202,7 +237,11 @@
       "primaryMarkets": ["Chinese domestic", "Regional Asia"],
       "interSatelliteLinks": true,
       "propulsion": "Hall-effect",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/" }
+      ]
     },
     {
       "id": "sfera",
@@ -212,6 +251,7 @@
       "countryCode": "RU",
       "status": "Development",
       "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
       "description": "Russia's planned sovereign constellation for internet and IoT services.",
       "orbitType": "LEO/MEO",
       "altitudeKm": [870, 8000],
@@ -236,7 +276,10 @@
       "primaryMarkets": ["Russian domestic", "Government", "Arctic coverage"],
       "interSatelliteLinks": false,
       "propulsion": "Electric",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" }
+      ]
     },
     {
       "id": "telesat-lightspeed",
@@ -245,7 +288,8 @@
       "country": "Canada",
       "countryCode": "CA",
       "status": "Development",
-      "type": "Enterprise Connectivity",
+      "type": "Broadband Internet",
+      "subcategory": "B2B/Enterprise LEO",
       "description": "High-capacity LEO constellation optimized for enterprise, maritime, and aviation.",
       "orbitType": "LEO",
       "altitudeKm": [1015, 1325],
@@ -270,7 +314,11 @@
       "primaryMarkets": ["Enterprise", "Government", "Mobile Network Operators"],
       "interSatelliteLinks": true,
       "propulsion": "Electric",
-      "groundStations": null
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Telesat", "url": "https://www.telesat.com/leo-satellites/" }
+      ]
     },
     {
       "id": "ses-mpower",
@@ -280,6 +328,7 @@
       "countryCode": "EU",
       "status": "Deployment",
       "type": "Enterprise/Government",
+      "subcategory": null,
       "description": "High-throughput MEO constellation for government and enterprise communications.",
       "orbitType": "MEO",
       "altitudeKm": [8062],
@@ -304,7 +353,11 @@
       "primaryMarkets": ["Government", "Aviation", "Maritime", "Enterprise"],
       "interSatelliteLinks": true,
       "propulsion": "Chemical + Electric",
-      "groundStations": 12
+      "groundStations": 12,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SES", "url": "https://www.ses.com/our-coverage/mpower" }
+      ]
     },
     {
       "id": "planet",
@@ -314,6 +367,7 @@
       "countryCode": "US",
       "status": "Operational",
       "type": "Earth Observation",
+      "subcategory": "Optical Imaging",
       "description": "Largest Earth imaging constellation capturing entire land surface daily.",
       "orbitType": "SSO",
       "altitudeKm": [475],
@@ -341,7 +395,11 @@
       "revisitFrequency": "Daily",
       "interSatelliteLinks": false,
       "propulsion": null,
-      "groundStations": 30
+      "groundStations": 30,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Planet Labs", "url": "https://www.planet.com/" }
+      ]
     },
     {
       "id": "blacksky",
@@ -351,6 +409,7 @@
       "countryCode": "US",
       "status": "Operational",
       "type": "Earth Observation",
+      "subcategory": "Optical Imaging",
       "description": "High-revisit imaging constellation with AI-powered analytics and rapid tasking.",
       "orbitType": "SSO",
       "altitudeKm": [450],
@@ -378,7 +437,11 @@
       "revisitFrequency": "Hourly",
       "interSatelliteLinks": false,
       "propulsion": "Electric",
-      "groundStations": 8
+      "groundStations": 8,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "BlackSky", "url": "https://www.blacksky.com/" }
+      ]
     },
     {
       "id": "spire",
@@ -388,6 +451,7 @@
       "countryCode": "US",
       "status": "Operational",
       "type": "Data/Weather/AIS",
+      "subcategory": null,
       "description": "Multi-purpose constellation for weather, maritime tracking, and aviation data.",
       "orbitType": "SSO/LEO",
       "altitudeKm": [500, 600],
@@ -412,7 +476,11 @@
       "primaryMarkets": ["Weather", "Maritime", "Aviation", "Government"],
       "interSatelliteLinks": false,
       "propulsion": null,
-      "groundStations": 25
+      "groundStations": 25,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Spire Global", "url": "https://spire.com/" }
+      ]
     },
     {
       "id": "iridium-next",
@@ -422,6 +490,7 @@
       "countryCode": "US",
       "status": "Operational",
       "type": "Mobile Satellite Service",
+      "subcategory": null,
       "description": "Only constellation providing true pole-to-pole global coverage for voice and data.",
       "orbitType": "LEO",
       "altitudeKm": [780],
@@ -446,7 +515,11 @@
       "primaryMarkets": ["IoT", "Maritime", "Aviation", "Government", "Emergency"],
       "interSatelliteLinks": true,
       "propulsion": "Hydrazine",
-      "groundStations": 3
+      "groundStations": 3,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Iridium", "url": "https://www.iridium.com/" }
+      ]
     },
     {
       "id": "copernicus",
@@ -456,6 +529,7 @@
       "countryCode": "EU",
       "status": "Operational",
       "type": "Earth Observation",
+      "subcategory": "Optical Imaging",
       "description": "EU's flagship Earth observation program providing free, open data globally.",
       "orbitType": "SSO/LEO",
       "altitudeKm": [693, 786, 814],
@@ -483,7 +557,11 @@
       "revisitFrequency": "5 days",
       "interSatelliteLinks": false,
       "propulsion": "Chemical",
-      "groundStations": 15
+      "groundStations": 15,
+      "sources": [
+        { "title": "ESA Copernicus", "url": "https://www.esa.int/Applications/Observing_the_Earth/Copernicus" },
+        { "title": "Copernicus Programme", "url": "https://www.copernicus.eu/" }
+      ]
     },
     {
       "id": "glonass",
@@ -493,6 +571,7 @@
       "countryCode": "RU",
       "status": "Operational",
       "type": "Navigation (GNSS)",
+      "subcategory": null,
       "description": "Russian global navigation satellite system. Alternative/complement to GPS.",
       "orbitType": "MEO",
       "altitudeKm": [19130],
@@ -517,7 +596,10 @@
       "primaryMarkets": ["Navigation", "Timing", "Military"],
       "interSatelliteLinks": false,
       "propulsion": "Chemical",
-      "groundStations": 53
+      "groundStations": 53,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" }
+      ]
     },
     {
       "id": "galileo",
@@ -527,6 +609,7 @@
       "countryCode": "EU",
       "status": "Operational",
       "type": "Navigation (GNSS)",
+      "subcategory": null,
       "description": "EU's global navigation satellite system offering high-accuracy positioning services.",
       "orbitType": "MEO",
       "altitudeKm": [23222],
@@ -551,7 +634,11 @@
       "primaryMarkets": ["Navigation", "Timing", "Commercial PRS"],
       "interSatelliteLinks": true,
       "propulsion": "Chemical",
-      "groundStations": 40
+      "groundStations": 40,
+      "sources": [
+        { "title": "ESA Galileo", "url": "https://www.esa.int/Applications/Navigation/Galileo" },
+        { "title": "EUSPA", "url": "https://www.euspa.europa.eu/european-space/galileo" }
+      ]
     },
     {
       "id": "beidou",
@@ -561,6 +648,7 @@
       "countryCode": "CN",
       "status": "Operational",
       "type": "Navigation (GNSS)",
+      "subcategory": null,
       "description": "China's global navigation system providing positioning, navigation and timing services.",
       "orbitType": "MEO/GEO/IGSO",
       "altitudeKm": [21528, 35786],
@@ -585,7 +673,612 @@
       "primaryMarkets": ["Navigation", "Timing", "Short message service"],
       "interSatelliteLinks": true,
       "propulsion": "Chemical",
-      "groundStations": 30
+      "groundStations": 30,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" }
+      ]
+    },
+    {
+      "id": "ast-spacemobile",
+      "name": "SpaceMobile",
+      "operator": "AST SpaceMobile",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Deployment",
+      "type": "Direct-to-Device",
+      "subcategory": "Broadband D2D",
+      "description": "First space-based cellular broadband network connecting directly to unmodified smartphones.",
+      "orbitType": "LEO",
+      "altitudeKm": [700],
+      "inclinationDeg": [45],
+      "satellitesPlanned": 243,
+      "satellitesDeployed": 5,
+      "satellitesOperational": 5,
+      "generationCurrent": "BlueBird",
+      "satelliteMassKg": 1500,
+      "designLifeYears": 10,
+      "coverageArea": "Global (equatorial focus)",
+      "latencyMs": "20-40",
+      "downloadSpeedMbps": "10-20",
+      "uploadSpeedMbps": "5-10",
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": "2023-09-10",
+      "fullDeploymentTarget": "2030",
+      "investmentBillionUSD": 1.5,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["Low-band cellular"],
+      "primaryMarkets": ["Mobile operators", "Rural connectivity", "Emergency services"],
+      "interSatelliteLinks": true,
+      "propulsion": "Electric",
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "AST SpaceMobile", "url": "https://ast-science.com/" }
+      ]
+    },
+    {
+      "id": "viasat",
+      "name": "ViaSat-3",
+      "operator": "Viasat",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Deployment",
+      "type": "Broadband Internet",
+      "subcategory": "GEO HTS",
+      "description": "Ultra-high capacity GEO constellation delivering terabit-class global broadband.",
+      "orbitType": "GEO",
+      "altitudeKm": [35786],
+      "inclinationDeg": [0],
+      "satellitesPlanned": 3,
+      "satellitesDeployed": 2,
+      "satellitesOperational": 1,
+      "generationCurrent": "ViaSat-3",
+      "satelliteMassKg": 6400,
+      "designLifeYears": 15,
+      "coverageArea": "Americas, EMEA, Asia-Pacific",
+      "latencyMs": "600-800",
+      "downloadSpeedMbps": "100",
+      "uploadSpeedMbps": "25",
+      "subscribers": 700000,
+      "launchProviders": ["falcon-heavy"],
+      "firstLaunch": "2023-04-30",
+      "fullDeploymentTarget": "2025",
+      "investmentBillionUSD": 4,
+      "annualRevenueBillionUSD": 2.8,
+      "frequencyBands": ["Ka-band"],
+      "primaryMarkets": ["Consumer broadband", "Aviation", "Maritime", "Government"],
+      "interSatelliteLinks": false,
+      "propulsion": "Chemical + Electric",
+      "groundStations": 12,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Viasat", "url": "https://www.viasat.com/" }
+      ]
+    },
+    {
+      "id": "globalstar",
+      "name": "Globalstar",
+      "operator": "Globalstar",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Operational",
+      "type": "Mobile Satellite Service",
+      "subcategory": null,
+      "description": "LEO constellation providing voice, data, and IoT services, partnering with Apple for satellite SOS.",
+      "orbitType": "LEO",
+      "altitudeKm": [1414],
+      "inclinationDeg": [52],
+      "satellitesPlanned": 48,
+      "satellitesDeployed": 48,
+      "satellitesOperational": 40,
+      "generationCurrent": "Gen 2",
+      "satelliteMassKg": 700,
+      "designLifeYears": 15,
+      "coverageArea": "Global (except polar)",
+      "latencyMs": "40-60",
+      "downloadSpeedMbps": "9.6",
+      "uploadSpeedMbps": "9.6",
+      "subscribers": 500000,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": "2010-10-19",
+      "fullDeploymentTarget": null,
+      "investmentBillionUSD": 1.8,
+      "annualRevenueBillionUSD": 0.25,
+      "frequencyBands": ["L-band", "S-band"],
+      "primaryMarkets": ["IoT", "Emergency SOS", "Asset tracking", "SPOT devices"],
+      "interSatelliteLinks": false,
+      "propulsion": "Chemical",
+      "groundStations": 25,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Globalstar", "url": "https://www.globalstar.com/" }
+      ]
+    },
+    {
+      "id": "iceye",
+      "name": "ICEYE",
+      "operator": "ICEYE",
+      "country": "Finland",
+      "countryCode": "FI",
+      "status": "Operational",
+      "type": "Earth Observation",
+      "subcategory": "SAR",
+      "description": "World's largest SAR satellite constellation offering persistent monitoring capabilities.",
+      "orbitType": "SSO",
+      "altitudeKm": [570],
+      "inclinationDeg": [97.7],
+      "satellitesPlanned": 36,
+      "satellitesDeployed": 29,
+      "satellitesOperational": 26,
+      "generationCurrent": "Gen 3",
+      "satelliteMassKg": 100,
+      "designLifeYears": 5,
+      "coverageArea": "Global",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9", "electron"],
+      "firstLaunch": "2018-01-12",
+      "fullDeploymentTarget": "2026",
+      "investmentBillionUSD": 0.4,
+      "annualRevenueBillionUSD": 0.1,
+      "frequencyBands": ["X-band"],
+      "primaryMarkets": ["Defense", "Insurance", "Maritime", "Disaster response"],
+      "imagingResolutionM": 0.25,
+      "imagingBands": 1,
+      "revisitFrequency": "Daily",
+      "interSatelliteLinks": false,
+      "propulsion": "Electric",
+      "groundStations": 10,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "ICEYE", "url": "https://www.iceye.com/" }
+      ]
+    },
+    {
+      "id": "lynk",
+      "name": "Lynk Global",
+      "operator": "Lynk Global",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Deployment",
+      "type": "Direct-to-Device",
+      "subcategory": "Voice/SMS",
+      "description": "Direct-to-phone satellite network providing SMS and emergency services to standard cell phones.",
+      "orbitType": "LEO",
+      "altitudeKm": [500],
+      "inclinationDeg": [97],
+      "satellitesPlanned": 2000,
+      "satellitesDeployed": 7,
+      "satellitesOperational": 7,
+      "generationCurrent": "Shannon",
+      "satelliteMassKg": 30,
+      "designLifeYears": 5,
+      "coverageArea": "Global",
+      "latencyMs": "100-200",
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["electron", "falcon-9"],
+      "firstLaunch": "2022-04-01",
+      "fullDeploymentTarget": "2028",
+      "investmentBillionUSD": 0.15,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["GSM bands"],
+      "primaryMarkets": ["Mobile operators", "Emergency services", "Rural connectivity"],
+      "interSatelliteLinks": false,
+      "propulsion": null,
+      "groundStations": 5,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Lynk Global", "url": "https://lynk.world/" }
+      ]
+    },
+    {
+      "id": "maxar-legion",
+      "name": "WorldView Legion",
+      "operator": "Maxar",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Deployment",
+      "type": "Earth Observation",
+      "subcategory": "Optical Imaging",
+      "description": "Next-generation high-resolution imaging constellation with 15 revisits per day capability.",
+      "orbitType": "SSO",
+      "altitudeKm": [500],
+      "inclinationDeg": [97],
+      "satellitesPlanned": 6,
+      "satellitesDeployed": 4,
+      "satellitesOperational": 4,
+      "generationCurrent": "Legion",
+      "satelliteMassKg": 760,
+      "designLifeYears": 10,
+      "coverageArea": "Global",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": "2024-05-02",
+      "fullDeploymentTarget": "2025",
+      "investmentBillionUSD": 0.6,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": [],
+      "primaryMarkets": ["Defense", "Intelligence", "Infrastructure monitoring"],
+      "imagingResolutionM": 0.29,
+      "imagingBands": 8,
+      "revisitFrequency": "15x daily",
+      "interSatelliteLinks": false,
+      "propulsion": "Electric",
+      "groundStations": 8,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Maxar", "url": "https://www.maxar.com/products/worldview-legion" }
+      ]
+    },
+    {
+      "id": "ghgsat",
+      "name": "GHGSat",
+      "operator": "GHGSat",
+      "country": "Canada",
+      "countryCode": "CA",
+      "status": "Operational",
+      "type": "Earth Observation",
+      "subcategory": "Emissions Monitoring",
+      "description": "World's first and only high-resolution satellite constellation dedicated to monitoring greenhouse gas emissions.",
+      "orbitType": "SSO",
+      "altitudeKm": [500],
+      "inclinationDeg": [97],
+      "satellitesPlanned": 20,
+      "satellitesDeployed": 12,
+      "satellitesOperational": 12,
+      "generationCurrent": "Iris/Hugo",
+      "satelliteMassKg": 17,
+      "designLifeYears": 3,
+      "coverageArea": "Global industrial sites",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9", "electron"],
+      "firstLaunch": "2016-06-21",
+      "fullDeploymentTarget": "2026",
+      "investmentBillionUSD": 0.15,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": [],
+      "primaryMarkets": ["Oil & Gas", "Carbon markets", "ESG compliance", "Government"],
+      "imagingResolutionM": 25,
+      "imagingBands": 1,
+      "revisitFrequency": "Daily",
+      "interSatelliteLinks": false,
+      "propulsion": null,
+      "groundStations": 4,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "GHGSat", "url": "https://www.ghgsat.com/" }
+      ]
+    },
+    {
+      "id": "capella",
+      "name": "Capella Space",
+      "operator": "Capella Space",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Operational",
+      "type": "Earth Observation",
+      "subcategory": "SAR",
+      "description": "Commercial SAR constellation delivering sub-meter resolution imagery with rapid tasking.",
+      "orbitType": "SSO",
+      "altitudeKm": [525],
+      "inclinationDeg": [97],
+      "satellitesPlanned": 36,
+      "satellitesDeployed": 10,
+      "satellitesOperational": 10,
+      "generationCurrent": "Acadia",
+      "satelliteMassKg": 107,
+      "designLifeYears": 5,
+      "coverageArea": "Global",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9", "electron"],
+      "firstLaunch": "2020-08-31",
+      "fullDeploymentTarget": "2027",
+      "investmentBillionUSD": 0.3,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["X-band"],
+      "primaryMarkets": ["Defense", "Intelligence", "Maritime", "Infrastructure"],
+      "imagingResolutionM": 0.5,
+      "imagingBands": 1,
+      "revisitFrequency": "Hourly",
+      "interSatelliteLinks": false,
+      "propulsion": "Electric",
+      "groundStations": 6,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Capella Space", "url": "https://www.capellaspace.com/" }
+      ]
+    },
+    {
+      "id": "satellogic",
+      "name": "Satellogic",
+      "operator": "Satellogic",
+      "country": "Argentina",
+      "countryCode": "AR",
+      "status": "Operational",
+      "type": "Earth Observation",
+      "subcategory": "Hyperspectral",
+      "description": "Cost-effective constellation providing multispectral and hyperspectral Earth imaging.",
+      "orbitType": "SSO",
+      "altitudeKm": [475],
+      "inclinationDeg": [97.5],
+      "satellitesPlanned": 300,
+      "satellitesDeployed": 40,
+      "satellitesOperational": 36,
+      "generationCurrent": "NewSat Mark V",
+      "satelliteMassKg": 45,
+      "designLifeYears": 4,
+      "coverageArea": "Global",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9", "long-march-2d"],
+      "firstLaunch": "2016-05-30",
+      "fullDeploymentTarget": "2028",
+      "investmentBillionUSD": 0.35,
+      "annualRevenueBillionUSD": 0.02,
+      "frequencyBands": [],
+      "primaryMarkets": ["Agriculture", "Forestry", "Government", "Defense"],
+      "imagingResolutionM": 0.7,
+      "imagingBands": 29,
+      "revisitFrequency": "Weekly",
+      "interSatelliteLinks": false,
+      "propulsion": null,
+      "groundStations": 8,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Satellogic", "url": "https://satellogic.com/" }
+      ]
+    },
+    {
+      "id": "hongyan",
+      "name": "Hongyan (鸿雁)",
+      "operator": "CASIC",
+      "country": "China",
+      "countryCode": "CN",
+      "status": "Deployment",
+      "type": "Mobile Satellite Service",
+      "subcategory": null,
+      "description": "China's global mobile satellite system for voice, data, and IoT services.",
+      "orbitType": "LEO",
+      "altitudeKm": [1100],
+      "inclinationDeg": [55],
+      "satellitesPlanned": 320,
+      "satellitesDeployed": 4,
+      "satellitesOperational": 4,
+      "generationCurrent": "Gen 1",
+      "satelliteMassKg": 500,
+      "designLifeYears": 5,
+      "coverageArea": "Global",
+      "latencyMs": "40-60",
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["long-march-2d", "long-march-11"],
+      "firstLaunch": "2018-12-29",
+      "fullDeploymentTarget": "2028",
+      "investmentBillionUSD": 2.5,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["L-band", "Ka-band"],
+      "primaryMarkets": ["Chinese domestic", "Belt and Road", "Maritime", "Aviation"],
+      "interSatelliteLinks": true,
+      "propulsion": "Electric",
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/" }
+      ]
+    },
+    {
+      "id": "rivada",
+      "name": "Rivada Networks",
+      "operator": "Rivada Networks",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Development",
+      "type": "Broadband Internet",
+      "subcategory": "B2B/Enterprise LEO",
+      "description": "Enterprise-focused LEO constellation with unique network architecture for secure communications.",
+      "orbitType": "LEO",
+      "altitudeKm": [1050],
+      "inclinationDeg": [53, 70, 87],
+      "satellitesPlanned": 600,
+      "satellitesDeployed": 0,
+      "satellitesOperational": 0,
+      "generationCurrent": "Development",
+      "satelliteMassKg": 250,
+      "designLifeYears": 7,
+      "coverageArea": "Global",
+      "latencyMs": "30-50",
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": null,
+      "fullDeploymentTarget": "2028",
+      "investmentBillionUSD": 2.2,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["Ka-band"],
+      "primaryMarkets": ["Enterprise", "Government", "Defense", "Mobile backhaul"],
+      "interSatelliteLinks": true,
+      "propulsion": "Electric",
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/" }
+      ]
+    },
+    {
+      "id": "e-space",
+      "name": "E-Space",
+      "operator": "E-Space",
+      "country": "Rwanda",
+      "countryCode": "RW",
+      "status": "Development",
+      "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
+      "description": "Sustainability-focused LEO constellation designed for responsible space operations.",
+      "orbitType": "LEO",
+      "altitudeKm": [550],
+      "inclinationDeg": [45, 55],
+      "satellitesPlanned": 100000,
+      "satellitesDeployed": 3,
+      "satellitesOperational": 3,
+      "generationCurrent": "Prototype",
+      "satelliteMassKg": 1,
+      "designLifeYears": 3,
+      "coverageArea": "Global",
+      "latencyMs": "20-40",
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": "2024-03-04",
+      "fullDeploymentTarget": "2035",
+      "investmentBillionUSD": 0.5,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["Ka-band", "Ku-band"],
+      "primaryMarkets": ["Developing markets", "IoT", "Consumer broadband"],
+      "interSatelliteLinks": false,
+      "propulsion": null,
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/" }
+      ]
+    },
+    {
+      "id": "hanwha",
+      "name": "Hanwha Aerospace",
+      "operator": "Hanwha Systems",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "status": "Development",
+      "type": "Earth Observation",
+      "subcategory": "SAR",
+      "description": "South Korean SAR Earth observation constellation for government and commercial applications.",
+      "orbitType": "SSO",
+      "altitudeKm": [550],
+      "inclinationDeg": [97],
+      "satellitesPlanned": 12,
+      "satellitesDeployed": 0,
+      "satellitesOperational": 0,
+      "generationCurrent": "Development",
+      "satelliteMassKg": 120,
+      "designLifeYears": 5,
+      "coverageArea": "Korean Peninsula + Global",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": null,
+      "fullDeploymentTarget": "2027",
+      "investmentBillionUSD": 0.5,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["X-band"],
+      "primaryMarkets": ["Korean government", "Defense", "Maritime"],
+      "imagingResolutionM": 1,
+      "imagingBands": 1,
+      "revisitFrequency": "Daily",
+      "interSatelliteLinks": false,
+      "propulsion": "Electric",
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" }
+      ]
+    },
+    {
+      "id": "omnispace",
+      "name": "Omnispace",
+      "operator": "Omnispace",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Development",
+      "type": "Direct-to-Device",
+      "subcategory": "Broadband D2D",
+      "description": "Global 5G non-terrestrial network providing direct connectivity to standard devices.",
+      "orbitType": "LEO/MEO",
+      "altitudeKm": [500, 8000],
+      "inclinationDeg": [37, 55],
+      "satellitesPlanned": 200,
+      "satellitesDeployed": 2,
+      "satellitesOperational": 2,
+      "generationCurrent": "Spark",
+      "satelliteMassKg": 200,
+      "designLifeYears": 7,
+      "coverageArea": "Global",
+      "latencyMs": "30-100",
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": ["falcon-9"],
+      "firstLaunch": "2022-04-01",
+      "fullDeploymentTarget": "2029",
+      "investmentBillionUSD": 0.3,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["S-band", "5G NR"],
+      "primaryMarkets": ["Mobile operators", "IoT", "Government", "Enterprise"],
+      "interSatelliteLinks": true,
+      "propulsion": "Electric",
+      "groundStations": null,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Omnispace", "url": "https://omnispace.com/" }
+      ]
+    },
+    {
+      "id": "kepler",
+      "name": "Kepler Communications",
+      "operator": "Kepler Communications",
+      "country": "Canada",
+      "countryCode": "CA",
+      "status": "Operational",
+      "type": "Data/Weather/AIS",
+      "subcategory": null,
+      "description": "IoT connectivity constellation with unique store-and-forward architecture for global data relay.",
+      "orbitType": "LEO",
+      "altitudeKm": [575],
+      "inclinationDeg": [98],
+      "satellitesPlanned": 140,
+      "satellitesDeployed": 22,
+      "satellitesOperational": 19,
+      "generationCurrent": "Gen 3",
+      "satelliteMassKg": 20,
+      "designLifeYears": 5,
+      "coverageArea": "Global",
+      "latencyMs": "15-60",
+      "downloadSpeedMbps": "40",
+      "uploadSpeedMbps": "20",
+      "subscribers": null,
+      "launchProviders": ["falcon-9", "electron"],
+      "firstLaunch": "2018-01-12",
+      "fullDeploymentTarget": "2027",
+      "investmentBillionUSD": 0.12,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["Ku-band"],
+      "primaryMarkets": ["Maritime", "Aviation", "Energy", "Research stations"],
+      "interSatelliteLinks": true,
+      "propulsion": null,
+      "groundStations": 10,
+      "sources": [
+        { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
+        { "title": "Kepler Communications", "url": "https://kepler.space/" }
+      ]
     }
   ],
   "orbitTypes": {
@@ -596,20 +1289,49 @@
     "IGSO": { "name": "Inclined Geosynchronous", "altitudeRange": "35786 km", "color": "#ec4899" }
   },
   "constellationTypes": {
-    "Broadband Internet": { "color": "#06b6d4", "icon": "wifi" },
-    "Earth Observation": { "color": "#10b981", "icon": "satellite" },
+    "Broadband Internet": {
+      "color": "#06b6d4",
+      "icon": "wifi",
+      "subcategories": {
+        "Consumer LEO": { "description": "Direct-to-consumer LEO broadband" },
+        "B2B/Enterprise LEO": { "description": "Business-focused LEO connectivity" },
+        "GEO HTS": { "description": "High-throughput GEO satellites" }
+      }
+    },
+    "Earth Observation": {
+      "color": "#10b981",
+      "icon": "satellite",
+      "subcategories": {
+        "Optical Imaging": { "description": "Visible/NIR imaging" },
+        "SAR": { "description": "Synthetic Aperture Radar" },
+        "Hyperspectral": { "description": "Multi-band spectral imaging" },
+        "Emissions Monitoring": { "description": "GHG and emissions tracking" }
+      }
+    },
     "Navigation (GNSS)": { "color": "#f59e0b", "icon": "navigation" },
     "Mobile Satellite Service": { "color": "#8b5cf6", "icon": "phone" },
     "Government Secure Comms": { "color": "#ef4444", "icon": "shield" },
     "Enterprise Connectivity": { "color": "#ec4899", "icon": "building" },
     "Enterprise/Government": { "color": "#ec4899", "icon": "building" },
-    "Data/Weather/AIS": { "color": "#6366f1", "icon": "cloud" }
+    "Data/Weather/AIS": { "color": "#6366f1", "icon": "cloud" },
+    "Direct-to-Device": {
+      "color": "#f97316",
+      "icon": "smartphone",
+      "subcategories": {
+        "Voice/SMS": { "description": "Basic cellular services" },
+        "Broadband D2D": { "description": "High-speed direct connectivity" }
+      }
+    }
   },
   "countries": {
     "US": { "name": "United States", "flag": "us" },
     "EU": { "name": "Europe", "flag": "eu" },
     "CN": { "name": "China", "flag": "cn" },
     "RU": { "name": "Russia", "flag": "ru" },
-    "CA": { "name": "Canada", "flag": "ca" }
+    "CA": { "name": "Canada", "flag": "ca" },
+    "FI": { "name": "Finland", "flag": "fi" },
+    "AR": { "name": "Argentina", "flag": "ar" },
+    "KR": { "name": "South Korea", "flag": "kr" },
+    "RW": { "name": "Rwanda", "flag": "rw" }
   }
 }

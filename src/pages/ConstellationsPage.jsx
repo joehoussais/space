@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useData } from '../context/DataContext'
+import ConstellationSourcesPanel from '../components/ConstellationSourcesPanel'
 import './ConstellationsPage.css'
 
 // Country flag emoji mapping
@@ -10,7 +11,11 @@ const flagEmoji = {
   RU: '\u{1F1F7}\u{1F1FA}',
   JP: '\u{1F1EF}\u{1F1F5}',
   IN: '\u{1F1EE}\u{1F1F3}',
-  CA: '\u{1F1E8}\u{1F1E6}'
+  CA: '\u{1F1E8}\u{1F1E6}',
+  FI: '\u{1F1EB}\u{1F1EE}',
+  AR: '\u{1F1E6}\u{1F1F7}',
+  KR: '\u{1F1F0}\u{1F1F7}',
+  RW: '\u{1F1F7}\u{1F1FC}'
 }
 
 // Operator logo URLs
@@ -30,7 +35,22 @@ const operatorLogos = {
   'Iridium Communications': 'https://logo.clearbit.com/iridium.com',
   'ESA/EU': 'https://logo.clearbit.com/esa.int',
   'ESA/EUSPA': 'https://logo.clearbit.com/euspa.europa.eu',
-  'CNSA': null
+  'CNSA': null,
+  'AST SpaceMobile': 'https://logo.clearbit.com/ast-science.com',
+  'Viasat': 'https://logo.clearbit.com/viasat.com',
+  'Globalstar': 'https://logo.clearbit.com/globalstar.com',
+  'ICEYE': 'https://logo.clearbit.com/iceye.com',
+  'Lynk Global': 'https://logo.clearbit.com/lynk.world',
+  'Maxar': 'https://logo.clearbit.com/maxar.com',
+  'GHGSat': 'https://logo.clearbit.com/ghgsat.com',
+  'Capella Space': 'https://logo.clearbit.com/capellaspace.com',
+  'Satellogic': 'https://logo.clearbit.com/satellogic.com',
+  'CASIC': null,
+  'Rivada Networks': null,
+  'E-Space': null,
+  'Hanwha Systems': 'https://logo.clearbit.com/hanwha.com',
+  'Omnispace': 'https://logo.clearbit.com/omnispace.com',
+  'Kepler Communications': 'https://logo.clearbit.com/kepler.space'
 }
 
 function ConstellationCard({ constellation, onSelect, getLaunchersForConstellation, constellationTypes, orbitTypes }) {
@@ -91,6 +111,11 @@ function ConstellationCard({ constellation, onSelect, getLaunchersForConstellati
         >
           {constellation.type}
         </span>
+        {constellation.subcategory && (
+          <span className="subcategory-badge">
+            {constellation.subcategory}
+          </span>
+        )}
         <span
           className="orbit-badge"
           style={{ borderColor: orbitConfig.color || '#64748b', color: orbitConfig.color || '#64748b' }}
@@ -199,12 +224,19 @@ function ConstellationDetail({ constellation, onClose, getLaunchersForConstellat
             <p className="detail-operator">
               {flagEmoji[constellation.countryCode]} {constellation.operator}
             </p>
-            <span
-              className="detail-type-badge"
-              style={{ backgroundColor: typeConfig.color || '#64748b' }}
-            >
-              {constellation.type}
-            </span>
+            <div className="detail-badges">
+              <span
+                className="detail-type-badge"
+                style={{ backgroundColor: typeConfig.color || '#64748b' }}
+              >
+                {constellation.type}
+              </span>
+              {constellation.subcategory && (
+                <span className="detail-subcategory-badge">
+                  {constellation.subcategory}
+                </span>
+              )}
+            </div>
           </div>
         </div>
 
@@ -397,6 +429,26 @@ function ConstellationDetail({ constellation, onClose, getLaunchersForConstellat
           </div>
         )}
 
+        {constellation.sources && constellation.sources.length > 0 && (
+          <div className="detail-section">
+            <h3>Sources</h3>
+            <div className="sources-list">
+              {constellation.sources.map((source, idx) => (
+                <a
+                  key={idx}
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="constellation-source-link"
+                >
+                  <span className="source-icon">↗</span>
+                  {source.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="detail-features">
           {constellation.interSatelliteLinks && (
             <span className="feature-detail isl">Inter-Satellite Links</span>
@@ -420,10 +472,18 @@ function ConstellationsPage() {
   const [filters, setFilters] = useState({
     status: 'all',
     type: 'all',
+    subcategory: 'all',
     orbit: 'all',
     country: 'all'
   })
   const [sortBy, setSortBy] = useState('satellitesDeployed')
+
+  // Get subcategories for selected type
+  const availableSubcategories = useMemo(() => {
+    if (filters.type === 'all') return []
+    const typeConfig = constellationTypes[filters.type]
+    return typeConfig?.subcategories ? Object.keys(typeConfig.subcategories) : []
+  }, [filters.type, constellationTypes])
 
   const filteredConstellations = useMemo(() => {
     let result = [...constellationsData.constellations]
@@ -433,6 +493,9 @@ function ConstellationsPage() {
     }
     if (filters.type !== 'all') {
       result = result.filter(c => c.type === filters.type)
+    }
+    if (filters.subcategory !== 'all') {
+      result = result.filter(c => c.subcategory === filters.subcategory)
     }
     if (filters.orbit !== 'all') {
       result = result.filter(c => c.orbitType === filters.orbit)
@@ -461,6 +524,11 @@ function ConstellationsPage() {
     (sum, c) => sum + (c.satellitesPlanned || 0), 0
   )
 
+  // Reset subcategory when type changes
+  const handleTypeChange = (newType) => {
+    setFilters(f => ({ ...f, type: newType, subcategory: 'all' }))
+  }
+
   return (
     <div className="constellations-page">
       <div className="page-header">
@@ -486,6 +554,8 @@ function ConstellationsPage() {
         </div>
       </div>
 
+      <ConstellationSourcesPanel dataSources={constellationsData.dataSources} />
+
       <div className="filters-bar">
         <div className="filter-group">
           <label>Status</label>
@@ -504,7 +574,7 @@ function ConstellationsPage() {
           <label>Type</label>
           <select
             value={filters.type}
-            onChange={e => setFilters(f => ({ ...f, type: e.target.value }))}
+            onChange={e => handleTypeChange(e.target.value)}
           >
             <option value="all">All</option>
             {uniqueTypes.map(type => (
@@ -512,6 +582,21 @@ function ConstellationsPage() {
             ))}
           </select>
         </div>
+
+        {availableSubcategories.length > 0 && (
+          <div className="filter-group">
+            <label>Subcategory</label>
+            <select
+              value={filters.subcategory}
+              onChange={e => setFilters(f => ({ ...f, subcategory: e.target.value }))}
+            >
+              <option value="all">All</option>
+              {availableSubcategories.map(sub => (
+                <option key={sub} value={sub}>{sub}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="filter-group">
           <label>Orbit</label>
