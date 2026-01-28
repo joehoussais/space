@@ -1,34 +1,12 @@
 import { useState } from 'react'
 import './SourcesPanel.css'
 
-// Short labels for display
-const SHORT_LABELS = {
-  'Total market': 'Total Market',
-  'LEO constellations (comms + EO/IoT)': 'LEO Constellations',
-  'Government civil (science + institutional)': 'Gov. Civil',
-  'Defense / national security': 'Defense',
-  'GEO comsat (single large satellites)': 'GEO Comsat',
-  'Human spaceflight + station cargo/logistics': 'Human Spaceflight',
-  'Lunar / cislunar / exploration logistics': 'Lunar/Cislunar',
-  'Other (tech demos, rideshare misc)': 'Other'
-}
-
-function SourcesPanel({ data, selectedMetric }) {
+function SourcesPanel({ sourceNotes, methodology, selectedMetric }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  // Get unique sources for selected metric
-  const sources = data
-    .filter(d => d.metric === selectedMetric)
-    .reduce((acc, d) => {
-      if (!acc.find(s => s.useCase === d.useCase && s.region === d.region)) {
-        acc.push({
-          useCase: d.useCase,
-          region: d.region,
-          sourceNotes: d.sourceNotes
-        })
-      }
-      return acc
-    }, [])
+  const isMass = selectedMetric.includes('Mass')
+  const isRevenue = selectedMetric.includes('revenue')
+  const isLaunches = selectedMetric.includes('launches')
 
   return (
     <div className={`sources-panel ${isExpanded ? 'expanded' : ''}`}>
@@ -37,40 +15,65 @@ function SourcesPanel({ data, selectedMetric }) {
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <span className="toggle-icon">{isExpanded ? '▼' : '▶'}</span>
-        <span className="toggle-text">Sources & Methodology</span>
-        <span className="toggle-count">{sources.length} sources</span>
+        <span className="toggle-text">Data Sources & Methodology</span>
       </button>
 
       {isExpanded && (
         <div className="sources-content">
           <div className="sources-intro">
-            <p>
-              Data compiled from multiple industry reports and official sources.
-              Forecast values (2025-2035) use compound growth rates derived from
-              analyst consensus. All revenue figures in nominal USD billions.
-            </p>
+            <h4>
+              {isMass ? 'Mass to Orbit Data' :
+               isLaunches ? 'Launch Count Data' :
+               'Derived Revenue Methodology'}
+            </h4>
+            <p className="source-notes-main">{sourceNotes}</p>
           </div>
 
-          <div className="sources-grid">
-            {sources.map((source, idx) => (
-              <div key={idx} className="source-card">
-                <div className="source-header">
-                  <span className="source-usecase">
-                    {SHORT_LABELS[source.useCase] || source.useCase}
-                  </span>
-                  <span className={`source-region ${source.region.toLowerCase()}`}>
-                    {source.region === 'Global' ? '🌍' : '🇪🇺'} {source.region}
-                  </span>
-                </div>
-                <p className="source-notes">{source.sourceNotes}</p>
+          {isRevenue && (
+            <div className="methodology-section">
+              <h4>Revenue Calculation</h4>
+              <p>
+                Revenue is derived by multiplying mass (tonnes) × $/kg price assumptions × 1000.
+                Default $/kg values are based on industry estimates but can be adjusted using the
+                slider in the sidebar. Lower multipliers simulate Starship-era pricing disruption.
+              </p>
+              <div className="pricing-note">
+                <span className="note-icon">💡</span>
+                <span>
+                  Example: 1,000t × $2,000/kg = $2B revenue. At 0.5x multiplier = $1B.
+                </span>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+
+          {methodology && (
+            <div className="methodology-section">
+              <h4>Segment Definitions</h4>
+              <div className="segment-definitions">
+                {Object.entries(methodology.segmentDefinitions || {}).map(([segment, definition]) => (
+                  <div key={segment} className="segment-definition">
+                    <span className="segment-name">{segment}</span>
+                    <span className="segment-desc">{definition}</span>
+                  </div>
+                ))}
+              </div>
+              {methodology.caveat && (
+                <p className="methodology-caveat">
+                  <span className="caveat-icon">⚠️</span>
+                  {methodology.caveat}
+                </p>
+              )}
+            </div>
+          )}
 
           <div className="sources-footer">
             <p>
-              <strong>Key sources:</strong> Space Foundation, Fortune Business Insights,
-              Allied Market Research, Grand View Research, ESA, NASA, GAO reports
+              <strong>Primary Sources:</strong> BryceTech Briefings (2020-2024), Space Foundation,
+              Jonathan McDowell's Space Statistics (planet4589.org), ESA Annual Reports, FAA/AST.
+            </p>
+            <p className="transparency-note">
+              <strong>Transparency:</strong> Mass data is primary. Revenue figures are derived,
+              not sourced directly. Users can apply their own $/kg assumptions for sensitivity analysis.
             </p>
           </div>
         </div>

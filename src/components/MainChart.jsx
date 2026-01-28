@@ -9,54 +9,48 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  ReferenceLine,
-  ReferenceArea
+  ReferenceLine
 } from 'recharts'
 import './MainChart.css'
 
-// Color palette for use cases (space theme)
+// Color palette for segments (space theme)
 const COLORS = {
-  'Total market': '#38bdf8',
-  'LEO constellations (comms + EO/IoT)': '#06b6d4',
-  'Government civil (science + institutional)': '#8b5cf6',
+  'LEO constellations': '#06b6d4',
+  'Government civil': '#8b5cf6',
   'Defense / national security': '#ec4899',
-  'GEO comsat (single large satellites)': '#f59e0b',
-  'Human spaceflight + station cargo/logistics': '#10b981',
-  'Lunar / cislunar / exploration logistics': '#6366f1',
-  'Other (tech demos, rideshare misc)': '#94a3b8'
+  'GEO comsat': '#f59e0b',
+  'Human spaceflight': '#10b981',
+  'Lunar / cislunar': '#6366f1',
+  'Other (rideshare, demos)': '#94a3b8'
 }
 
 // Short labels for legend
 const SHORT_LABELS = {
-  'Total market': 'Total Market',
-  'LEO constellations (comms + EO/IoT)': 'LEO Constellations',
-  'Government civil (science + institutional)': 'Gov. Civil',
+  'LEO constellations': 'LEO Constellations',
+  'Government civil': 'Gov. Civil',
   'Defense / national security': 'Defense',
-  'GEO comsat (single large satellites)': 'GEO Comsat',
-  'Human spaceflight + station cargo/logistics': 'Human Spaceflight',
-  'Lunar / cislunar / exploration logistics': 'Lunar/Cislunar',
-  'Other (tech demos, rideshare misc)': 'Other (demos, rideshare)'
+  'GEO comsat': 'GEO Comsat',
+  'Human spaceflight': 'Human Spaceflight',
+  'Lunar / cislunar': 'Lunar/Cislunar',
+  'Other (rideshare, demos)': 'Other'
 }
 
 function CustomTooltip({ active, payload, label, series, selectedMetric }) {
   if (!active || !payload || !payload.length) return null
 
+  const isMass = selectedMetric.includes('Mass')
   const isRevenue = selectedMetric.includes('revenue')
   const total = payload.reduce((sum, p) => sum + (p.value || 0), 0)
   const dataEntry = payload[0]?.payload
 
   // Find source notes for the first series
-  const sourceNote = series[0]?.sourceNotes
-
-  // Calculate YoY growth (simplified)
-  const currentYear = parseInt(label)
-  const prevYear = currentYear - 1
+  const sourceNote = series[0]?.notes
 
   return (
     <div className="custom-tooltip">
       <div className="tooltip-header">
         <span className="tooltip-year">{label}</span>
-        {currentYear >= 2025 && <span className="tooltip-forecast">Forecast</span>}
+        {parseInt(label) >= 2025 && <span className="tooltip-forecast">Forecast</span>}
       </div>
 
       <div className="tooltip-body">
@@ -65,7 +59,9 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
             <span className="tooltip-dot" style={{ background: entry.color }} />
             <span className="tooltip-label">{SHORT_LABELS[entry.dataKey] || entry.dataKey}</span>
             <span className="tooltip-value">
-              {isRevenue ? `$${entry.value?.toFixed(2)}B` : Math.round(entry.value).toLocaleString()}
+              {isMass ? `${Math.round(entry.value).toLocaleString()} t` :
+               isRevenue ? `$${entry.value?.toFixed(2)}B` :
+               Math.round(entry.value).toLocaleString()}
             </span>
           </div>
         ))}
@@ -73,21 +69,33 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
         {payload.length > 1 && (
           <div className="tooltip-total">
             <span>Total</span>
-            <span>{isRevenue ? `$${total.toFixed(2)}B` : Math.round(total).toLocaleString()}</span>
+            <span>
+              {isMass ? `${Math.round(total).toLocaleString()} t` :
+               isRevenue ? `$${total.toFixed(2)}B` :
+               Math.round(total).toLocaleString()}
+            </span>
           </div>
         )}
 
         {dataEntry?._addressableTotal !== undefined && (
           <div className="tooltip-addressable">
             <span>15t Reusable Addressable</span>
-            <span>{isRevenue ? `$${dataEntry._addressableTotal.toFixed(2)}B` : Math.round(dataEntry._addressableTotal).toLocaleString()}</span>
+            <span>
+              {isMass ? `${Math.round(dataEntry._addressableTotal).toLocaleString()} t` :
+               isRevenue ? `$${dataEntry._addressableTotal.toFixed(2)}B` :
+               Math.round(dataEntry._addressableTotal).toLocaleString()}
+            </span>
           </div>
         )}
 
         {dataEntry?._europeTotal !== undefined && !dataEntry?._addressableTotal && (
           <div className="tooltip-europe">
-            <span>Europe Addressable</span>
-            <span>{isRevenue ? `$${dataEntry._europeTotal.toFixed(2)}B` : Math.round(dataEntry._europeTotal).toLocaleString()}</span>
+            <span>Europe</span>
+            <span>
+              {isMass ? `${Math.round(dataEntry._europeTotal).toLocaleString()} t` :
+               isRevenue ? `$${dataEntry._europeTotal.toFixed(2)}B` :
+               Math.round(dataEntry._europeTotal).toLocaleString()}
+            </span>
           </div>
         )}
       </div>
@@ -108,7 +116,7 @@ function CustomLegend({ payload, series }) {
   return (
     <div className="custom-legend">
       {payload.map((entry, idx) => {
-        const fullSourceNote = series.find(s => s.useCase === entry.dataKey)?.sourceNotes
+        const fullSourceNote = series.find(s => s.segment === entry.dataKey)?.notes
         const isHovered = hoveredItem === entry.dataKey
 
         return (
@@ -147,6 +155,7 @@ function MainChart({
   setShowAddressable,
   launcherClass
 }) {
+  const isMass = selectedMetric.includes('Mass')
   const isRevenue = selectedMetric.includes('revenue')
 
   // Filter milestones to visible year range
@@ -155,17 +164,26 @@ function MainChart({
   )
 
   const formatYAxis = (value) => {
+    if (isMass) {
+      return value >= 1000 ? `${(value / 1000).toFixed(1)}K t` : `${value} t`
+    }
     if (isRevenue) {
       return `$${value}B`
     }
     return value >= 1000 ? `${(value / 1000).toFixed(1)}K` : value
   }
 
+  const getChartTitle = () => {
+    if (isMass) return 'Mass to Orbit'
+    if (isRevenue) return 'Derived Launch Revenue'
+    return 'Orbital Launches'
+  }
+
   return (
     <div className="chart-container">
       <div className="chart-header">
         <h2 className="chart-title">
-          {isRevenue ? 'Launch Services Revenue' : 'Orbital Launches'}
+          {getChartTitle()}
           <span className="chart-region">{selectedRegion}</span>
         </h2>
         <div className="chart-controls">
@@ -189,7 +207,7 @@ function MainChart({
           {selectedRegion === 'Global' && !showAddressable && (
             <div className="europe-indicator">
               <span className="europe-indicator-box" />
-              <span>European addressable</span>
+              <span>European share</span>
             </div>
           )}
         </div>
@@ -200,9 +218,9 @@ function MainChart({
           <defs>
             {/* Gradient definitions for area fills */}
             {series.map((s, idx) => (
-              <linearGradient key={s.useCase} id={`gradient-${idx}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={COLORS[s.useCase]} stopOpacity={0.6} />
-                <stop offset="95%" stopColor={COLORS[s.useCase]} stopOpacity={0.1} />
+              <linearGradient key={s.segment} id={`gradient-${idx}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={COLORS[s.segment]} stopOpacity={0.6} />
+                <stop offset="95%" stopColor={COLORS[s.segment]} stopOpacity={0.1} />
               </linearGradient>
             ))}
             {/* Europe opportunity pattern */}
@@ -287,11 +305,11 @@ function MainChart({
           {chartMode === 'area' ? (
             series.map((s, idx) => (
               <Area
-                key={s.useCase}
+                key={s.segment}
                 type="monotone"
-                dataKey={s.useCase}
+                dataKey={s.segment}
                 stackId="main"
-                stroke={COLORS[s.useCase]}
+                stroke={COLORS[s.segment]}
                 fill={`url(#gradient-${idx})`}
                 strokeWidth={2}
               />
@@ -299,13 +317,13 @@ function MainChart({
           ) : (
             series.map((s) => (
               <Line
-                key={s.useCase}
+                key={s.segment}
                 type="monotone"
-                dataKey={s.useCase}
-                stroke={COLORS[s.useCase]}
+                dataKey={s.segment}
+                stroke={COLORS[s.segment]}
                 strokeWidth={2}
                 dot={false}
-                activeDot={{ r: 6, fill: COLORS[s.useCase] }}
+                activeDot={{ r: 6, fill: COLORS[s.segment] }}
               />
             ))
           )}

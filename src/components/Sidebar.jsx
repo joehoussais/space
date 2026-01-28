@@ -1,52 +1,58 @@
-import { useState } from 'react'
 import './Sidebar.css'
 
-// Use case short labels for display
-const useCaseLabels = {
-  'Total market': 'Total Market',
-  'LEO constellations (comms + EO/IoT)': 'LEO Constellations',
-  'Government civil (science + institutional)': 'Gov. Civil',
+// Segment short labels for display
+const segmentLabels = {
+  'LEO constellations': 'LEO Constellations',
+  'Government civil': 'Gov. Civil',
   'Defense / national security': 'Defense',
-  'GEO comsat (single large satellites)': 'GEO Comsat',
-  'Human spaceflight + station cargo/logistics': 'Human Spaceflight',
-  'Lunar / cislunar / exploration logistics': 'Lunar/Cislunar',
-  'Other (tech demos, rideshare misc)': 'Other (demos, rideshare)'
+  'GEO comsat': 'GEO Comsat',
+  'Human spaceflight': 'Human Spaceflight',
+  'Lunar / cislunar': 'Lunar/Cislunar',
+  'Other (rideshare, demos)': 'Other'
+}
+
+// Region icons
+const regionIcons = {
+  'Global': '🌍',
+  'Europe': '🇪🇺',
+  'Western-aligned': '🌐'
 }
 
 function Sidebar({
   metrics,
-  useCases,
+  segments,
   regions,
   years,
   selectedMetric,
   setSelectedMetric,
-  selectedUseCases,
-  setSelectedUseCases,
+  selectedSegments,
+  setSelectedSegments,
   selectedRegion,
   setSelectedRegion,
   yearRange,
   setYearRange,
   chartMode,
-  setChartMode
+  setChartMode,
+  priceMultiplier,
+  setPriceMultiplier
 }) {
-  const minYear = parseInt(years[0])
-  const maxYear = parseInt(years[years.length - 1])
-
-  const handleUseCaseToggle = (useCase) => {
-    if (selectedUseCases.includes(useCase)) {
+  const handleSegmentToggle = (segment) => {
+    if (selectedSegments.includes(segment)) {
       // Don't allow deselecting the last one
-      if (selectedUseCases.length > 1) {
-        setSelectedUseCases(selectedUseCases.filter(u => u !== useCase))
+      if (selectedSegments.length > 1) {
+        setSelectedSegments(selectedSegments.filter(s => s !== segment))
       }
     } else {
-      // If selecting Total market, deselect others; if selecting others, deselect Total
-      if (useCase === 'Total market') {
-        setSelectedUseCases(['Total market'])
-      } else {
-        const newSelection = selectedUseCases.filter(u => u !== 'Total market')
-        setSelectedUseCases([...newSelection, useCase])
-      }
+      setSelectedSegments([...selectedSegments, segment])
     }
+  }
+
+  const selectAllSegments = () => {
+    setSelectedSegments([...segments])
+  }
+
+  const clearToOneSegment = () => {
+    setSelectedSegments([segments[0]])
   }
 
   return (
@@ -60,49 +66,93 @@ function Sidebar({
 
       <div className="filter-section">
         <h3 className="filter-title">Metric</h3>
-        <div className="metric-buttons">
+        <div className="metric-buttons-vertical">
           {metrics.map(metric => (
             <button
               key={metric}
               className={`metric-btn ${selectedMetric === metric ? 'active' : ''}`}
               onClick={() => setSelectedMetric(metric)}
             >
-              {metric.includes('revenue') ? '💰 Revenue' : '🚀 Launches'}
+              {metric.includes('Mass') && '⚖️ '}
+              {metric.includes('launches') && '🚀 '}
+              {metric.includes('revenue') && '💰 '}
+              {metric.includes('Mass') ? 'Mass (tonnes)' :
+               metric.includes('launches') ? 'Launches' :
+               'Revenue ($B)'}
             </button>
           ))}
         </div>
       </div>
 
+      {/* Price Multiplier - only show for revenue */}
+      {selectedMetric === 'Derived revenue (USD, $B)' && (
+        <div className="filter-section">
+          <h3 className="filter-title">$/kg Adjustment</h3>
+          <div className="price-multiplier-control">
+            <input
+              type="range"
+              min="0.5"
+              max="2.0"
+              step="0.1"
+              value={priceMultiplier}
+              onChange={(e) => setPriceMultiplier(parseFloat(e.target.value))}
+              className="price-slider"
+            />
+            <div className="price-multiplier-value">
+              {priceMultiplier.toFixed(1)}x default
+            </div>
+            <p className="filter-hint">
+              Adjust $/kg assumptions. 1.0x uses industry estimates. Lower = Starship disruption scenario.
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="filter-section">
-        <h3 className="filter-title">Use Cases</h3>
-        <div className="use-case-list">
-          {useCases.map(useCase => (
-            <label key={useCase} className="use-case-item">
+        <h3 className="filter-title">
+          Segments
+          <span className="segment-actions">
+            <button className="segment-action-btn" onClick={selectAllSegments} title="Select all">All</button>
+            <button className="segment-action-btn" onClick={clearToOneSegment} title="Clear to one">Clear</button>
+          </span>
+        </h3>
+        <div className="segment-list">
+          {segments.map(segment => (
+            <label key={segment} className="segment-item">
               <input
                 type="checkbox"
-                checked={selectedUseCases.includes(useCase)}
-                onChange={() => handleUseCaseToggle(useCase)}
+                checked={selectedSegments.includes(segment)}
+                onChange={() => handleSegmentToggle(segment)}
               />
               <span className="checkbox-custom"></span>
-              <span className="use-case-label">{useCaseLabels[useCase] || useCase}</span>
+              <span className="segment-label">{segmentLabels[segment] || segment}</span>
             </label>
           ))}
         </div>
+        <p className="filter-hint">
+          Total = sum of selected segments. No separate "Total market" - it's calculated.
+        </p>
       </div>
 
       <div className="filter-section">
         <h3 className="filter-title">Region</h3>
-        <div className="region-buttons">
+        <div className="region-buttons three-way">
           {regions.map(region => (
             <button
               key={region}
               className={`region-btn ${selectedRegion === region ? 'active' : ''}`}
               onClick={() => setSelectedRegion(region)}
+              title={region === 'Western-aligned' ? 'Excluding Russia & China' : ''}
             >
-              {region === 'Global' ? '🌍' : '🇪🇺'} {region}
+              {regionIcons[region]} {region === 'Western-aligned' ? 'Western' : region}
             </button>
           ))}
         </div>
+        {selectedRegion === 'Western-aligned' && (
+          <p className="filter-hint">
+            Global excluding Russia & China (~65% of mass, ~69% of launches)
+          </p>
+        )}
       </div>
 
       <div className="filter-section">
@@ -166,7 +216,7 @@ function Sidebar({
 
       <div className="sidebar-footer">
         <p className="footer-text">Data: 2020-2035 forecast</p>
-        <p className="footer-text">Multiple industry sources</p>
+        <p className="footer-text">Sources: BryceTech, Space Foundation, ESA</p>
       </div>
     </aside>
   )

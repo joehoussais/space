@@ -2,29 +2,38 @@ import './DataTable.css'
 
 // Short labels for table headers
 const SHORT_LABELS = {
-  'Total market': 'Total Market',
-  'LEO constellations (comms + EO/IoT)': 'LEO Const.',
-  'Government civil (science + institutional)': 'Gov. Civil',
+  'LEO constellations': 'LEO Const.',
+  'Government civil': 'Gov. Civil',
   'Defense / national security': 'Defense',
-  'GEO comsat (single large satellites)': 'GEO Comsat',
-  'Human spaceflight + station cargo/logistics': 'Human SF',
-  'Lunar / cislunar / exploration logistics': 'Lunar',
-  'Other (tech demos, rideshare misc)': 'Other'
+  'GEO comsat': 'GEO Comsat',
+  'Human spaceflight': 'Human SF',
+  'Lunar / cislunar': 'Lunar',
+  'Other (rideshare, demos)': 'Other'
 }
 
 function DataTable({ data, series, selectedMetric }) {
+  const isMass = selectedMetric.includes('Mass')
   const isRevenue = selectedMetric.includes('revenue')
 
   const formatValue = (value) => {
     if (value === undefined || value === null) return '—'
+    if (isMass) {
+      return `${Math.round(value).toLocaleString()} t`
+    }
     if (isRevenue) {
       return `$${value.toFixed(2)}B`
     }
     return Math.round(value).toLocaleString()
   }
 
+  const getMetricLabel = () => {
+    if (isMass) return 'Mass to Orbit (tonnes)'
+    if (isRevenue) return 'Derived Revenue ($B)'
+    return 'Launch Count'
+  }
+
   // Get column headers from series
-  const columns = series.map(s => s.useCase)
+  const columns = series.map(s => s.segment)
 
   // Calculate totals if multiple series
   const showTotal = series.length > 1
@@ -33,9 +42,7 @@ function DataTable({ data, series, selectedMetric }) {
     <div className="data-table-container">
       <div className="table-header">
         <h3 className="table-title">Data Table</h3>
-        <span className="table-metric">
-          {isRevenue ? 'Revenue (USD Billions)' : 'Launch Count'}
-        </span>
+        <span className="table-metric">{getMetricLabel()}</span>
       </div>
 
       <div className="table-wrapper">

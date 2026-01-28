@@ -132,3 +132,107 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* New methodology styles */
+.sources-intro h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #38bdf8;
+  margin: 0 0 12px 0;
+}
+
+.source-notes-main {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.methodology-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(99, 179, 237, 0.08);
+}
+
+.methodology-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0 0 12px 0;
+}
+
+.methodology-section p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pricing-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+}
+
+.pricing-note .note-icon {
+  font-size: 14px;
+}
+
+.pricing-note span:last-child {
+  font-size: 12px;
+  color: #7dd3fc;
+}
+
+.segment-definitions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.segment-definition {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 6px;
+}
+
+.segment-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.segment-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.methodology-caveat {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #fcd34d;
+}
+
+.caveat-icon {
+  font-size: 14px;
+}
+
+.transparency-note {
+  margin-top: 8px !important;
+  font-style: italic;
+}
