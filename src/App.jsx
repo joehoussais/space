@@ -21,6 +21,16 @@ function MarketOverviewPage() {
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
   const [showAddressable, setShowAddressable] = useState(false)
   const [priceMultiplier, setPriceMultiplier] = useState(1.0) // User can adjust $/kg assumptions
+  const [orbitMultipliers, setOrbitMultipliers] = useState(() => {
+    // Initialize from marketData defaults
+    const defaults = {}
+    if (marketData.orbitConversion?.factors) {
+      Object.entries(marketData.orbitConversion.factors).forEach(([segment, data]) => {
+        defaults[segment] = data.multiplier
+      })
+    }
+    return defaults
+  })
 
   // Get launcher class data
   const launcherClass = marketData.launcherClasses?.['15t-reusable'] || null
@@ -31,6 +41,13 @@ function MarketOverviewPage() {
       const regionData = marketData.massData[region]
       if (!regionData || !regionData[segment]) return 0
       return regionData[segment].values[year] || 0
+    } else if (metric === 'LEO-equivalent mass (tonnes)') {
+      // LEO-equivalent = raw mass × orbit conversion factor (user-adjustable)
+      const regionData = marketData.massData[region]
+      if (!regionData || !regionData[segment]) return 0
+      const mass = regionData[segment].values[year] || 0
+      const factor = orbitMultipliers[segment] || 1.0
+      return mass * factor
     } else if (metric === 'Orbital launches (count)') {
       const regionData = marketData.launchData[region]
       if (!regionData || !regionData[segment]) return 0
@@ -101,7 +118,7 @@ function MarketOverviewPage() {
     }
 
     return { years, series, europeData }
-  }, [selectedMetric, selectedSegments, selectedRegion, yearRange, priceMultiplier])
+  }, [selectedMetric, selectedSegments, selectedRegion, yearRange, priceMultiplier, orbitMultipliers])
 
   // Chart data formatted for Recharts
   const chartData = useMemo(() => {
@@ -214,6 +231,10 @@ function MarketOverviewPage() {
         setChartMode={setChartMode}
         priceMultiplier={priceMultiplier}
         setPriceMultiplier={setPriceMultiplier}
+        orbitMultipliers={orbitMultipliers}
+        setOrbitMultipliers={setOrbitMultipliers}
+        orbitConversionData={marketData.orbitConversion}
+        selectedMetric={selectedMetric}
       />
       <main className="main-content">
         <header className="header">

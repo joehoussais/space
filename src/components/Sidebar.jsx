@@ -18,6 +18,17 @@ const regionIcons = {
   'Western-aligned': '🌐'
 }
 
+// Short labels for orbit conversion display
+const orbitLabels = {
+  'LEO constellations': 'LEO Const.',
+  'Government civil': 'Gov. Civil',
+  'Defense / national security': 'Defense',
+  'GEO comsat': 'GEO',
+  'Human spaceflight': 'Human',
+  'Lunar / cislunar': 'Lunar',
+  'Other (rideshare, demos)': 'Other'
+}
+
 function Sidebar({
   metrics,
   segments,
@@ -34,7 +45,10 @@ function Sidebar({
   chartMode,
   setChartMode,
   priceMultiplier,
-  setPriceMultiplier
+  setPriceMultiplier,
+  orbitMultipliers,
+  setOrbitMultipliers,
+  orbitConversionData
 }) {
   const handleSegmentToggle = (segment) => {
     if (selectedSegments.includes(segment)) {
@@ -73,12 +87,10 @@ function Sidebar({
               className={`metric-btn ${selectedMetric === metric ? 'active' : ''}`}
               onClick={() => setSelectedMetric(metric)}
             >
-              {metric.includes('Mass') && '⚖️ '}
-              {metric.includes('launches') && '🚀 '}
-              {metric.includes('revenue') && '💰 '}
-              {metric.includes('Mass') ? 'Mass (tonnes)' :
-               metric.includes('launches') ? 'Launches' :
-               'Revenue ($B)'}
+              {metric === 'Mass to orbit (tonnes)' && '⚖️ Mass (tonnes)'}
+              {metric === 'LEO-equivalent mass (tonnes)' && '🎯 LEO-equiv (tonnes)'}
+              {metric.includes('launches') && '🚀 Launches'}
+              {metric.includes('revenue') && '💰 Revenue ($B)'}
             </button>
           ))}
         </div>
@@ -105,6 +117,44 @@ function Sidebar({
               Adjust $/kg assumptions. 1.0x uses industry estimates. Lower = Starship disruption scenario.
             </p>
           </div>
+        </div>
+      )}
+
+      {/* Orbit Conversion Multipliers - only show for LEO-equivalent */}
+      {selectedMetric === 'LEO-equivalent mass (tonnes)' && orbitConversionData && (
+        <div className="filter-section">
+          <h3 className="filter-title">
+            Orbit Multipliers
+            <span className="info-tooltip" title={orbitConversionData.description}>ℹ️</span>
+          </h3>
+          <div className="orbit-multipliers-grid">
+            {Object.entries(orbitConversionData.factors)
+              .filter(([segment]) => orbitMultipliers[segment] !== 1.0 || segment === 'GEO comsat' || segment === 'Lunar / cislunar')
+              .map(([segment, data]) => (
+                <div key={segment} className="orbit-multiplier-item">
+                  <div className="orbit-multiplier-header">
+                    <span className="orbit-segment-label">{orbitLabels[segment]}</span>
+                    <span className="orbit-value">{orbitMultipliers[segment]?.toFixed(1)}x</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1.0"
+                    max="5.0"
+                    step="0.1"
+                    value={orbitMultipliers[segment] || data.multiplier}
+                    onChange={(e) => setOrbitMultipliers(prev => ({
+                      ...prev,
+                      [segment]: parseFloat(e.target.value)
+                    }))}
+                    className="orbit-slider"
+                  />
+                  <span className="orbit-type-hint">{data.orbit}</span>
+                </div>
+              ))}
+          </div>
+          <p className="filter-hint">
+            Adjust based on your launcher's LEO:GTO ratio. Default 2.2x for GEO matches Falcon Heavy.
+          </p>
         </div>
       )}
 

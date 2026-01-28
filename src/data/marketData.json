@@ -7,6 +7,7 @@
   "dataMode": "mass",
   "metrics": [
     "Mass to orbit (tonnes)",
+    "LEO-equivalent mass (tonnes)",
     "Orbital launches (count)",
     "Derived revenue (USD, $B)"
   ],
@@ -366,6 +367,19 @@
     { "year": 2027, "label": "IRIS² Deployment Begins", "type": "europe" },
     { "year": 2028, "label": "Artemis III (Moon Landing)", "type": "global" }
   ],
+  "orbitConversion": {
+    "description": "LEO-equivalent conversion factors based on delta-v requirements. Validated by real launcher data: Falcon Heavy (2.4:1 LEO:GTO), Delta IV Heavy (2:1). User can adjust to model their specific launcher.",
+    "factors": {
+      "LEO constellations": { "multiplier": 1.0, "orbit": "LEO", "notes": "Already LEO - no conversion needed" },
+      "Government civil": { "multiplier": 1.1, "orbit": "Mixed", "notes": "~90% LEO/SSO, ~10% GTO missions" },
+      "Defense / national security": { "multiplier": 1.0, "orbit": "LEO", "notes": "Modern proliferated LEO architectures (SDA)" },
+      "GEO comsat": { "multiplier": 2.2, "orbit": "GTO→GEO", "notes": "GTO requires ~2.2x LEO capacity (delta-v: +2.3 km/s)" },
+      "Human spaceflight": { "multiplier": 1.0, "orbit": "LEO", "notes": "ISS, Tiangong, future stations all LEO" },
+      "Lunar / cislunar": { "multiplier": 3.0, "orbit": "TLI", "notes": "TLI requires ~3x LEO capacity (delta-v: +3.1 km/s from LEO)" },
+      "Other (rideshare, demos)": { "multiplier": 1.2, "orbit": "Mixed", "notes": "Mostly LEO rideshare with occasional GTO secondaries" }
+    },
+    "userAdjustable": true
+  },
   "forecastStartYear": 2025,
   "dataMethodology": {
     "massEstimation": "Mass data is primary. Revenue is derived by multiplying mass × $/kg. This provides transparency vs opaque revenue figures.",

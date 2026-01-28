@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useData } from '../context/DataContext'
 import ConstellationSourcesPanel from '../components/ConstellationSourcesPanel'
+import ConstellationTimeline from '../components/ConstellationTimeline'
 import './ConstellationsPage.css'
 
 // Country flag emoji mapping
@@ -469,6 +470,8 @@ function ConstellationsPage() {
   } = useData()
 
   const [selectedConstellation, setSelectedConstellation] = useState(null)
+  const [viewMode, setViewMode] = useState('cards') // 'cards' or 'timeline'
+  const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState({
     status: 'all',
     type: 'all',
@@ -487,6 +490,16 @@ function ConstellationsPage() {
 
   const filteredConstellations = useMemo(() => {
     let result = [...constellationsData.constellations]
+
+    // Search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      result = result.filter(c =>
+        c.name.toLowerCase().includes(query) ||
+        c.operator.toLowerCase().includes(query) ||
+        (c.type && c.type.toLowerCase().includes(query))
+      )
+    }
 
     if (filters.status !== 'all') {
       result = result.filter(c => c.status === filters.status)
@@ -511,7 +524,7 @@ function ConstellationsPage() {
     })
 
     return result
-  }, [constellationsData.constellations, filters, sortBy])
+  }, [constellationsData.constellations, filters, searchQuery, sortBy])
 
   const uniqueTypes = [...new Set(constellationsData.constellations.map(c => c.type))]
   const uniqueOrbits = [...new Set(constellationsData.constellations.map(c => c.orbitType))]
@@ -538,25 +551,79 @@ function ConstellationsPage() {
             Comprehensive overview of major satellite constellation initiatives worldwide
           </p>
         </div>
-        <div className="header-stats">
-          <div className="header-stat">
-            <span className="header-stat-value">{constellationsData.constellations.length}</span>
-            <span className="header-stat-label">Constellations</span>
+        <div className="header-actions">
+          <div className="view-toggle">
+            <button
+              className={`view-toggle-btn ${viewMode === 'cards' ? 'active' : ''}`}
+              onClick={() => setViewMode('cards')}
+              title="Card View"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <rect x="1" y="1" width="6" height="6" rx="1" />
+                <rect x="9" y="1" width="6" height="6" rx="1" />
+                <rect x="1" y="9" width="6" height="6" rx="1" />
+                <rect x="9" y="9" width="6" height="6" rx="1" />
+              </svg>
+              Cards
+            </button>
+            <button
+              className={`view-toggle-btn ${viewMode === 'timeline' ? 'active' : ''}`}
+              onClick={() => setViewMode('timeline')}
+              title="Timeline View"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <rect x="1" y="2" width="10" height="3" rx="1" />
+                <rect x="3" y="7" width="12" height="3" rx="1" />
+                <rect x="2" y="12" width="8" height="3" rx="1" />
+              </svg>
+              Timeline
+            </button>
           </div>
-          <div className="header-stat">
-            <span className="header-stat-value">{totalDeployed.toLocaleString()}</span>
-            <span className="header-stat-label">Deployed</span>
-          </div>
-          <div className="header-stat">
-            <span className="header-stat-value">{totalPlanned.toLocaleString()}</span>
-            <span className="header-stat-label">Planned</span>
+          <div className="header-stats">
+            <div className="header-stat">
+              <span className="header-stat-value">{constellationsData.constellations.length}</span>
+              <span className="header-stat-label">Constellations</span>
+            </div>
+            <div className="header-stat">
+              <span className="header-stat-value">{totalDeployed.toLocaleString()}</span>
+              <span className="header-stat-label">Deployed</span>
+            </div>
+            <div className="header-stat">
+              <span className="header-stat-value">{totalPlanned.toLocaleString()}</span>
+              <span className="header-stat-label">Planned</span>
+            </div>
           </div>
         </div>
       </div>
 
       <ConstellationSourcesPanel dataSources={constellationsData.dataSources} />
 
+      {viewMode === 'timeline' ? (
+        <ConstellationTimeline
+          constellations={constellationsData.constellations}
+          constellationTypes={constellationTypes}
+        />
+      ) : (
+        <>
       <div className="filters-bar">
+        <div className="filter-group search-group">
+          <label>Search</label>
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search constellations..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="search-clear" onClick={() => setSearchQuery('')}>
+                &times;
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="filter-group">
           <label>Status</label>
           <select
@@ -654,6 +721,8 @@ function ConstellationsPage() {
         <div className="no-results">
           No constellations match the selected filters.
         </div>
+      )}
+        </>
       )}
 
       {selectedConstellation && (

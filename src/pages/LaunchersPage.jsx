@@ -372,6 +372,7 @@ function LauncherDetail({ launcher, onClose, getConstellationsForLauncher, engin
 function LaunchersPage() {
   const { launchersData, getConstellationsForLauncher, engineTypes, countries } = useData()
   const [selectedLauncher, setSelectedLauncher] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState({
     status: 'all',
     country: 'all',
@@ -381,6 +382,15 @@ function LaunchersPage() {
 
   const filteredLaunchers = useMemo(() => {
     let result = [...launchersData.launchers]
+
+    // Search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      result = result.filter(l =>
+        l.name.toLowerCase().includes(query) ||
+        l.company.toLowerCase().includes(query)
+      )
+    }
 
     // Apply filters
     if (filters.status !== 'all') {
@@ -401,7 +411,7 @@ function LaunchersPage() {
     })
 
     return result
-  }, [launchersData.launchers, filters, sortBy])
+  }, [launchersData.launchers, filters, searchQuery, sortBy])
 
   const uniqueCountries = [...new Set(launchersData.launchers.map(l => l.countryCode))]
 
@@ -435,6 +445,24 @@ function LaunchersPage() {
       </div>
 
       <div className="filters-bar">
+        <div className="filter-group search-group">
+          <label>Search</label>
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search launchers..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="search-clear" onClick={() => setSearchQuery('')}>
+                &times;
+              </button>
+            )}
+          </div>
+        </div>
+
         <div className="filter-group">
           <label>Status</label>
           <select

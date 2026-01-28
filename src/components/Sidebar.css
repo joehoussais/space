@@ -594,3 +594,88 @@
   font-weight: 600;
   color: #38bdf8;
 }
+
+/* Orbit Multiplier Controls */
+.orbit-multipliers-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.orbit-multiplier-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+}
+
+.orbit-multiplier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orbit-segment-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.orbit-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #6366f1;
+  font-variant-numeric: tabular-nums;
+}
+
+.orbit-slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(30, 41, 59, 0.8);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 4px 0;
+}
+
+.orbit-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.orbit-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.orbit-type-hint {
+  font-size: 10px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.info-tooltip {
+  cursor: help;
+  font-size: 12px;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+.info-tooltip:hover {
+  opacity: 1;
+}

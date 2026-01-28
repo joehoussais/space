@@ -30,6 +30,57 @@
   color: #64748b;
 }
 
+/* Header actions */
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+/* View toggle */
+.view-toggle {
+  display: flex;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-toggle-btn:hover {
+  color: #94a3b8;
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.view-toggle-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.view-toggle-btn svg {
+  opacity: 0.8;
+}
+
+.view-toggle-btn.active svg {
+  opacity: 1;
+}
+
 .header-stats {
   display: flex;
   gap: 24px;
@@ -100,6 +151,58 @@
 .filter-group select:focus {
   outline: none;
   border-color: #38bdf8;
+}
+
+/* Search input */
+.search-group {
+  flex: 1;
+  max-width: 280px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 13px;
+}
+
+.search-input::placeholder {
+  color: #64748b;
+}
+
+.search-input:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.search-clear:hover {
+  color: #94a3b8;
 }
 
 /* Constellation Grid */

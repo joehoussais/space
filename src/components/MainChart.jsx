@@ -38,7 +38,8 @@ const SHORT_LABELS = {
 function CustomTooltip({ active, payload, label, series, selectedMetric }) {
   if (!active || !payload || !payload.length) return null
 
-  const isMass = selectedMetric.includes('Mass')
+  const isMass = selectedMetric.includes('Mass') || selectedMetric.includes('LEO-equivalent')
+  const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
   const isRevenue = selectedMetric.includes('revenue')
   const total = payload.reduce((sum, p) => sum + (p.value || 0), 0)
   const dataEntry = payload[0]?.payload
@@ -59,7 +60,8 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
             <span className="tooltip-dot" style={{ background: entry.color }} />
             <span className="tooltip-label">{SHORT_LABELS[entry.dataKey] || entry.dataKey}</span>
             <span className="tooltip-value">
-              {isMass ? `${Math.round(entry.value).toLocaleString()} t` :
+              {isLeoEquiv ? `${Math.round(entry.value).toLocaleString()} t LEO-eq` :
+               isMass ? `${Math.round(entry.value).toLocaleString()} t` :
                isRevenue ? `$${entry.value?.toFixed(2)}B` :
                Math.round(entry.value).toLocaleString()}
             </span>
@@ -70,7 +72,8 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
           <div className="tooltip-total">
             <span>Total</span>
             <span>
-              {isMass ? `${Math.round(total).toLocaleString()} t` :
+              {isLeoEquiv ? `${Math.round(total).toLocaleString()} t LEO-eq` :
+               isMass ? `${Math.round(total).toLocaleString()} t` :
                isRevenue ? `$${total.toFixed(2)}B` :
                Math.round(total).toLocaleString()}
             </span>
@@ -164,7 +167,7 @@ function MainChart({
   )
 
   const formatYAxis = (value) => {
-    if (isMass) {
+    if (isMass || isLeoEquiv) {
       return value >= 1000 ? `${(value / 1000).toFixed(1)}K t` : `${value} t`
     }
     if (isRevenue) {
@@ -173,7 +176,10 @@ function MainChart({
     return value >= 1000 ? `${(value / 1000).toFixed(1)}K` : value
   }
 
+  const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
+
   const getChartTitle = () => {
+    if (isLeoEquiv) return 'LEO-Equivalent Mass'
     if (isMass) return 'Mass to Orbit'
     if (isRevenue) return 'Derived Launch Revenue'
     return 'Orbital Launches'
