@@ -852,6 +852,16 @@ function SatellitesPage() {
         )}
       </div>
 
+      {/* Data Methodology Caveat */}
+      {satellitesData.dataMethodology?.generalCaveat && (
+        <div className="methodology-caveat">
+          <div className="caveat-icon">ℹ</div>
+          <div className="caveat-content">
+            <strong>Data Note:</strong> {satellitesData.dataMethodology.generalCaveat}
+          </div>
+        </div>
+      )}
+
       {/* Key Insights */}
       <div className="insights-section">
         <h2>Market Opportunity Insights</h2>

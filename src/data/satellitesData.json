@@ -1889,6 +1889,7 @@
   ],
   "forecastStartYear": 2025,
   "dataMethodology": {
+    "generalCaveat": "Category totals may not match across different groupings. This reflects the nature of market analysis: a satellite or revenue stream can belong to multiple categories simultaneously. For example, IRIS2 contributes to Communications, Government, and IoT markets. Different research firms also use varying definitions and scope boundaries, leading to natural variance in reported figures.",
     "sizeClass": {
       "description": "Physical satellite count by mass category. Each satellite counted once.",
       "sumEqualsTotal": true
