@@ -121,7 +121,7 @@ function CustomLegend({ payload, series }) {
           >
             <span className="legend-dot" style={{ background: entry.color }} />
             <span className="legend-label">{SHORT_LABELS[entry.dataKey] || entry.dataKey}</span>
-            {fullSourceNote && <span className="legend-info">ℹ️</span>}
+            {fullSourceNote && <svg className="legend-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>}
 
             {isHovered && fullSourceNote && (
               <div className="legend-tooltip">

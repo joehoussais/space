@@ -63,17 +63,17 @@ function SatellitesSidebar({
               className={`category-btn ${categoryType === cat ? 'active' : ''}`}
               onClick={() => setCategoryType(cat)}
             >
-              {cat === 'sizeClass' && '📏 '}
-              {cat === 'application' && '🎯 '}
-              {cat === 'operatorType' && '🏢 '}
-              {cat === 'orbitType' && '🛰️ '}
+              {cat === 'sizeClass' && <svg className="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 6H3M21 12H9M21 18H7"/></svg>}
+              {cat === 'application' && <svg className="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>}
+              {cat === 'operatorType' && <svg className="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17v-6M15 17v-6"/></svg>}
+              {cat === 'orbitType' && <svg className="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/><path d="m4.93 4.93 1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>}
               {categoryLabels[cat]}
             </button>
           ))}
         </div>
         {categoryType === 'application' && (
           <p className="filter-hint methodology-note">
-            <span className="info-icon">ℹ️</span>
+            <svg className="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
             Multi-purpose satellites counted in each application served. Totals may exceed physical count.
           </p>
         )}

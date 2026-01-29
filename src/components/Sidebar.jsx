@@ -40,7 +40,7 @@ function OrbitExplainer({ orbitConversionData }) {
         onClick={() => setExpanded(!expanded)}
       >
         <div className="orbit-explainer-banner-top">
-          <span className="orbit-explainer-banner-icon">🎯</span>
+          <svg className="orbit-explainer-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           <span className="orbit-explainer-banner-text">
             Mass normalized to LEO-equivalent
           </span>
@@ -133,7 +133,7 @@ function Sidebar({
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="logo">
-          <span className="logo-icon">🚀</span>
+          <svg className="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
           <span className="logo-text">Launch Market</span>
         </div>
       </div>
@@ -147,10 +147,10 @@ function Sidebar({
               className={`metric-btn ${selectedMetric === metric ? 'active' : ''}`}
               onClick={() => setSelectedMetric(metric)}
             >
-              {metric === 'Mass to orbit (tonnes)' && '⚖️ Mass (tonnes)'}
-              {metric === 'LEO-equivalent mass (tonnes)' && '🎯 LEO-equiv (tonnes)'}
-              {metric.includes('launches') && '🚀 Launches'}
-              {metric.includes('revenue') && '💰 Revenue ($B)'}
+              {metric === 'Mass to orbit (tonnes)' && <><svg className="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3v17M5 8l7-5 7 5M5 16l7 5 7-5"/></svg> Mass (tonnes)</>}
+              {metric === 'LEO-equivalent mass (tonnes)' && <><svg className="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> LEO-equiv (tonnes)</>}
+              {metric.includes('launches') && <><svg className="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg> Launches</>}
+              {metric.includes('revenue') && <><svg className="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Revenue ($B)</>}
             </button>
           ))}
         </div>
