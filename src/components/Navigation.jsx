@@ -20,25 +20,28 @@ const tabGroups = [
 function Navigation({ currentPage, setCurrentPage }) {
   return (
     <nav className="navigation">
-      <div className="nav-tabs">
-        {tabGroups.map((group, groupIdx) => (
-          <div key={group.label} className="nav-group">
-            <span className="nav-group-label">{group.label}</span>
-            <div className="nav-group-tabs">
-              {group.tabs.map(tab => (
-                <button
-                  key={tab.id}
-                  className={`nav-tab ${currentPage === tab.id ? 'active' : ''}`}
-                  onClick={() => setCurrentPage(tab.id)}
-                >
-                  <span className={`nav-icon nav-icon-${tab.icon}`}></span>
-                  <span className="nav-label">{tab.label}</span>
-                </button>
-              ))}
+      <div className="nav-content">
+        <div className="nav-tabs">
+          {tabGroups.map((group, groupIdx) => (
+            <div key={group.label} className="nav-group">
+              <span className="nav-group-label">{group.label}</span>
+              <div className="nav-group-tabs">
+                {group.tabs.map(tab => (
+                  <button
+                    key={tab.id}
+                    className={`nav-tab ${currentPage === tab.id ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(tab.id)}
+                  >
+                    <span className={`nav-icon nav-icon-${tab.icon}`}></span>
+                    <span className="nav-label">{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+              {groupIdx < tabGroups.length - 1 && <div className="nav-group-separator" />}
             </div>
-            {groupIdx < tabGroups.length - 1 && <div className="nav-group-separator" />}
-          </div>
-        ))}
+          ))}
+        </div>
+        <img src="/rrw-logo.png" alt="Red River West" className="nav-logo" />
       </div>
     </nav>
   )

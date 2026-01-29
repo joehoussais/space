@@ -8,6 +8,18 @@
   z-index: 100;
 }
 
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+}
+
+.nav-logo {
+  height: 28px;
+  opacity: 0.9;
+}
+
 .nav-tabs {
   display: flex;
   gap: 0;
@@ -129,6 +141,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .nav-logo {
+    height: 24px;
+  }
+}
+
 @media (max-width: 600px) {
   .navigation {
     padding: 0 16px;
@@ -150,6 +168,10 @@
 
   .nav-group-separator {
     margin: 0 4px;
+    height: 20px;
+  }
+
+  .nav-logo {
     height: 20px;
   }
 }
