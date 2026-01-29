@@ -22,45 +22,49 @@
 
 .nav-tabs {
   display: flex;
-  gap: 0;
-  max-width: 1400px;
-  align-items: stretch;
+  gap: 20px;
+  align-items: flex-start;
 }
 
-.nav-group {
+.nav-group-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: 4px;
+}
+
+.nav-group-box {
+  display: flex;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .nav-group-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: #64748b;
-  padding: 0 12px;
   white-space: nowrap;
 }
 
-.nav-group-tabs {
-  display: flex;
-  gap: 4px;
-}
-
-.nav-group-separator {
+.nav-tab-divider {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 1px;
-  height: 24px;
+  height: 60%;
   background: rgba(56, 189, 248, 0.2);
-  margin: 0 16px;
-  align-self: center;
 }
 
 .nav-tab {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 24px;
+  padding: 12px 20px;
   background: transparent;
   border: none;
   color: #94a3b8;
@@ -69,17 +73,16 @@
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
-  border-bottom: 2px solid transparent;
 }
 
 .nav-tab:hover {
   color: #e2e8f0;
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(56, 189, 248, 0.08);
 }
 
 .nav-tab.active {
   color: #38bdf8;
-  border-bottom-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
 }
 
 .nav-tab.active .nav-icon {
@@ -136,14 +139,12 @@
     display: none;
   }
 
-  .nav-group-separator {
-    margin: 0 8px;
-  }
-}
-
-@media (max-width: 768px) {
   .nav-logo {
     height: 24px;
+  }
+
+  .nav-tabs {
+    gap: 12px;
   }
 }
 
@@ -153,7 +154,7 @@
   }
 
   .nav-tab {
-    padding: 12px 16px;
+    padding: 10px 12px;
     gap: 6px;
   }
 
@@ -166,12 +167,11 @@
     height: 22px;
   }
 
-  .nav-group-separator {
-    margin: 0 4px;
+  .nav-logo {
     height: 20px;
   }
 
-  .nav-logo {
-    height: 20px;
+  .nav-tabs {
+    gap: 8px;
   }
 }

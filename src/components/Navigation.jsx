@@ -23,10 +23,9 @@ function Navigation({ currentPage, setCurrentPage }) {
       <div className="nav-content">
         <div className="nav-tabs">
           {tabGroups.map((group, groupIdx) => (
-            <div key={group.label} className="nav-group">
-              <span className="nav-group-label">{group.label}</span>
-              <div className="nav-group-tabs">
-                {group.tabs.map(tab => (
+            <div key={group.label} className="nav-group-container">
+              <div className="nav-group-box">
+                {group.tabs.map((tab, tabIdx) => (
                   <button
                     key={tab.id}
                     className={`nav-tab ${currentPage === tab.id ? 'active' : ''}`}
@@ -34,10 +33,11 @@ function Navigation({ currentPage, setCurrentPage }) {
                   >
                     <span className={`nav-icon nav-icon-${tab.icon}`}></span>
                     <span className="nav-label">{tab.label}</span>
+                    {tabIdx < group.tabs.length - 1 && <span className="nav-tab-divider" />}
                   </button>
                 ))}
               </div>
-              {groupIdx < tabGroups.length - 1 && <div className="nav-group-separator" />}
+              <span className="nav-group-label">{group.label}</span>
             </div>
           ))}
         </div>
