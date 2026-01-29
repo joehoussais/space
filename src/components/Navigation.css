@@ -10,8 +10,38 @@
 
 .nav-tabs {
   display: flex;
-  gap: 4px;
+  gap: 0;
   max-width: 1400px;
+  align-items: stretch;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-group-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.nav-group-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-group-separator {
+  width: 1px;
+  height: 24px;
+  background: rgba(56, 189, 248, 0.2);
+  margin: 0 16px;
+  align-self: center;
 }
 
 .nav-tab {
@@ -89,6 +119,16 @@
   font-size: 14px;
 }
 
+@media (max-width: 768px) {
+  .nav-group-label {
+    display: none;
+  }
+
+  .nav-group-separator {
+    margin: 0 8px;
+  }
+}
+
 @media (max-width: 600px) {
   .navigation {
     padding: 0 16px;
@@ -106,5 +146,10 @@
   .nav-icon {
     width: 22px;
     height: 22px;
+  }
+
+  .nav-group-separator {
+    margin: 0 4px;
+    height: 20px;
   }
 }

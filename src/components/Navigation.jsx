@@ -1,25 +1,43 @@
 import './Navigation.css'
 
-const tabs = [
-  { id: 'market', label: 'Market Overview', icon: 'chart' },
-  { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' },
-  { id: 'satellites', label: 'Satellites', icon: 'sat-dish' },
-  { id: 'constellations', label: 'Constellations', icon: 'satellite' }
+const tabGroups = [
+  {
+    label: 'Launch Services',
+    tabs: [
+      { id: 'market', label: 'Market Overview', icon: 'chart' },
+      { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' }
+    ]
+  },
+  {
+    label: 'Satellites & Spacecraft',
+    tabs: [
+      { id: 'satellites', label: 'Satellites', icon: 'sat-dish' },
+      { id: 'constellations', label: 'Constellations', icon: 'satellite' }
+    ]
+  }
 ]
 
 function Navigation({ currentPage, setCurrentPage }) {
   return (
     <nav className="navigation">
       <div className="nav-tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab.id}
-            className={`nav-tab ${currentPage === tab.id ? 'active' : ''}`}
-            onClick={() => setCurrentPage(tab.id)}
-          >
-            <span className={`nav-icon nav-icon-${tab.icon}`}></span>
-            <span className="nav-label">{tab.label}</span>
-          </button>
+        {tabGroups.map((group, groupIdx) => (
+          <div key={group.label} className="nav-group">
+            <span className="nav-group-label">{group.label}</span>
+            <div className="nav-group-tabs">
+              {group.tabs.map(tab => (
+                <button
+                  key={tab.id}
+                  className={`nav-tab ${currentPage === tab.id ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(tab.id)}
+                >
+                  <span className={`nav-icon nav-icon-${tab.icon}`}></span>
+                  <span className="nav-label">{tab.label}</span>
+                </button>
+              ))}
+            </div>
+            {groupIdx < tabGroups.length - 1 && <div className="nav-group-separator" />}
+          </div>
         ))}
       </div>
     </nav>
