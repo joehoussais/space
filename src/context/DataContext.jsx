@@ -3,6 +3,7 @@ import marketData from '../data/marketData.json'
 import launchersData from '../data/launchersData.json'
 import constellationsData from '../data/constellationsData.json'
 import satellitesData from '../data/satellitesData.json'
+import launcherSizingData from '../data/launcherSizingData.json'
 
 const DataContext = createContext(null)
 
@@ -113,6 +114,7 @@ export function DataProvider({ children }) {
     launchersData,
     constellationsData,
     satellitesData,
+    launcherSizingData,
 
     // Lookup maps
     launchersById,

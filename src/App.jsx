@@ -9,6 +9,7 @@ import SourcesPanel from './components/SourcesPanel'
 import LaunchersPage from './pages/LaunchersPage'
 import SatellitesPage from './pages/SatellitesPage'
 import ConstellationsPage from './pages/ConstellationsPage'
+import LauncherSizingPage from './pages/LauncherSizingPage'
 import marketData from './data/marketData.json'
 import './App.css'
 
@@ -272,6 +273,8 @@ function App() {
         return <MarketOverviewPage />
       case 'launchers':
         return <LaunchersPage />
+      case 'launcher-sizing':
+        return <LauncherSizingPage />
       case 'satellites':
         return <SatellitesPage />
       case 'constellations':

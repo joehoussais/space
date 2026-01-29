@@ -380,7 +380,7 @@
     },
     "userAdjustable": false
   },
-  "forecastStartYear": 2025,
+  "forecastStartYear": 2026,
   "dataMethodology": {
     "massEstimation": "Mass data is primary. Revenue is derived by multiplying mass × $/kg. This provides transparency vs opaque revenue figures.",
     "segmentDefinitions": {

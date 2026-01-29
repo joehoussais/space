@@ -5,7 +5,8 @@ const tabGroups = [
     label: 'Launch Services',
     tabs: [
       { id: 'market', label: 'Launch Market', icon: 'chart' },
-      { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' }
+      { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' },
+      { id: 'launcher-sizing', label: 'Launcher Sizing', icon: 'scale' }
     ]
   },
   {
