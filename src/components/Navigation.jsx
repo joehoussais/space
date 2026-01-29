@@ -4,7 +4,7 @@ const tabGroups = [
   {
     label: 'Launch Services',
     tabs: [
-      { id: 'market', label: 'Market Overview', icon: 'chart' },
+      { id: 'market', label: 'Launch Market', icon: 'chart' },
       { id: 'launchers', label: 'Launch Vehicles', icon: 'rocket' }
     ]
   },

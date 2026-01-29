@@ -134,7 +134,7 @@ function Sidebar({
       <div className="sidebar-header">
         <div className="logo">
           <span className="logo-icon">🚀</span>
-          <span className="logo-text">Market Explorer</span>
+          <span className="logo-text">Launch Market</span>
         </div>
       </div>
 
