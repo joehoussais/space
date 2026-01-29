@@ -44,9 +44,6 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
   const total = payload.reduce((sum, p) => sum + (p.value || 0), 0)
   const dataEntry = payload[0]?.payload
 
-  // Find source notes for the first series
-  const sourceNote = series[0]?.notes
-
   return (
     <div className="custom-tooltip">
       <div className="tooltip-header">
@@ -60,7 +57,7 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
             <span className="tooltip-dot" style={{ background: entry.color }} />
             <span className="tooltip-label">{SHORT_LABELS[entry.dataKey] || entry.dataKey}</span>
             <span className="tooltip-value">
-              {isLeoEquiv ? `${Math.round(entry.value).toLocaleString()} t LEO-eq` :
+              {isLeoEquiv ? `${Math.round(entry.value).toLocaleString()} t` :
                isMass ? `${Math.round(entry.value).toLocaleString()} t` :
                isRevenue ? `$${entry.value?.toFixed(2)}B` :
                Math.round(entry.value).toLocaleString()}
@@ -72,7 +69,7 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
           <div className="tooltip-total">
             <span>Total</span>
             <span>
-              {isLeoEquiv ? `${Math.round(total).toLocaleString()} t LEO-eq` :
+              {isLeoEquiv ? `${Math.round(total).toLocaleString()} t` :
                isMass ? `${Math.round(total).toLocaleString()} t` :
                isRevenue ? `$${total.toFixed(2)}B` :
                Math.round(total).toLocaleString()}
@@ -102,13 +99,6 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
           </div>
         )}
       </div>
-
-      {sourceNote && (
-        <div className="tooltip-source">
-          <span className="source-icon">ℹ️</span>
-          <span className="source-text">{sourceNote.substring(0, 120)}...</span>
-        </div>
-      )}
     </div>
   )
 }
