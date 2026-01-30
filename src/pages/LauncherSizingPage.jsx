@@ -18,26 +18,43 @@ import LauncherSizingSidebar from '../components/LauncherSizingSidebar'
 import launcherSizingData from '../data/launcherSizingData.json'
 import './LauncherSizingPage.css'
 
-// Orbit type colors matching the satellites page
+// Orbit type colors
 const ORBIT_COLORS = {
   'LEO': '#38bdf8',
+  'SSO': '#22d3ee',
+  'GTO': '#a78bfa',
   'GEO': '#8b5cf6',
   'MEO': '#f59e0b',
+  'EEO': '#fb923c',
   'HEO': '#10b981',
+  'Helio': '#f472b6',
+  'Lunar': '#6366f1',
+  'Deep Space': '#ec4899',
   'Other': '#94a3b8',
+  'Unknown': '#64748b',
   'All': '#06b6d4'
 }
+
+// Orbit types to show in the filter (in display order)
+const ORBIT_FILTER_ORDER = ['All', 'LEO', 'SSO', 'GTO', 'GEO', 'MEO', 'EEO', 'HEO', 'Helio', 'Lunar', 'Deep Space', 'Other']
 
 // LEO-equivalent multipliers by orbit type
 // A satellite's mass must be multiplied by this factor to determine
 // the required launcher LEO capacity to reach that orbit.
 // e.g. a 6t GEO satellite needs ~13.2t of LEO launch capacity (6 × 2.2)
 const LEO_EQUIV_MULTIPLIERS = {
-  'LEO': 1.0,    // Already LEO
-  'MEO': 1.5,    // MEO requires ~1.5x LEO capacity (delta-v: +1.5 km/s)
-  'GEO': 2.2,    // GTO→GEO requires ~2.2x LEO capacity (delta-v: +2.3 km/s)
-  'HEO': 2.5,    // Highly elliptical orbits, ~2.5x (varies widely: Molniya, GTO transfer stages)
-  'Other': 2.0   // Mix of deep space, cislunar, Lagrange — conservative ~2x average
+  'LEO': 1.0,          // Already LEO — no conversion
+  'SSO': 1.0,          // Sun-synchronous — same energy as LEO (polar inclination)
+  'GTO': 1.8,          // Geostationary Transfer — not yet at GEO, ~1.8x LEO
+  'GEO': 2.2,          // Geostationary — requires ~2.2x LEO capacity
+  'MEO': 1.5,          // Medium Earth Orbit — ~1.5x LEO (GPS, Galileo altitude)
+  'EEO': 2.0,          // Extended Elliptical — ~2.0x LEO
+  'HEO': 2.5,          // Highly Elliptical (Molniya, Tundra) — ~2.5x LEO
+  'Helio': 3.0,        // Heliocentric / Solar orbit — ~3x LEO
+  'Lunar': 3.0,        // Cislunar / Selenocentric — ~3x LEO (TLI delta-v)
+  'Deep Space': 4.0,   // Mars, planetary, deep space — ~4x LEO
+  'Other': 1.5,        // Unknown / mixed — conservative 1.5x
+  'Unknown': 1.0       // No orbit data — assume LEO
 }
 
 // Consolidated mass bins: remove 50-150t, merge heavy categories into "Above 5t"
@@ -349,7 +366,7 @@ function LauncherSizingPage() {
         <div className="orbit-filter-section">
           <h3 className="orbit-filter-title">Orbit Type</h3>
           <div className="orbit-filter-buttons">
-            {['All', 'LEO', 'GEO', 'MEO', 'HEO', 'Other'].map(orbit => (
+            {ORBIT_FILTER_ORDER.filter(o => o === 'All' || (orbitCounts[o] && orbitCounts[o] > 0)).map(orbit => (
               <button
                 key={orbit}
                 className={'orbit-btn' + (selectedOrbit === orbit ? ' active' : '')}

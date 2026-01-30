@@ -146,24 +146,48 @@ function parseMass(massStr) {
 function categorizeOrbit(opOrbit) {
   if (!opOrbit) return 'Unknown';
 
-  const orbit = opOrbit.toUpperCase();
+  const orbit = opOrbit.trim().toUpperCase();
 
-  if (orbit.includes('LEO') || orbit.includes('LLEO') || orbit.includes('SSO')) {
+  // LEO family (multiplier ~1.0)
+  if (orbit.includes('LLEO') || orbit === 'LEO' || orbit.startsWith('LEO/')) {
     return 'LEO';
   }
-  if (orbit.includes('GEO') || orbit.includes('GTO') || orbit.includes('GSO')) {
+  // SSO — Sun-Synchronous, technically LEO but specific (multiplier ~1.0)
+  if (orbit.includes('SSO') || orbit.includes('S/S')) {
+    return 'SSO';
+  }
+  // GTO — Geostationary Transfer Orbit (multiplier ~1.8, not yet at GEO)
+  if (orbit.includes('GTO')) {
+    return 'GTO';
+  }
+  // GEO / GSO — Geostationary / Geosynchronous (multiplier ~2.2)
+  if (orbit.includes('GEO') || orbit.includes('GSO')) {
     return 'GEO';
   }
+  // MEO — Medium Earth Orbit (multiplier ~1.5)
   if (orbit.includes('MEO')) {
     return 'MEO';
   }
-  if (orbit.includes('HEO') || orbit.includes('HELIO') || orbit.includes('EEO')) {
+  // EEO — Extended/Eccentric Elliptical Orbit (multiplier ~2.0)
+  if (orbit.includes('EEO')) {
+    return 'EEO';
+  }
+  // HEO — Highly Elliptical Orbit (multiplier ~2.5)
+  if (orbit.includes('HEO') && !orbit.includes('HELIO')) {
     return 'HEO';
   }
-  if (orbit.includes('MOON') || orbit.includes('LUN') || orbit.includes('SEL')) {
+  // Heliocentric (multiplier ~3.0)
+  if (orbit.includes('HELIO') || orbit.includes('HCO')) {
+    return 'Helio';
+  }
+  // Lunar / Cislunar / Selenocentric (multiplier ~3.0)
+  if (orbit.includes('MOON') || orbit.includes('LUN') || orbit.includes('SEL') ||
+      orbit.includes('CLO') || orbit.includes('CISLU') || orbit.includes('EML')) {
     return 'Lunar';
   }
-  if (orbit.includes('MARS') || orbit.includes('DEEP') || orbit.includes('PLAN')) {
+  // Deep space / Planetary (multiplier ~4.0)
+  if (orbit.includes('MARS') || orbit.includes('DEEP') || orbit.includes('PLAN') ||
+      orbit.includes('DSO') || orbit.includes('SOI')) {
     return 'Deep Space';
   }
 
