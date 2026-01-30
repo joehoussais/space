@@ -37,7 +37,7 @@ const CONSOLIDATED_BINS = [
   { min: 500, max: 1000, label: '500 kg - 1 t' },
   { min: 1000, max: 2000, label: '1-2 t' },
   { min: 2000, max: 5000, label: '2-5 t' },
-  { min: 5000, max: Infinity, label: 'Above 5 t' }
+  { min: 5000, max: 150000, label: 'Above 5 t' }
 ]
 
 // Custom tooltip for the bubble chart
