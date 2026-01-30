@@ -28,6 +28,18 @@ const ORBIT_COLORS = {
   'All': '#06b6d4'
 }
 
+// LEO-equivalent multipliers by orbit type
+// A satellite's mass must be multiplied by this factor to determine
+// the required launcher LEO capacity to reach that orbit.
+// e.g. a 6t GEO satellite needs ~13.2t of LEO launch capacity (6 × 2.2)
+const LEO_EQUIV_MULTIPLIERS = {
+  'LEO': 1.0,    // Already LEO
+  'MEO': 1.5,    // MEO requires ~1.5x LEO capacity (delta-v: +1.5 km/s)
+  'GEO': 2.2,    // GTO→GEO requires ~2.2x LEO capacity (delta-v: +2.3 km/s)
+  'HEO': 2.5,    // Highly elliptical orbits, ~2.5x (varies widely: Molniya, GTO transfer stages)
+  'Other': 2.0   // Mix of deep space, cislunar, Lagrange — conservative ~2x average
+}
+
 // Consolidated mass bins: remove 50-150t, merge heavy categories into "Above 5t"
 const CONSOLIDATED_BINS = [
   { min: 0, max: 50, label: '0-50 kg' },
@@ -117,24 +129,29 @@ function LauncherSizingPage() {
     return launcherSizingData.satellites.filter(s => s.year === 2026).length
   }, [])
 
-  // Computed: all satellites for the period (for total calculation)
+  // Computed: all satellites for the period, enriched with LEO-equivalent mass
   const allSatellitesInPeriod = useMemo(() => {
-    return launcherSizingData.satellites.filter(s => {
-      // Year filter
-      if (yearMode === 'single') {
-        if (s.year !== parseInt(selectedYear)) return false
-      } else {
-        if (s.year < yearRange[0] || s.year > yearRange[1]) return false
-      }
+    return launcherSizingData.satellites
+      .filter(s => {
+        // Year filter
+        if (yearMode === 'single') {
+          if (s.year !== parseInt(selectedYear)) return false
+        } else {
+          if (s.year < yearRange[0] || s.year > yearRange[1]) return false
+        }
 
-      // Region filter
-      if (selectedRegion === 'Western Europe') {
-        return s.region === 'Western Europe'
-      } else if (selectedRegion === 'Western-aligned') {
-        return s.region === 'Western-aligned' || s.region === 'Western Europe'
-      }
-      return true // Global
-    })
+        // Region filter
+        if (selectedRegion === 'Western Europe') {
+          return s.region === 'Western Europe'
+        } else if (selectedRegion === 'Western-aligned') {
+          return s.region === 'Western-aligned' || s.region === 'Western Europe'
+        }
+        return true // Global
+      })
+      .map(s => ({
+        ...s,
+        leoEquivKg: s.massKg * (LEO_EQUIV_MULTIPLIERS[s.orbit] || 1.0)
+      }))
   }, [selectedYear, yearMode, yearRange, selectedRegion])
 
   // Orbit-filtered satellites for the period
@@ -143,10 +160,11 @@ function LauncherSizingPage() {
     return allSatellitesInPeriod.filter(s => s.orbit === selectedOrbit)
   }, [allSatellitesInPeriod, selectedOrbit])
 
-  // Computed: filtered satellites matching criteria (mass + orbit)
+  // Computed: filtered satellites matching criteria
+  // A satellite is addressable if its LEO-equivalent mass fits in the launcher
   const filteredSatellites = useMemo(() => {
-    const sats = orbitFilteredSatellites.filter(s => s.massKg <= launcherCapacity)
-    return sats.sort((a, b) => b.massKg - a.massKg)
+    const sats = orbitFilteredSatellites.filter(s => s.leoEquivKg <= launcherCapacity)
+    return sats.sort((a, b) => b.leoEquivKg - a.leoEquivKg)
   }, [orbitFilteredSatellites, launcherCapacity])
 
   // Orbit type counts for the filter buttons
@@ -158,52 +176,53 @@ function LauncherSizingPage() {
     return counts
   }, [allSatellitesInPeriod])
 
-  // Computed: KPIs
+  // Computed: KPIs (using LEO-equivalent mass for sizing)
   const kpis = useMemo(() => {
-    const addressableMassKg = filteredSatellites.reduce((sum, s) => sum + s.massKg, 0)
-    const addressableMassTonnes = addressableMassKg / 1000
+    const addressableLeoEquivKg = filteredSatellites.reduce((sum, s) => sum + s.leoEquivKg, 0)
+    const addressableLeoEquivTonnes = addressableLeoEquivKg / 1000
     const satelliteCount = filteredSatellites.length
 
-    const totalMassKg = orbitFilteredSatellites.reduce((sum, s) => sum + s.massKg, 0)
-    const totalMassTonnes = totalMassKg / 1000
+    const totalLeoEquivKg = orbitFilteredSatellites.reduce((sum, s) => sum + s.leoEquivKg, 0)
+    const totalLeoEquivTonnes = totalLeoEquivKg / 1000
     const totalCount = orbitFilteredSatellites.length
 
-    const pctMass = totalMassTonnes > 0 ? (addressableMassTonnes / totalMassTonnes * 100) : 0
+    const pctMass = totalLeoEquivTonnes > 0 ? (addressableLeoEquivTonnes / totalLeoEquivTonnes * 100) : 0
     const pctCount = totalCount > 0 ? (satelliteCount / totalCount * 100) : 0
 
-    // Revenue calculation (EUR)
-    const addressableRevenue = addressableMassKg * pricePerKg / 1000000 // In millions EUR
+    // Revenue calculation (EUR) — based on LEO-equivalent mass (what the launcher actually delivers)
+    const addressableRevenue = addressableLeoEquivKg * pricePerKg / 1000000 // In millions EUR
 
     return {
-      addressableMassTonnes,
+      addressableMassTonnes: addressableLeoEquivTonnes,
       satelliteCount,
       pctMass,
       pctCount,
-      totalMassTonnes,
+      totalMassTonnes: totalLeoEquivTonnes,
       totalCount,
       addressableRevenue
     }
   }, [filteredSatellites, orbitFilteredSatellites, pricePerKg])
 
-  // Computed: bubble chart data (mass distribution)
+  // Computed: bubble chart data (mass distribution using LEO-equivalent mass)
   const bubbleData = useMemo(() => {
     return CONSOLIDATED_BINS.map((bin, index) => {
+      // Bin by LEO-equivalent mass (what the launcher actually needs to deliver)
       const satsInBin = orbitFilteredSatellites.filter(s =>
-        s.massKg >= bin.min && s.massKg < bin.max
+        s.leoEquivKg >= bin.min && s.leoEquivKg < bin.max
       )
 
       const isAddressable = bin.max <= launcherCapacity
       const isPartiallyAddressable = bin.min < launcherCapacity && bin.max > launcherCapacity
 
-      const massTonnes = satsInBin.reduce((sum, s) => sum + s.massKg, 0) / 1000
+      const leoEquivTonnes = satsInBin.reduce((sum, s) => sum + s.leoEquivKg, 0) / 1000
 
       return {
         label: bin.label,
         binMin: bin.min,
         binMax: bin.max,
         count: satsInBin.length,
-        massTonnes,
-        bubbleSize: Math.max(massTonnes, 0.5),
+        massTonnes: leoEquivTonnes,
+        bubbleSize: Math.max(leoEquivTonnes, 0.5),
         addressable: isAddressable,
         partiallyAddressable: isPartiallyAddressable,
         x: index,
@@ -217,7 +236,7 @@ function LauncherSizingPage() {
     return Math.max(...bubbleData.map(d => d.bubbleSize), 1)
   }, [bubbleData])
 
-  // Market size curve data
+  // Market size curve data (using LEO-equivalent mass)
   const marketCurveData = useMemo(() => {
     const capacityPoints = [
       { kg: 300, label: '0.3t' },
@@ -236,13 +255,13 @@ function LauncherSizingPage() {
     ]
 
     return capacityPoints.map(point => {
-      const addressable = orbitFilteredSatellites.filter(s => s.massKg <= point.kg)
-      const addressableMassKg = addressable.reduce((sum, s) => sum + s.massKg, 0)
+      const addressable = orbitFilteredSatellites.filter(s => s.leoEquivKg <= point.kg)
+      const addressableLeoEquivKg = addressable.reduce((sum, s) => sum + s.leoEquivKg, 0)
 
       return {
         label: point.label,
         capacity: point.kg,
-        'Addressable Mass (t)': addressableMassKg / 1000,
+        'Addressable Mass (t)': addressableLeoEquivKg / 1000,
         'Satellite Count': addressable.length
       }
     })
@@ -250,11 +269,12 @@ function LauncherSizingPage() {
 
   // Export to CSV handler
   const handleExportCSV = useCallback(() => {
-    const headers = ['Name', 'Launch Date', 'Mass (kg)', 'Owner', 'State', 'Region', 'Orbit']
+    const headers = ['Name', 'Launch Date', 'Mass (kg)', 'LEO-Equiv Mass (kg)', 'Owner', 'State', 'Region', 'Orbit']
     const rows = filteredSatellites.map(s => [
       '"' + s.name.replace(/"/g, '""') + '"',
       s.launchDate,
       s.massKg,
+      Math.round(s.leoEquivKg),
       '"' + (s.owner || '').replace(/"/g, '""') + '"',
       s.state,
       s.region,
@@ -359,7 +379,7 @@ function LauncherSizingPage() {
             </div>
             <div className="kpi-content">
               <span className="kpi-value">{kpis.addressableMassTonnes.toFixed(0)} t</span>
-              <span className="kpi-label">Addressable Mass</span>
+              <span className="kpi-label">Addressable Mass (LEO-equiv)</span>
             </div>
           </div>
 
@@ -421,7 +441,7 @@ function LauncherSizingPage() {
             </div>
           </div>
           <p className="chart-subtitle">
-            Bubble size represents total mass in each category. Y-axis shows satellite count.
+            LEO-equivalent mass (adjusted for orbit: GEO &times;2.2, HEO &times;2.5, MEO &times;1.5). Bubble size = total mass in category.
           </p>
 
           <div className="chart-container">
@@ -660,8 +680,8 @@ function LauncherSizingPage() {
                     <th>Name</th>
                     <th>Launch Date</th>
                     <th>Mass (kg)</th>
+                    <th>LEO-Equiv (kg)</th>
                     <th>Owner</th>
-                    <th>Region</th>
                     <th>Orbit</th>
                   </tr>
                 </thead>
@@ -671,8 +691,8 @@ function LauncherSizingPage() {
                       <td className="sat-name">{sat.name}</td>
                       <td>{sat.launchDate}</td>
                       <td className="sat-mass">{sat.massKg.toLocaleString()}</td>
+                      <td className="sat-mass">{Math.round(sat.leoEquivKg).toLocaleString()}</td>
                       <td>{sat.owner}</td>
-                      <td>{sat.region}</td>
                       <td>{sat.orbit}</td>
                     </tr>
                   ))}
