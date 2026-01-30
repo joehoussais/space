@@ -31,6 +31,137 @@
   margin: 0;
 }
 
+/* Data Warning Banner */
+.data-warning-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.warning-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #f59e0b;
+  margin-top: 1px;
+}
+
+.warning-content {
+  font-size: 13px;
+  color: #fbbf24;
+  line-height: 1.5;
+}
+
+.warning-content strong {
+  color: #f59e0b;
+}
+
+.data-warning-banner > svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #f59e0b;
+  margin-top: 1px;
+}
+
+/* Orbit Filter Section */
+.orbit-filter-section {
+  margin-bottom: 20px;
+}
+
+.orbit-filter-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.orbit-filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.orbit-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 16px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(99, 179, 237, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+}
+
+.orbit-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.orbit-btn.active {
+  border-width: 2px;
+}
+
+.orbit-btn-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.orbit-btn-count {
+  font-size: 11px;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+.orbit-btn.active .orbit-btn-label {
+  color: #f1f5f9;
+}
+
+.orbit-btn.active .orbit-btn-count {
+  color: #94a3b8;
+}
+
+/* Orbit Badge */
+.orbit-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Chart Subtitle */
+.chart-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: -12px 0 16px 0;
+}
+
+/* Tooltip Partial */
+.tooltip-partial {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(245, 158, 11, 0.3);
+  font-size: 11px;
+  font-weight: 500;
+  color: #f59e0b;
+}
+
 /* KPI Grid */
 .kpi-grid {
   display: grid;
@@ -194,6 +325,15 @@
   background: linear-gradient(135deg, #64748b 0%, rgba(100, 116, 139, 0.3) 100%);
 }
 
+.legend-item.bubble-size-note {
+  font-style: italic;
+  color: #64748b;
+  font-size: 11px;
+  border-left: 1px solid rgba(99, 179, 237, 0.15);
+  padding-left: 16px;
+  margin-left: 8px;
+}
+
 /* Tooltip */
 .sizing-tooltip {
   background: rgba(15, 23, 42, 0.95);
@@ -238,6 +378,28 @@
   font-size: 11px;
   font-weight: 500;
   color: #10b981;
+}
+
+/* Market Curve Section */
+.market-curve-section {
+  margin-top: 24px;
+}
+
+.curve-note {
+  font-size: 12px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.market-curve-note {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #f59e0b;
+  line-height: 1.5;
 }
 
 /* Satellites Section */

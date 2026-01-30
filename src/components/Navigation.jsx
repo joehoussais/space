@@ -13,7 +13,8 @@ const tabGroups = [
     label: 'Satellites & Spacecraft',
     tabs: [
       { id: 'satellites', label: 'Satellites', icon: 'sat-dish' },
-      { id: 'constellations', label: 'Constellations', icon: 'satellite' }
+      { id: 'constellations', label: 'Constellations', icon: 'satellite' },
+      { id: 'manufacturers-landscape', label: 'Manufacturers', icon: 'factory' }
     ]
   }
 ]

@@ -1,0 +1,121 @@
+{
+  "title": "Satellite Manufacturers Landscape",
+  "subtitle": "Production Capacity \u00d7 Mass Segment",
+  "axes": {
+    "x": {
+      "label": "Annual Production Capacity",
+      "min": "Artisanal / Bespoke (10\u201350 units/yr)",
+      "max": "Industrial / Volume (1000+ units/yr)"
+    },
+    "y": {
+      "label": "Mass Segment",
+      "min": "Nano / CubeSat (<50 kg)",
+      "max": "Large (500 kg+ / Multi-tonne)"
+    }
+  },
+  "quadrantLabels": {
+    "topLeft": "Bespoke \u00d7 Large",
+    "topRight": "Volume \u00d7 Large",
+    "bottomLeft": "Bespoke \u00d7 Small",
+    "bottomRight": "Volume \u00d7 Small"
+  },
+  "regionColors": {
+    "USA": "#F97316",
+    "Europe": "#3B82F6"
+  },
+  "companies": [
+    {
+      "manufacturerId": "spacex",
+      "xPct": 96,
+      "yPct": 72,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "lockheed-martin-space",
+      "xPct": 55,
+      "yPct": 52,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "northrop-grumman-space",
+      "xPct": 42,
+      "yPct": 65,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "york-space",
+      "xPct": 85,
+      "yPct": 55,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "blue-canyon-rtx",
+      "xPct": 50,
+      "yPct": 35,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "sidus-space",
+      "xPct": 18,
+      "yPct": 30,
+      "region": "USA"
+    },
+    {
+      "manufacturerId": "airbus-ds",
+      "xPct": 58,
+      "yPct": 82,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "thales-alenia",
+      "xPct": 56,
+      "yPct": 68,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "aerospacelab",
+      "xPct": 75,
+      "yPct": 50,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "ohb",
+      "xPct": 22,
+      "yPct": 60,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "endurosat",
+      "xPct": 82,
+      "yPct": 22,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "aac-clyde",
+      "xPct": 30,
+      "yPct": 15,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "reflex-aerospace",
+      "xPct": 16,
+      "yPct": 42,
+      "region": "Europe"
+    },
+    {
+      "manufacturerId": "open-cosmos",
+      "xPct": 20,
+      "yPct": 24,
+      "region": "Europe"
+    }
+  ],
+  "sizeMetrics": [
+    { "key": "employees", "label": "Employees", "format": "number" },
+    { "key": "annualRevenueBillionUSD", "label": "Revenue", "format": "currency" },
+    { "key": "totalFundingMillionUSD", "label": "Funding", "format": "funding" }
+  ],
+  "bubbleSizeRange": {
+    "minPx": 16,
+    "maxPx": 90
+  }
+}

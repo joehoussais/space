@@ -10,6 +10,7 @@ import LaunchersPage from './pages/LaunchersPage'
 import SatellitesPage from './pages/SatellitesPage'
 import ConstellationsPage from './pages/ConstellationsPage'
 import LauncherSizingPage from './pages/LauncherSizingPage'
+import ManufacturersLandscapePage from './pages/ManufacturersLandscapePage'
 import marketData from './data/marketData.json'
 import './App.css'
 
@@ -20,11 +21,7 @@ function MarketOverviewPage() {
   const [selectedRegion, setSelectedRegion] = useState('Global')
   const [yearRange, setYearRange] = useState([2020, 2035])
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
-  const [showAddressable, setShowAddressable] = useState(false)
   const [priceMultiplier, setPriceMultiplier] = useState(1.0) // User can adjust $/kg assumptions
-
-  // Get launcher class data
-  const launcherClass = marketData.launcherClasses?.['15t-reusable'] || null
 
   // Get data based on metric type
   const getDataForMetric = (metric, region, segment, year) => {
@@ -124,20 +121,9 @@ function MarketOverviewPage() {
           (sum, s) => sum + s.values[idx].value, 0
         )
       }
-      // Add addressable total for 15t reusable overlay
-      if (showAddressable && launcherClass) {
-        let addressableTotal = 0
-        filteredData.series.forEach(s => {
-          const addressability = launcherClass.addressability[s.segment]
-          if (addressability) {
-            addressableTotal += s.values[idx].value * (addressability.percentage / 100)
-          }
-        })
-        point._addressableTotal = addressableTotal
-      }
       return point
     })
-  }, [filteredData, showAddressable, launcherClass])
+  }, [filteredData])
 
   // Calculate KPIs
   const kpis = useMemo(() => {
@@ -163,18 +149,6 @@ function MarketOverviewPage() {
       }
     }
 
-    // Calculate addressable market stats
-    let addressableValue = null
-    let addressablePercent = null
-    if (showAddressable && launcherClass) {
-      addressableValue = filteredData.series.reduce((sum, s) => {
-        const addressability = launcherClass.addressability[s.segment]
-        const lastVal = s.values[s.values.length - 1]?.value || 0
-        return sum + (addressability ? lastVal * (addressability.percentage / 100) : 0)
-      }, 0)
-      addressablePercent = totalLast > 0 ? ((addressableValue / totalLast) * 100).toFixed(0) : 0
-    }
-
     // CAGR calculation
     const years = parseInt(lastYear) - parseInt(firstYear)
     const cagr = years > 0 && totalFirst > 0
@@ -186,11 +160,9 @@ function MarketOverviewPage() {
       lastYear,
       europeShare,
       cagr,
-      metric: selectedMetric,
-      addressableValue,
-      addressablePercent
+      metric: selectedMetric
     }
-  }, [filteredData, selectedMetric, selectedRegion, selectedSegments, showAddressable, launcherClass, priceMultiplier])
+  }, [filteredData, selectedMetric, selectedRegion, selectedSegments, priceMultiplier])
 
   // Get source notes for the current view
   const sourceNotes = useMemo(() => {
@@ -232,7 +204,7 @@ function MarketOverviewPage() {
           <p className="subtitle">Strategic market analysis 2020-2035 • Mass-based data with adjustable $/kg</p>
         </header>
 
-        <KPICards kpis={kpis} selectedRegion={selectedRegion} showAddressable={showAddressable} />
+        <KPICards kpis={kpis} selectedRegion={selectedRegion} />
 
         <MainChart
           data={chartData}
@@ -243,9 +215,6 @@ function MarketOverviewPage() {
           milestones={marketData.milestones}
           forecastStartYear={marketData.forecastStartYear}
           yearRange={yearRange}
-          showAddressable={showAddressable}
-          setShowAddressable={setShowAddressable}
-          launcherClass={launcherClass}
         />
 
         <DataTable
@@ -279,6 +248,8 @@ function App() {
         return <SatellitesPage />
       case 'constellations':
         return <ConstellationsPage />
+      case 'manufacturers-landscape':
+        return <ManufacturersLandscapePage />
       default:
         return <MarketOverviewPage />
     }

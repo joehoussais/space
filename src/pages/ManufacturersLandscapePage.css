@@ -1,0 +1,751 @@
+/* Manufacturers Landscape Page */
+.manufacturers-landscape-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+  max-width: 1400px;
+}
+
+/* Header */
+.landscape-header {
+  margin-bottom: 24px;
+}
+
+.landscape-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landscape-subtitle {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Controls Bar */
+.landscape-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.controls-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Metric Toggle Buttons */
+.metric-toggles {
+  display: flex;
+  gap: 4px;
+  background: rgba(30, 41, 59, 0.8);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.metric-toggles button {
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #94a3b8;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.metric-toggles button:hover {
+  color: #e2e8f0;
+}
+
+.metric-toggles button.active {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+/* Color Legend */
+.color-legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.usa {
+  background: #F97316;
+  box-shadow: 0 0 6px rgba(249, 115, 22, 0.4);
+}
+
+.legend-dot.europe {
+  background: #3B82F6;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+.legend-text {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Size Legend */
+.size-legend {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.size-legend-label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+  align-self: center;
+}
+
+.size-ref {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.size-ref-circle {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.size-ref-value {
+  font-size: 10px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Chart Container */
+.landscape-chart-container {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.landscape-svg {
+  display: block;
+}
+
+/* Quadrant Labels (watermark) */
+.quadrant-label {
+  font-size: 18px;
+  font-weight: 700;
+  fill: rgba(148, 163, 184, 0.07);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Axis Labels */
+.axis-label {
+  font-size: 10px;
+  fill: #64748b;
+  pointer-events: none;
+}
+
+.axis-title {
+  font-size: 12px;
+  font-weight: 600;
+  fill: #94a3b8;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Bubble Animations */
+@keyframes bubble-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+.bubble-group {
+  cursor: pointer;
+}
+
+.bubble-circle {
+  transition: fill-opacity 0.2s ease,
+              stroke-width 0.2s ease,
+              stroke-opacity 0.2s ease,
+              r 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: bubble-pulse 4s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.bubble-group.hovered .bubble-circle {
+  animation-play-state: paused;
+}
+
+/* Bubble Labels */
+.bubble-label {
+  font-size: 11px;
+  font-weight: 500;
+  fill: #e2e8f0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Tooltip */
+.landscape-tooltip {
+  position: absolute;
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 260px;
+  max-width: 320px;
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.tooltip-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 4px;
+}
+
+.tooltip-region {
+  font-size: 12px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip-region-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: rgba(56, 189, 248, 0.15);
+  margin: 10px 0;
+}
+
+.tooltip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tooltip-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.tooltip-metric-row.active {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.tooltip-metric-label {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.tooltip-metric-row.active .tooltip-metric-label {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.tooltip-metric-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.tooltip-metric-row.active .tooltip-metric-value {
+  color: #38bdf8;
+}
+
+.tooltip-programs {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.tooltip-programs-label {
+  font-weight: 600;
+  color: #64748b;
+  margin-right: 4px;
+}
+
+.tooltip-programs-list {
+  color: #94a3b8;
+}
+
+.tooltip-hint {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #475569;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ==========================================
+   Detail Modal (duplicated from SatellitesPage)
+   ========================================== */
+
+.manufacturers-landscape-page .manufacturer-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.manufacturers-landscape-page .manufacturer-detail {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+}
+
+.manufacturers-landscape-page .detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #94a3b8;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.manufacturers-landscape-page .detail-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.manufacturers-landscape-page .detail-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.manufacturers-landscape-page .detail-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: white;
+  padding: 8px;
+}
+
+.manufacturers-landscape-page .detail-logo-placeholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: #64748b;
+}
+
+.manufacturers-landscape-page .detail-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.manufacturers-landscape-page .detail-company {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 4px 0 0;
+}
+
+.manufacturers-landscape-page .detail-description {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.manufacturers-landscape-page .detail-section {
+  margin-bottom: 24px;
+}
+
+.manufacturers-landscape-page .detail-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.manufacturers-landscape-page .specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.manufacturers-landscape-page .spec {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 8px;
+}
+
+.manufacturers-landscape-page .spec-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.manufacturers-landscape-page .spec-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.manufacturers-landscape-page .capability-tags,
+.manufacturers-landscape-page .size-class-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.manufacturers-landscape-page .capability-tag {
+  padding: 6px 12px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #67e8f9;
+}
+
+.manufacturers-landscape-page .size-class-tag {
+  padding: 6px 12px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #c4b5fd;
+}
+
+.manufacturers-landscape-page .programs-list,
+.manufacturers-landscape-page .customers-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.manufacturers-landscape-page .program-chip,
+.manufacturers-landscape-page .customer-chip {
+  padding: 6px 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.manufacturers-landscape-page .launchers-served {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.manufacturers-landscape-page .served-launcher {
+  padding: 8px 14px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 8px;
+}
+
+.manufacturers-landscape-page .served-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #67e8f9;
+}
+
+.manufacturers-landscape-page .served-company {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.manufacturers-landscape-page .website-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 8px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.manufacturers-landscape-page .website-link:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.manufacturers-landscape-page .detail-markets {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.manufacturers-landscape-page .market-breakdown {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.manufacturers-landscape-page .market-breakdown-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.manufacturers-landscape-page .market-bars-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.manufacturers-landscape-page .market-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.manufacturers-landscape-page .market-region {
+  font-size: 12px;
+  color: #e2e8f0;
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.manufacturers-landscape-page .market-bar-track-detail {
+  flex: 1;
+  height: 8px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.manufacturers-landscape-page .market-bar-fill-detail {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6 0%, #38bdf8 50%, #06b6d4 100%);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.manufacturers-landscape-page .market-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #67e8f9;
+  width: 40px;
+  text-align: right;
+}
+
+.manufacturers-landscape-page .key-contracts {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.manufacturers-landscape-page .key-contracts-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+
+.manufacturers-landscape-page .contracts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.manufacturers-landscape-page .contract-item {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.manufacturers-landscape-page .contract-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.manufacturers-landscape-page .contract-customer {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.manufacturers-landscape-page .contract-region-badge {
+  padding: 3px 8px;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #c4b5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.manufacturers-landscape-page .contract-details {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.manufacturers-landscape-page .contract-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.manufacturers-landscape-page .contract-satellites {
+  font-size: 12px;
+  color: #38bdf8;
+}
+
+.manufacturers-landscape-page .contract-program {
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+}
+
+.manufacturers-landscape-page .market-notes {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+  color: #fbbf24;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .manufacturers-landscape-page {
+    padding: 20px 16px;
+  }
+
+  .landscape-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .controls-right {
+    flex-wrap: wrap;
+  }
+}

@@ -1,6 +1,6 @@
 import './KPICards.css'
 
-function KPICards({ kpis, selectedRegion, showAddressable }) {
+function KPICards({ kpis, selectedRegion }) {
   const isMass = kpis.metric.includes('Mass') || kpis.metric.includes('LEO-equivalent')
   const isRevenue = kpis.metric.includes('revenue')
   const isLeoEquiv = kpis.metric.includes('LEO-equivalent')
@@ -44,15 +44,7 @@ function KPICards({ kpis, selectedRegion, showAddressable }) {
         <div className="kpi-sublabel">Compound annual growth</div>
       </div>
 
-      {showAddressable && kpis.addressableValue !== null ? (
-        <div className="kpi-card addressable">
-          <div className="kpi-label">15t Reusable Addressable</div>
-          <div className="kpi-value addressable-value">
-            {formatValue(kpis.addressableValue)}
-          </div>
-          <div className="kpi-sublabel">{kpis.addressablePercent}% of selected</div>
-        </div>
-      ) : selectedRegion === 'Europe' && kpis.europeShare ? (
+      {selectedRegion === 'Europe' && kpis.europeShare ? (
         <div className="kpi-card highlight">
           <div className="kpi-label">Europe Share</div>
           <div className="kpi-value">{kpis.europeShare}%</div>

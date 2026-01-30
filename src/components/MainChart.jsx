@@ -77,18 +77,7 @@ function CustomTooltip({ active, payload, label, series, selectedMetric }) {
           </div>
         )}
 
-        {dataEntry?._addressableTotal !== undefined && (
-          <div className="tooltip-addressable">
-            <span>15t Reusable Addressable</span>
-            <span>
-              {isMass ? `${Math.round(dataEntry._addressableTotal).toLocaleString()} t` :
-               isRevenue ? `$${dataEntry._addressableTotal.toFixed(2)}B` :
-               Math.round(dataEntry._addressableTotal).toLocaleString()}
-            </span>
-          </div>
-        )}
-
-        {dataEntry?._europeTotal !== undefined && !dataEntry?._addressableTotal && (
+        {dataEntry?._europeTotal !== undefined && (
           <div className="tooltip-europe">
             <span>Europe</span>
             <span>
@@ -143,10 +132,7 @@ function MainChart({
   selectedRegion,
   milestones,
   forecastStartYear,
-  yearRange,
-  showAddressable,
-  setShowAddressable,
-  launcherClass
+  yearRange
 }) {
   const isMass = selectedMetric.includes('Mass')
   const isLeoEquiv = selectedMetric.includes('LEO-equivalent')
@@ -182,24 +168,7 @@ function MainChart({
           <span className="chart-region">{selectedRegion}</span>
         </h2>
         <div className="chart-controls">
-          {launcherClass && (
-            <label className="launcher-fit-toggle">
-              <input
-                type="checkbox"
-                checked={showAddressable}
-                onChange={(e) => setShowAddressable(e.target.checked)}
-              />
-              <span className="toggle-switch"></span>
-              <span className="toggle-text">15t Reusable Fit</span>
-            </label>
-          )}
-          {showAddressable && (
-            <div className="addressable-indicator">
-              <span className="addressable-indicator-box" />
-              <span>Addressable market</span>
-            </div>
-          )}
-          {selectedRegion === 'Global' && !showAddressable && (
+          {selectedRegion === 'Global' && (
             <div className="europe-indicator">
               <span className="europe-indicator-box" />
               <span>European share</span>
@@ -222,14 +191,6 @@ function MainChart({
             <pattern id="europePattern" patternUnits="userSpaceOnUse" width="8" height="8">
               <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="#facc15" strokeWidth="1" strokeOpacity="0.3" />
             </pattern>
-            {/* Addressable market pattern */}
-            <pattern id="addressablePattern" patternUnits="userSpaceOnUse" width="6" height="6">
-              <path d="M-1,1 l2,-2 M0,6 l6,-6 M5,7 l2,-2" stroke="#10b981" strokeWidth="1.5" strokeOpacity="0.5" />
-            </pattern>
-            <linearGradient id="addressableGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#10b981" stopOpacity={0.4} />
-              <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.1} />
-            </linearGradient>
           </defs>
 
           <CartesianGrid
@@ -269,21 +230,8 @@ function MainChart({
             />
           )}
 
-          {/* Addressable market shading (15t reusable) */}
-          {showAddressable && data[0]?._addressableTotal !== undefined && (
-            <Area
-              type="monotone"
-              dataKey="_addressableTotal"
-              fill="url(#addressableGradient)"
-              stroke="#10b981"
-              strokeWidth={2}
-              strokeDasharray="4 2"
-              fillOpacity={1}
-            />
-          )}
-
-          {/* Europe opportunity shading (when viewing Global and not showing addressable) */}
-          {!showAddressable && selectedRegion === 'Global' && data[0]?._europeTotal !== undefined && (
+          {/* Europe opportunity shading (when viewing Global) */}
+          {selectedRegion === 'Global' && data[0]?._europeTotal !== undefined && (
             <Area
               type="monotone"
               dataKey="_europeTotal"

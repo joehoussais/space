@@ -1934,6 +1934,46 @@
         { "title": "NewSpace Index", "url": "https://www.newspace.im/" },
         { "title": "Wyvern", "url": "https://wyvern.space/" }
       ]
+    },
+    {
+      "id": "meridian-space",
+      "name": "Meridian Space",
+      "operator": "SpinLaunch",
+      "country": "USA",
+      "countryCode": "US",
+      "status": "Development",
+      "validation": "Announced",
+      "type": "Broadband Internet",
+      "subcategory": "Consumer LEO",
+      "description": "Low-CAPEX LEO broadband constellation featuring proprietary multi-band reflectarray antenna technology, purpose-built for defense, government, and sovereign communications.",
+      "orbitType": "LEO",
+      "altitudeKm": [500],
+      "inclinationDeg": [0, 55],
+      "satellitesPlanned": 280,
+      "satellitesDeployed": 0,
+      "satellitesOperational": 0,
+      "generationCurrent": "Development",
+      "satelliteMassKg": 70,
+      "designLifeYears": null,
+      "coverageArea": "Global (equatorial first)",
+      "latencyMs": null,
+      "downloadSpeedMbps": null,
+      "uploadSpeedMbps": null,
+      "subscribers": null,
+      "launchProviders": [],
+      "firstLaunch": null,
+      "fullDeploymentTarget": "2030",
+      "investmentBillionUSD": 0.03,
+      "annualRevenueBillionUSD": null,
+      "frequencyBands": ["Multi-band"],
+      "primaryMarkets": ["Defense", "Government", "Sovereign communications", "Broadband"],
+      "interSatelliteLinks": false,
+      "propulsion": null,
+      "groundStations": null,
+      "sources": [
+        { "title": "BusinessWire", "url": "https://www.businesswire.com/news/home/20250818553463/en/" },
+        { "title": "SpaceNews", "url": "https://spacenews.com/spinlaunch-raises-30-million-for-work-on-meridian-space-constellation/" }
+      ]
     }
   ],
   "orbitTypes": {

@@ -323,44 +323,6 @@
       }
     }
   },
-  "launcherClasses": {
-    "15t-reusable": {
-      "name": "15t Reusable First-Stage",
-      "description": "Large reusable launcher optimized for LEO, 15t payload class with first-stage recovery",
-      "payloadRangeLEO": [5000, 15000],
-      "reusable": true,
-      "addressability": {
-        "LEO constellations": {
-          "percentage": 90,
-          "rationale": "Ideal fit: high-cadence bulk deployment, 1-5t per batch, LEO-optimized. Reusability economics maximize value."
-        },
-        "Government civil": {
-          "percentage": 60,
-          "rationale": "Good fit for medium science payloads (2-10t). Some missions too small or require specialized vehicles."
-        },
-        "Defense / national security": {
-          "percentage": 70,
-          "rationale": "Growing proliferated LEO constellations (SDA) are ideal. Some classified payloads require dedicated launchers."
-        },
-        "GEO comsat": {
-          "percentage": 40,
-          "rationale": "Can serve market in expendable mode but less competitive vs heavy-lift for 6-7t GEO sats."
-        },
-        "Human spaceflight": {
-          "percentage": 80,
-          "rationale": "Excellent fit for crew/cargo to LEO stations. High-value missions benefit from reusability."
-        },
-        "Lunar / cislunar": {
-          "percentage": 50,
-          "rationale": "Good for cislunar cargo in expendable mode. Deep space often needs heavier lift."
-        },
-        "Other (rideshare, demos)": {
-          "percentage": 30,
-          "rationale": "Much of this segment is small-launcher territory. Only larger tech demos fit 15t class."
-        }
-      }
-    }
-  },
   "milestones": [
     { "year": 2024, "label": "Ariane 6 First Launch", "type": "europe" },
     { "year": 2025, "label": "Starship Operational", "type": "global" },
