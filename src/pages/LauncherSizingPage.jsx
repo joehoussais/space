@@ -131,6 +131,7 @@ function LauncherSizingPage() {
   const [pricePerKg, setPricePerKg] = useState(15000)
   const [showSatelliteList, setShowSatelliteList] = useState(false)
   const [selectedOrbit, setSelectedOrbit] = useState('All')
+  const [excludeStarlink, setExcludeStarlink] = useState(false)
 
   // Get years from data
   const years = launcherSizingData.years
@@ -159,17 +160,21 @@ function LauncherSizingPage() {
 
         // Region filter
         if (selectedRegion === 'Western Europe') {
-          return s.region === 'Western Europe'
+          if (s.region !== 'Western Europe') return false
         } else if (selectedRegion === 'Western-aligned') {
-          return s.region === 'Western-aligned' || s.region === 'Western Europe'
+          if (s.region !== 'Western-aligned' && s.region !== 'Western Europe') return false
         }
-        return true // Global
+
+        // Starlink filter
+        if (excludeStarlink && s.name && s.name.startsWith('Starlink')) return false
+
+        return true
       })
       .map(s => ({
         ...s,
         leoEquivKg: s.massKg * (LEO_EQUIV_MULTIPLIERS[s.orbit] || 1.0)
       }))
-  }, [selectedYear, yearMode, yearRange, selectedRegion])
+  }, [selectedYear, yearMode, yearRange, selectedRegion, excludeStarlink])
 
   // Orbit-filtered satellites for the period
   const orbitFilteredSatellites = useMemo(() => {
@@ -334,6 +339,8 @@ function LauncherSizingPage() {
         pricePerKg={pricePerKg}
         setPricePerKg={setPricePerKg}
         years={years}
+        excludeStarlink={excludeStarlink}
+        setExcludeStarlink={setExcludeStarlink}
       />
 
       <main className="launcher-sizing-main">

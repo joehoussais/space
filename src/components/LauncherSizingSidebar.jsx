@@ -21,7 +21,9 @@ function LauncherSizingSidebar({
   setSelectedRegion,
   pricePerKg,
   setPricePerKg,
-  years
+  years,
+  excludeStarlink,
+  setExcludeStarlink
 }) {
   // Logarithmic scale conversion for the slider
   // Maps linear 0-100 to logarithmic 300-150000
@@ -191,6 +193,30 @@ function LauncherSizingSidebar({
             Global excluding Russia, China, Belarus, etc.
           </p>
         )}
+      </div>
+
+      {/* Starlink Toggle */}
+      <div className="filter-section">
+        <h3 className="filter-title">SpaceX Starlink</h3>
+        <div className="starlink-buttons">
+          <button
+            className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
+            onClick={() => setExcludeStarlink(false)}
+          >
+            Include
+          </button>
+          <button
+            className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
+            onClick={() => setExcludeStarlink(true)}
+          >
+            Exclude
+          </button>
+        </div>
+        <p className="filter-hint">
+          {excludeStarlink
+            ? 'Starlink satellites removed from analysis'
+            : 'Starlink satellites included (~60% of LEO)'}
+        </p>
       </div>
 
       {/* Price per kg Slider */}
