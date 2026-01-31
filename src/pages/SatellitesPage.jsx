@@ -485,8 +485,7 @@ function SatellitesPage() {
   const [metric, setMetric] = useState('market') // 'market' or 'count'
   const [categoryType, setCategoryType] = useState('sizeClass') // 'sizeClass', 'application', 'operatorType'
   const [selectedRegion, setSelectedRegion] = useState('Europe') // 'Global', 'Europe', 'Western-aligned'
-  const [excludeStarlink, setExcludeStarlink] = useState(false) // For Global view, exclude SpaceX Starlink
-  const [showStarlinkRef, setShowStarlinkRef] = useState(true) // For Europe view, show SpaceX reference line
+  const [excludeStarlink, setExcludeStarlink] = useState(false) // Exclude SpaceX Starlink from count
   const [chartMode, setChartMode] = useState('area') // 'area' or 'line'
   const [yearRange, setYearRange] = useState([2020, 2035])
   const [filters, setFilters] = useState({
@@ -571,37 +570,38 @@ function SatellitesPage() {
           value = value * multiplier
         }
 
-        // If excluding Starlink from Global count, subtract from LEO/Communications/Commercial categories
-        // Starlink is: LEO orbit, Communications application, Commercial operator
-        if (selectedRegion === 'Global' && metric === 'count' && excludeStarlink && value > 0) {
+        // If excluding Starlink from count, subtract from LEO/Communications/Commercial categories
+        // Starlink is: LEO orbit, Communications application, Commercial operator, Minisats size class
+        // Note: Europe data is separate and doesn't include Starlink, so subtraction only applies
+        // when source region is Global (i.e. Global or Western-aligned views)
+        if (sourceRegion === 'Global' && metric === 'count' && excludeStarlink && value > 0) {
+          let starlinkToSubtract = starlinkCount
+          // For Western-aligned, apply the same multiplier to Starlink count
+          if (isWesternAligned) {
+            starlinkToSubtract = starlinkCount * westernAlignedMultipliers.countMultiplier
+          }
           if (categoryType === 'orbitType' && category === 'LEO (Low Earth Orbit)') {
-            value = Math.max(0, value - starlinkCount)
+            value = Math.max(0, value - starlinkToSubtract)
           } else if (categoryType === 'application' && category === 'Communications') {
-            value = Math.max(0, value - starlinkCount)
+            value = Math.max(0, value - starlinkToSubtract)
           } else if (categoryType === 'operatorType' && category === 'Commercial') {
-            value = Math.max(0, value - starlinkCount)
+            value = Math.max(0, value - starlinkToSubtract)
           } else if (categoryType === 'sizeClass' && category === 'Minisats (200-600kg)') {
-            // Starlink v2 Mini satellites are ~800kg, but v1.5 are ~306kg (Minisats category)
-            value = Math.max(0, value - starlinkCount)
+            value = Math.max(0, value - starlinkToSubtract)
           }
         }
 
         dataPoint[category] = value
       })
 
-      // Add SpaceX reference for count metric
-      // For Europe/Western-aligned: show if showStarlinkRef is true
-      // For Global: show if not excluding Starlink
-      if (metric === 'count') {
-        const shouldShowRef = selectedRegion !== 'Global' ? showStarlinkRef : !excludeStarlink
-        if (shouldShowRef) {
-          dataPoint.spacexRef = starlinkCount
-        }
+      // Add SpaceX reference for count metric when not excluding
+      if (metric === 'count' && !excludeStarlink) {
+        dataPoint.spacexRef = starlinkCount
       }
 
       return dataPoint
     })
-  }, [satellitesData, metric, categoryType, categories, selectedRegion, excludeStarlink, showStarlinkRef, yearRange, westernAlignedMultipliers])
+  }, [satellitesData, metric, categoryType, categories, selectedRegion, excludeStarlink, yearRange, westernAlignedMultipliers])
 
   // Filtered manufacturers
   const filteredManufacturers = useMemo(() => {
@@ -676,12 +676,12 @@ function SatellitesPage() {
       regionEnd = regionEnd * multiplier
     }
 
-    // Adjust for Starlink exclusion (only for Global)
-    if (selectedRegion === 'Global' && metric === 'count' && excludeStarlink) {
+    // Adjust for Starlink exclusion (Global and Western-aligned derive from Global data)
+    if (sourceRegion === 'Global' && metric === 'count' && excludeStarlink) {
       const starlinkCurrent = spacexLaunches[currentYear] || 0
       const starlinkEnd = spacexLaunches[endYear] || 0
-      regionCurrent = Math.max(0, regionCurrent - starlinkCurrent)
-      regionEnd = Math.max(0, regionEnd - starlinkEnd)
+      regionCurrent = Math.max(0, regionCurrent - (isWesternAligned ? starlinkCurrent * westernAlignedMultipliers.countMultiplier : starlinkCurrent))
+      regionEnd = Math.max(0, regionEnd - (isWesternAligned ? starlinkEnd * westernAlignedMultipliers.countMultiplier : starlinkEnd))
       globalCurrent = Math.max(0, globalCurrent - starlinkCurrent)
     }
 
@@ -699,7 +699,7 @@ function SatellitesPage() {
       regionCAGR,
       europeShare,
       selectedRegion,
-      excludingStarlink: selectedRegion === 'Global' && metric === 'count' && excludeStarlink
+      excludingStarlink: metric === 'count' && excludeStarlink
     }
   }, [satellitesData, metric, selectedRegion, excludeStarlink, westernAlignedMultipliers])
 
@@ -715,8 +715,6 @@ function SatellitesPage() {
         setSelectedRegion={setSelectedRegion}
         excludeStarlink={excludeStarlink}
         setExcludeStarlink={setExcludeStarlink}
-        showStarlinkRef={showStarlinkRef}
-        setShowStarlinkRef={setShowStarlinkRef}
         yearRange={yearRange}
         setYearRange={setYearRange}
         chartMode={chartMode}
@@ -862,21 +860,13 @@ function SatellitesPage() {
 
         {metric === 'count' && (
           <div className="europe-legend">
-            {((selectedRegion !== 'Global' && showStarlinkRef) || (selectedRegion === 'Global' && !excludeStarlink)) && (
+            {!excludeStarlink && (
               <span className="spacex-legend-icon" />
             )}
             <span>
-              {selectedRegion === 'Europe'
-                ? (showStarlinkRef
-                    ? 'SpaceX Starlink vs Europe (satellites launched to orbit)'
-                    : 'Europe satellite launches (total)')
-                : selectedRegion === 'Western-aligned'
-                  ? (showStarlinkRef
-                      ? 'SpaceX Starlink vs Western-aligned markets (excl. Russia/China)'
-                      : 'Western-aligned satellite launches (excl. Russia/China)')
-                  : (excludeStarlink
-                      ? 'Global market excluding SpaceX Starlink constellation'
-                      : 'SpaceX Starlink (for reference)')}
+              {excludeStarlink
+                ? 'Excluding SpaceX Starlink constellation'
+                : 'SpaceX Starlink (for reference)'}
             </span>
           </div>
         )}

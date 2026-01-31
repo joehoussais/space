@@ -18,8 +18,6 @@ function SatellitesSidebar({
   setSelectedRegion,
   excludeStarlink,
   setExcludeStarlink,
-  showStarlinkRef,
-  setShowStarlinkRef,
   yearRange,
   setYearRange,
   chartMode,
@@ -115,50 +113,23 @@ function SatellitesSidebar({
         <div className="filter-section">
           <h3 className="filter-title">SpaceX Starlink</h3>
           <div className="starlink-buttons">
-            {selectedRegion !== 'Global' ? (
-              <>
-                <button
-                  className={`starlink-btn ${!showStarlinkRef ? 'active' : ''}`}
-                  onClick={() => setShowStarlinkRef(false)}
-                >
-                  Hide
-                </button>
-                <button
-                  className={`starlink-btn compare ${showStarlinkRef ? 'active' : ''}`}
-                  onClick={() => setShowStarlinkRef(true)}
-                >
-                  Compare
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
-                  onClick={() => setExcludeStarlink(false)}
-                >
-                  Include
-                </button>
-                <button
-                  className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
-                  onClick={() => setExcludeStarlink(true)}
-                >
-                  Exclude
-                </button>
-              </>
-            )}
+            <button
+              className={`starlink-btn ${!excludeStarlink ? 'active' : ''}`}
+              onClick={() => setExcludeStarlink(false)}
+            >
+              Include
+            </button>
+            <button
+              className={`starlink-btn ${excludeStarlink ? 'active' : ''}`}
+              onClick={() => setExcludeStarlink(true)}
+            >
+              Exclude
+            </button>
           </div>
           <p className="filter-hint">
-            {selectedRegion === 'Europe'
-              ? (showStarlinkRef
-                  ? 'Showing Starlink reference line for comparison'
-                  : 'Europe-only view without SpaceX comparison')
-              : selectedRegion === 'Western-aligned'
-                ? (showStarlinkRef
-                    ? 'Showing Starlink reference for Western markets'
-                    : 'Western-aligned view without SpaceX comparison')
-                : (excludeStarlink
-                    ? 'Showing market without Starlink dominance'
-                    : 'Starlink accounts for ~60% of global satellites')}
+            {excludeStarlink
+              ? 'Starlink satellites removed from count'
+              : 'Starlink accounts for ~60% of global satellites'}
           </p>
         </div>
       )}
